@@ -1,4 +1,4 @@
-import { CheckCircle, ArrowRight } from 'lucide-react'
+import { CheckCircle, ArrowRight, Truck } from 'lucide-react'
 import Link from 'next/link'
 
 export default function ThankYouPage({
@@ -7,34 +7,43 @@ export default function ThankYouPage({
   searchParams: { orderId?: string }
 }) {
   return (
-    <div className="min-h-[60vh] flex items-center justify-center px-4 py-20">
-      <div className="text-center max-w-md">
-        <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-6">
-          <CheckCircle className="w-10 h-10 text-green-500" />
+    <div className="min-h-[70vh] flex items-center justify-center px-4 py-20 bg-viva-surface">
+      <div className="text-center max-w-lg bg-white p-10 rounded-[2.5rem] shadow-2xl shadow-viva-teal-mid/5 border border-viva-surface">
+        <div className="inline-flex items-center justify-center w-24 h-24 bg-viva-accent/10 rounded-full mb-8">
+          <CheckCircle className="w-12 h-12 text-viva-accent" />
         </div>
-        <h1 className="text-3xl font-bold text-gray-900 mb-3">
-          Pagamento confirmado!
+        <h1 className="text-4xl font-black text-viva-text mb-6 tracking-tight leading-tight font-serif">
+          Tudo certo! <br/> Sua compra foi confirmada.
         </h1>
-        <p className="text-gray-600 mb-2">
-          Obrigado pela sua compra. Você receberá um email com o recibo em breve.
+        <p className="text-xl text-gray-700 mb-4 leading-relaxed">
+          Obrigado por confiar no <strong>Viva Leve Portal</strong>. <br/> Estamos cuidando de tudo com muito carinho para você.
         </p>
+        
+        <div className="bg-viva-surface rounded-2xl p-6 mb-10 flex items-start gap-4 text-left border border-gray-100">
+          <Truck className="w-8 h-8 text-viva-primary shrink-0 mt-1" />
+          <p className="text-lg text-viva-text leading-snug">
+            Em breve, você receberá um link de rastreio direto da <strong>Logzz</strong> no seu e-mail para acompanhar a entrega até a sua porta.
+          </p>
+        </div>
+
         {searchParams.orderId && (
-          <p className="text-sm text-gray-500 mb-8">
-            Pedido #{searchParams.orderId.slice(-6).toUpperCase()}
+          <p className="text-lg text-viva-teal-dark mb-10 font-bold bg-viva-surface py-2 px-6 rounded-full inline-block border border-gray-100">
+            Nº do Pedido: #{searchParams.orderId.slice(-6).toUpperCase()}
           </p>
         )}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        
+        <div className="flex flex-col gap-4">
           <Link
             href="/account/orders"
-            className="inline-flex items-center justify-center gap-2 bg-pink-500 hover:bg-pink-600 text-white font-semibold px-6 py-3 rounded-full transition-colors"
+            className="inline-flex items-center justify-center gap-3 bg-viva-primary hover:bg-viva-primary-hover text-white font-black px-10 py-5 rounded-2xl transition-all shadow-xl shadow-viva-primary/10 text-xl hover:scale-[1.02]"
           >
-            Ver meus pedidos <ArrowRight className="w-4 h-4" />
+            Ver meus pedidos <ArrowRight className="w-6 h-6" />
           </Link>
           <Link
             href="/products"
-            className="inline-flex items-center justify-center gap-2 border border-gray-200 text-gray-700 hover:bg-gray-50 font-medium px-6 py-3 rounded-full transition-colors"
+            className="inline-flex items-center justify-center gap-3 text-gray-600 hover:text-gray-900 font-bold px-10 py-4 transition-colors text-lg"
           >
-            Continuar comprando
+            Continuar navegando
           </Link>
         </div>
       </div>

@@ -100,17 +100,17 @@ export default function AdminFilesPage() {
 
       <div
         onClick={() => fileRef.current?.click()}
-        className="border-2 border-dashed border-pink-200 rounded-xl p-8 text-center cursor-pointer hover:border-pink-400 hover:bg-pink-50 transition-colors"
+        className="border-2 border-dashed border-viva-teal-mid/30 rounded-xl p-8 text-center cursor-pointer hover:border-viva-teal-mid hover:bg-viva-primary/10 transition-colors"
       >
         <input ref={fileRef} type="file" className="hidden" onChange={handleUpload} />
         {uploading ? (
-          <div className="flex flex-col items-center gap-2 text-pink-500">
+          <div className="flex flex-col items-center gap-2 text-viva-primary">
             <Loader2 className="w-8 h-8 animate-spin" />
             <p className="font-medium text-sm">Enviando arquivo...</p>
           </div>
         ) : (
           <div className="flex flex-col items-center gap-2 text-gray-500">
-            <Upload className="w-8 h-8 text-pink-400" />
+            <Upload className="w-8 h-8 text-viva-teal-mid" />
             <p className="font-medium">Clique para enviar um arquivo</p>
             <p className="text-sm text-gray-400">ZIP, PDF, MP3, WAV, etc. — via Vercel Blob</p>
           </div>
@@ -144,7 +144,7 @@ export default function AdminFilesPage() {
                     href={f.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-pink-500 hover:underline"
+                    className="text-xs text-viva-primary hover:underline"
                   >
                     Ver
                   </a>

@@ -71,7 +71,7 @@ export default function AdminDashboardPage() {
           label: 'Produtos Ativos',
           value: data.totalProducts.toString(),
           icon: Package,
-          color: 'bg-pink-50 text-pink-600',
+          color: 'bg-viva-primary/10 text-viva-primary-hover',
           trend: 'geral',
         },
       ]
@@ -116,8 +116,8 @@ export default function AdminDashboardPage() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
         <div className="bg-white rounded-xl border p-5 shadow-sm">
           <div className="flex items-center gap-2 mb-5">
-            <div className="p-1.5 bg-pink-50 rounded-lg">
-              <TrendingUp className="w-4 h-4 text-pink-500" />
+            <div className="p-1.5 bg-viva-primary/10 rounded-lg">
+              <TrendingUp className="w-4 h-4 text-viva-primary" />
             </div>
             <div>
               <h2 className="font-semibold text-gray-900 text-sm md:text-base">Receita Mensal</h2>

@@ -84,7 +84,7 @@ function SignInForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-viva-primary"
             placeholder="seu@email.com"
           />
         </div>
@@ -96,7 +96,7 @@ function SignInForm() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-viva-primary"
             placeholder="••••••••"
           />
         </div>
@@ -104,7 +104,7 @@ function SignInForm() {
           id="signin-btn"
           type="submit"
           disabled={loading}
-          className="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2.5 rounded-lg flex items-center justify-center gap-2 disabled:opacity-60 transition-colors"
+          className="w-full bg-viva-primary hover:bg-viva-primary-hover text-white font-semibold py-2.5 rounded-lg flex items-center justify-center gap-2 disabled:opacity-60 transition-colors"
         >
           {loading && <Loader2 className="w-4 h-4 animate-spin" />}
           Entrar
@@ -113,7 +113,7 @@ function SignInForm() {
 
       <p className="text-center text-sm text-gray-600 mt-4">
         Não tem conta?{' '}
-        <Link href="/sign-up" className="text-pink-500 font-medium hover:underline">
+        <Link href="/sign-up" className="text-viva-primary font-medium hover:underline">
           Cadastrar-se
         </Link>
       </p>

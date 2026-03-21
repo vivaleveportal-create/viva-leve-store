@@ -65,11 +65,17 @@ export async function POST(req: Request) {
         const base = process.env.NEXT_PUBLIC_STORE_URL || ''
 
         const session = await stripe.checkout.sessions.create({
-            payment_method_types: ['card'],
+            payment_method_types: currency === 'brl' ? ['card', 'pix'] : ['card'],
             mode: 'payment',
             line_items,
             success_url: `${base}/thank-you?orderId=${order._id}`,
             cancel_url: `${base}/cart`,
+            shipping_address_collection: {
+                allowed_countries: locale === 'en' ? ['US', 'CA', 'BR'] : ['BR'],
+            },
+            phone_number_collection: {
+                enabled: true,
+            },
             metadata: {
                 orderId: order._id.toString(),
                 userId: user._id.toString(),

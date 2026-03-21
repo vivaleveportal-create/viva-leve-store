@@ -47,7 +47,7 @@ export function Sidebar({ onNavigate }: SidebarProps) {
             <p className="font-bold text-sm text-white leading-tight">
               {process.env.NEXT_PUBLIC_STORE_NAME || 'Minha Loja'}
             </p>
-            <p className="text-[10px] text-pink-400 font-medium uppercase tracking-wider">Admin Panel</p>
+            <p className="text-[10px] text-viva-teal-mid font-medium uppercase tracking-wider">Admin Panel</p>
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@ export function Sidebar({ onNavigate }: SidebarProps) {
               className={cn(
                 'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all',
                 active
-                  ? 'bg-pink-500 text-white shadow-sm'
+                  ? 'bg-viva-primary text-white shadow-sm'
                   : 'text-gray-400 hover:bg-gray-800 hover:text-white'
               )}
             >
@@ -82,7 +82,7 @@ export function Sidebar({ onNavigate }: SidebarProps) {
           <span className="text-xs text-gray-400 truncate flex-1">
             {(session?.user?.name ?? session?.user?.email ?? '').toString().split(' ')[0]}
           </span>
-          <span className="text-[10px] text-pink-400 font-semibold uppercase tracking-wide shrink-0">
+          <span className="text-[10px] text-viva-teal-mid font-semibold uppercase tracking-wide shrink-0">
             {role.replace('_', ' ')}
           </span>
         </div>

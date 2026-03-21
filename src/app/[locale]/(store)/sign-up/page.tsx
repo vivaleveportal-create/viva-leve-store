@@ -44,7 +44,7 @@ export default function SignUpPage() {
           </p>
           <Link
             href="/sign-in"
-            className="mt-6 inline-block text-pink-500 font-medium hover:underline"
+            className="mt-6 inline-block text-viva-primary font-medium hover:underline"
           >
             Ir para o login
           </Link>
@@ -68,7 +68,7 @@ export default function SignUpPage() {
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               required
               minLength={2}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-viva-primary"
               placeholder="Seu nome"
             />
           </div>
@@ -80,7 +80,7 @@ export default function SignUpPage() {
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-viva-primary"
               placeholder="seu@email.com"
             />
           </div>
@@ -93,7 +93,7 @@ export default function SignUpPage() {
               onChange={(e) => setForm({ ...form, password: e.target.value })}
               required
               minLength={8}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-viva-primary"
               placeholder="Mínimo 8 caracteres"
             />
           </div>
@@ -101,7 +101,7 @@ export default function SignUpPage() {
             id="signup-btn"
             type="submit"
             disabled={loading}
-            className="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2.5 rounded-lg flex items-center justify-center gap-2 disabled:opacity-60 transition-colors"
+            className="w-full bg-viva-primary hover:bg-viva-primary-hover text-white font-semibold py-2.5 rounded-lg flex items-center justify-center gap-2 disabled:opacity-60 transition-colors"
           >
             {loading && <Loader2 className="w-4 h-4 animate-spin" />}
             Criar conta
@@ -110,7 +110,7 @@ export default function SignUpPage() {
 
         <p className="text-center text-sm text-gray-600 mt-4">
           Já tem conta?{' '}
-          <Link href="/sign-in" className="text-pink-500 font-medium hover:underline">
+          <Link href="/sign-in" className="text-viva-primary font-medium hover:underline">
             Entrar
           </Link>
         </p>

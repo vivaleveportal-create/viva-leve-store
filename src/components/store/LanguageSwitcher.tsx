@@ -36,13 +36,13 @@ export default function LanguageSwitcher() {
         <div className="absolute right-0 top-8 w-32 bg-white rounded-xl border shadow-lg py-1 z-50">
           <button
             onClick={() => toggleLanguage('pt')}
-            className={`flex items-center w-full px-4 py-2 text-sm text-left hover:bg-gray-50 ${locale === 'pt' ? 'font-bold text-pink-500 bg-pink-50' : 'text-gray-700'}`}
+            className={`flex items-center w-full px-4 py-2 text-sm text-left hover:bg-gray-50 ${locale === 'pt' ? 'font-bold text-viva-primary bg-viva-primary/10' : 'text-gray-700'}`}
           >
             🇧🇷 Português
           </button>
           <button
             onClick={() => toggleLanguage('en')}
-            className={`flex items-center w-full px-4 py-2 text-sm text-left hover:bg-gray-50 ${locale === 'en' ? 'font-bold text-pink-500 bg-pink-50' : 'text-gray-700'}`}
+            className={`flex items-center w-full px-4 py-2 text-sm text-left hover:bg-gray-50 ${locale === 'en' ? 'font-bold text-viva-primary bg-viva-primary/10' : 'text-gray-700'}`}
           >
             🇺🇸 English
           </button>

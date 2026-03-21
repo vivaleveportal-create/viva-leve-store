@@ -21,7 +21,7 @@ export async function POST(req: Request) {
             cloudinary.uploader
                 .upload_stream(
                     {
-                        folder: 'pink-pig/products',
+                        folder: 'viva-leve/products',
                         resource_type: 'image',
                         transformation: [{ quality: 'auto', fetch_format: 'auto' }],
                     },

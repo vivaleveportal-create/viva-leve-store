@@ -1,14 +1,14 @@
 export const metadata = {
-  title: 'Política de Privacidade | Loja Digital',
+  title: 'Política de Privacidade | Viva Leve Portal',
   description: 'Como protegemos e tratamos os seus dados pessoais.',
 }
 
 export default function PrivacidadePage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-16">
-      <h1 className="text-4xl font-bold text-gray-900 mb-8">Política de Privacidade</h1>
+      <h1 className="text-4xl font-bold text-gray-900 mb-8 font-serif">Política de Privacidade</h1>
       
-      <div className="prose prose-pink max-w-none text-gray-600 space-y-6">
+      <div className="prose prose-teal max-w-none text-gray-600 space-y-6">
         <p>
           O seu direito à privacidade é uma prioridade para a nossa empresa. Esta Política de Privacidade serve para esclarecer de que forma recolhemos, utilizamos, partilhamos e protegemos as suas informações pessoais.
         </p>

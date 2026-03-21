@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { Play, Loader2 } from 'lucide-react'
+import { Play } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 interface YouTubeEmbedProps {
   url: string
@@ -23,7 +24,7 @@ export default function YouTubeEmbed({ url, title }: YouTubeEmbedProps) {
   if (!videoId) return null
 
   const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`
-  const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
+  const miniaturaUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
 
   if (!isPlaying) {
     return (
@@ -32,12 +33,12 @@ export default function YouTubeEmbed({ url, title }: YouTubeEmbedProps) {
         onClick={() => setIsPlaying(true)}
       >
         <img 
-          src={thumbnailUrl} 
+          src={miniaturaUrl} 
           alt={title || 'Saiba mais'} 
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-          <div className="w-16 h-16 bg-pink-500 rounded-full flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform duration-300">
+          <div className="w-16 h-16 bg-viva-primary rounded-full flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform duration-300">
             <Play className="w-8 h-8 fill-current" />
           </div>
         </div>

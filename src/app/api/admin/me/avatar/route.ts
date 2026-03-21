@@ -20,7 +20,7 @@ export async function POST(req: Request) {
             cloudinary.uploader
                 .upload_stream(
                     {
-                        folder: 'pink-pig/avatars',
+                        folder: 'viva-leve/avatars',
                         resource_type: 'image',
                         transformation: [
                             { width: 200, height: 200, crop: 'fill', gravity: 'face' },

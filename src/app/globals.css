@@ -10,28 +10,54 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 344 50% 65%;
+    --primary: 177 100% 23% /* #00756e */;
     --primary-foreground: 0 0% 100%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 177 20% 98% /* #f8faf8 surface */;
+    --secondary-foreground: 177 28% 14.5% /* #1a2e2d text */;
     --muted: 210 40% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 79 67% 41% /* #80b023 accent */;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 344 50% 65%;
-    --radius: 0.5rem;
-    --brand: 344 50% 65%;
+    --ring: 177 100% 23%;
+    --radius: 1rem; /* Softer radius for 60+ */
+    --brand: 177 100% 23%;
+  }
+
+  html {
+    font-size: 112.5%; /* Base 18px */
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground leading-[1.8] antialiased;
+  }
+
+  /* Accessibility for 60+ — Minimum touch target size 48px */
+  button, 
+  .button, 
+  [role="button"], 
+  input, 
+  select, 
+  textarea,
+  .touch-target {
+    @apply min-h-[48px] outline-none;
+  }
+
+  /* Headings with brand dark teal/text color */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold leading-tight text-[#1a2e2d];
+  }
+
+  /* Links */
+  a {
+    @apply underline-offset-4 hover:underline transition-all;
   }
 
   * {
     @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
   }
 }

@@ -9,7 +9,6 @@ import { toast } from 'sonner'
 
 // ─── Types ───────────────────────────────────────────────
 interface Category { _id: string; label: any; locale: string; parent?: { _id: string; label: any } | null }
-interface DigitalFile { _id: string; name: string }
 interface Product {
   _id: string
   name: any
@@ -18,8 +17,10 @@ interface Product {
   active: boolean
   featured: boolean
   category?: { _id: string; label: any }
-  digitalFile?: { _id: string; name: string }
+  logzzProductId?: string
+  logzzProductUrl?: string
   images?: string[]
+
   description?: any
   videoUrl?: string
   createdAt: string
@@ -30,8 +31,10 @@ interface FormState {
   locale: string
   price: string
   category: string
-  digitalFile: string
+  logzzProductId: string
+  logzzProductUrl: string
   active: boolean
+
   featured: boolean
   images: string[]
   videoUrl: string
@@ -39,7 +42,7 @@ interface FormState {
 
 const EMPTY_FORM: FormState = {
   name: '', description: '', locale: 'pt', price: '', category: '',
-  digitalFile: '', active: true, featured: false, images: [],
+  logzzProductId: '', logzzProductUrl: '', active: true, featured: false, images: [],
   videoUrl: '',
 }
 
@@ -47,7 +50,6 @@ const EMPTY_FORM: FormState = {
 export default function AdminProductsPage() {
   const [products, setProducts] = useState<Product[]>([])
   const [categories, setCategories] = useState<Category[]>([])
-  const [digitalFiles, setDigitalFiles] = useState<DigitalFile[]>([])
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState('')
   const [modalOpen, setModalOpen] = useState(false)
@@ -74,13 +76,9 @@ export default function AdminProductsPage() {
   }
 
   async function loadMeta() {
-    const [catRes, fileRes] = await Promise.all([
-      fetch('/api/admin/categories'),
-      fetch('/api/admin/files'),
-    ])
-    const [catData, fileData] = await Promise.all([catRes.json(), fileRes.json()])
-    setCategories(catData.data ?? [])
-    setDigitalFiles(fileData.data ?? [])
+    const res = await fetch('/api/admin/categories')
+    const data = await res.json()
+    setCategories(data.data ?? [])
   }
 
   useEffect(() => { loadProducts(); loadMeta() }, [])
@@ -100,7 +98,8 @@ export default function AdminProductsPage() {
       locale: p.locale || 'pt',
       price: (p.price).toString(),
       category: p.category?._id ?? '',
-      digitalFile: p.digitalFile?._id ?? '',
+      logzzProductId: (p as any).logzzProductId ?? '',
+      logzzProductUrl: (p as any).logzzProductUrl ?? '',
       active: p.active,
       featured: p.featured,
       images: p.images ?? [],
@@ -165,9 +164,9 @@ export default function AdminProductsPage() {
   async function removeImage(index: number, url: string) {
     // Tentativa de deletar do Cloudinary
     try {
-      // Extrair public_id da URL: pink-pig/products/filename.ext
+      // Extrair public_id da URL: viva-leve/products/filename.ext
       const parts = url.split('/')
-      const folderIdx = parts.indexOf('pink-pig')
+      const folderIdx = parts.indexOf('viva-leve')
       if (folderIdx !== -1) {
         const publicPath = parts.slice(folderIdx).join('/')
         const publicId = publicPath.split('.')[0] // Remove extensão
@@ -201,52 +200,7 @@ export default function AdminProductsPage() {
     })
   }
 
-  // ── Digital File upload ───────────────────────────────────
-  async function processDigitalFile(file: File) {
-    if (!file) return
-    setUploadingFile(true)
-    const fd = new FormData()
-    fd.append('file', file)
-    try {
-      const res = await fetch('/api/admin/files', { method: 'POST', body: fd })
-      const data = await res.json()
-      if (res.ok) {
-        const newFile = data.data
-        setDigitalFiles(prev => [newFile, ...prev])
-        setForm(f => ({ ...f, digitalFile: newFile._id }))
-        toast.success('Arquivo digital enviado!')
-      } else {
-        toast.error(data.error ?? 'Erro no envio do arquivo')
-      }
-    } catch {
-      toast.error('Erro de conexão ao enviar arquivo')
-    } finally {
-      setUploadingFile(false)
-      if (fileInputRef.current) fileInputRef.current.value = ''
-    }
-  }
-
-  function handleDigitalFileUpload(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0]
-    if (file) processDigitalFile(file)
-  }
-
-  function handleFileDragOver(e: React.DragEvent) {
-    e.preventDefault()
-    setIsFileDragging(true)
-  }
-
-  function handleFileDragLeave(e: React.DragEvent) {
-    e.preventDefault()
-    setIsFileDragging(false)
-  }
-
-  function handleFileDrop(e: React.DragEvent) {
-    e.preventDefault()
-    setIsFileDragging(false)
-    const file = e.dataTransfer.files?.[0]
-    if (file) processDigitalFile(file)
-  }
+  // ─── Render ───────────────────────────────────────────────
 
   // ── Save ──────────────────────────────────────────────────
   async function handleSave(e: React.FormEvent) {
@@ -262,7 +216,8 @@ export default function AdminProductsPage() {
       description: form.description,
       price: parseFloat(form.price),
       category: form.category,
-      digitalFile: form.digitalFile || null,
+      logzzProductId: form.logzzProductId,
+      logzzProductUrl: form.logzzProductUrl,
       active: form.active,
       featured: form.featured,
       images: form.images,
@@ -310,12 +265,12 @@ export default function AdminProductsPage() {
             placeholder="Buscar produtos..."
             value={search}
             onChange={(e) => { setSearch(e.target.value); loadProducts(e.target.value) }}
-            className="pl-9 pr-3 py-2 border border-gray-200 rounded-lg text-sm w-full focus:outline-none focus:ring-2 focus:ring-pink-500"
+            className="pl-9 pr-3 py-2 border border-gray-200 rounded-lg text-sm w-full focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
         </div>
         <button
           onClick={openCreate}
-          className="flex items-center gap-2 bg-pink-500 hover:bg-pink-600 text-white font-medium px-4 py-2 rounded-lg text-sm transition-colors shrink-0"
+          className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-medium px-4 py-2 rounded-lg text-sm transition-colors shrink-0"
         >
           <Plus className="w-4 h-4" />
           Novo produto
@@ -435,7 +390,7 @@ export default function AdminProductsPage() {
                     </div>
                     <div className="relative group/import w-full sm:w-auto">
                       <select 
-                        className="w-full sm:w-[200px] appearance-none text-xs border border-pink-200 rounded-full pl-9 pr-4 py-2 bg-white outline-none focus:ring-4 focus:ring-pink-500/10 cursor-pointer hover:border-pink-300 transition-all text-pink-600 font-bold shadow-sm truncate"
+                        className="w-full sm:w-[200px] appearance-none text-xs border border-orange-200 rounded-full pl-9 pr-4 py-2 bg-white outline-none focus:ring-4 focus:ring-orange-500/10 cursor-pointer hover:border-orange-300 transition-all text-orange-600 font-bold shadow-sm truncate"
                         value={donorProduct?._id || ""}
                         onChange={(e) => {
                           const pId = e.target.value;
@@ -453,7 +408,7 @@ export default function AdminProductsPage() {
                           ))
                         }
                       </select>
-                      <Copy className="w-3.5 h-3.5 text-pink-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                      <Copy className="w-3.5 h-3.5 text-orange-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                     </div>
                   </div>
 
@@ -462,7 +417,7 @@ export default function AdminProductsPage() {
                     <div className="pt-3 border-t border-gray-200/50 mt-1 animate-in fade-in slide-in-from-top-2 duration-300">
                       <div className="flex items-center justify-between mb-3">
                         <p className="text-[10px] uppercase font-bold text-gray-400 tracking-widest">
-                          Escolher fotos de: <span className="text-pink-500">{donorProduct.name}</span>
+                          Escolher fotos de: <span className="text-orange-500">{donorProduct.name}</span>
                         </p>
                         <div className="flex gap-2">
                           <button 
@@ -475,7 +430,7 @@ export default function AdminProductsPage() {
                               }
                               setDonorProduct(null);
                             }}
-                            className="text-[9px] font-bold text-pink-600 hover:text-pink-700 underline"
+                            className="text-[9px] font-bold text-viva-accent-gold hover:text-viva-primary-hover underline"
                           >
                             Adicionar Todas
                           </button>
@@ -491,7 +446,7 @@ export default function AdminProductsPage() {
                             <div key={i} className="relative shrink-0 group/donor">
                               <div className={cn(
                                 "w-14 h-14 rounded-lg border-2 bg-white overflow-hidden transition-all",
-                                isAdded ? "border-green-500 opacity-50 shadow-inner scale-90" : "border-gray-100 hover:border-pink-200 shadow-sm"
+                                isAdded ? "border-green-500 opacity-50 shadow-inner scale-90" : "border-gray-100 hover:border-orange-200 shadow-sm"
                               )}>
                                 <img src={img} alt="donor" className="w-full h-full object-contain p-1" />
                               </div>
@@ -502,7 +457,7 @@ export default function AdminProductsPage() {
                                     setForm(f => ({ ...f, images: [...f.images, img] }));
                                     toast.success('Imagem adicionada!');
                                   }}
-                                  className="absolute inset-0 flex items-center justify-center bg-pink-500/80 text-white opacity-0 group-hover/donor:opacity-100 transition-opacity rounded-lg"
+                                  className="absolute inset-0 flex items-center justify-center bg-orange-500/80 text-white opacity-0 group-hover/donor:opacity-100 transition-opacity rounded-lg"
                                 >
                                   <Plus className="w-6 h-6 stroke-[3]" />
                                 </button>
@@ -549,11 +504,11 @@ export default function AdminProductsPage() {
                         }}
                         className={cn(
                           "flex items-center gap-3 p-2 bg-white border rounded-xl group transition-all cursor-grab active:cursor-grabbing",
-                          draggedIdx === idx && "opacity-40 border-dashed border-pink-500 scale-95",
-                          dragOverIdx === idx && draggedIdx !== idx && "border-solid border-pink-500 bg-pink-50/50 -translate-y-1"
+                          draggedIdx === idx && "opacity-40 border-dashed border-orange-500 scale-95",
+                          dragOverIdx === idx && draggedIdx !== idx && "border-solid border-orange-500 bg-orange-50/50 -translate-y-1"
                         )}
                       >
-                        <div className="text-gray-300 group-hover:text-pink-400 p-1.5 transition-colors cursor-grab active:cursor-grabbing">
+                        <div className="text-gray-300 group-hover:text-orange-400 p-1.5 transition-colors cursor-grab active:cursor-grabbing">
                           <GripVertical className="w-5 h-5" />
                         </div>
                         <div className="w-14 h-14 rounded-lg border bg-gray-50 flex items-center justify-center shrink-0 overflow-hidden shadow-inner">
@@ -562,7 +517,7 @@ export default function AdminProductsPage() {
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
                             {idx === 0 && (
-                              <span className="bg-pink-100 text-pink-600 text-[9px] font-bold px-1.5 py-0.5 rounded leading-none">
+                              <span className="bg-orange-100 text-orange-600 text-[9px] font-bold px-1.5 py-0.5 rounded leading-none">
                                 CAPA
                               </span>
                             )}
@@ -577,7 +532,7 @@ export default function AdminProductsPage() {
                             type="button"
                             onClick={() => moveImage(idx, 'up')}
                             disabled={idx === 0}
-                            className="p-1 text-gray-300 hover:text-pink-500 disabled:opacity-20 transition-colors"
+                            className="p-1 text-gray-300 hover:text-orange-500 disabled:opacity-20 transition-colors"
                           >
                             <ArrowUp className="w-4 h-4" />
                           </button>
@@ -585,7 +540,7 @@ export default function AdminProductsPage() {
                             type="button"
                             onClick={() => moveImage(idx, 'down')}
                             disabled={idx === form.images.length - 1}
-                            className="p-1 text-gray-300 hover:text-pink-500 disabled:opacity-20 transition-colors"
+                            className="p-1 text-gray-300 hover:text-orange-500 disabled:opacity-20 transition-colors"
                           >
                             <ArrowDown className="w-4 h-4" />
                           </button>
@@ -610,15 +565,15 @@ export default function AdminProductsPage() {
                   onDrop={handleDrop}
                   className={`border-2 border-dashed rounded-xl p-4 text-center cursor-pointer transition-colors ${
                     isDragging
-                      ? 'border-pink-500 bg-pink-50'
-                      : 'border-gray-200 hover:border-pink-400 hover:bg-pink-50'
+                      ? 'border-orange-500 bg-orange-50'
+                      : 'border-gray-200 hover:border-orange-400 hover:bg-orange-50'
                   }`}
                 >
                   <input ref={imageRef} type="file" accept="image/*" multiple className="hidden" onChange={handleImageUpload} />
                   {uploading ? (
-                    <div className="flex items-center justify-center gap-2 text-pink-500 py-2">
+                    <div className="flex items-center justify-center gap-2 text-orange-500 py-2">
                       <Loader2 className="w-5 h-5 animate-spin" />
-                      <span className="text-sm text-pink-500">Enviando imagens...</span>
+                      <span className="text-sm text-orange-500">Enviando imagens...</span>
                     </div>
                   ) : (
                     <div className="flex flex-col items-center gap-1 py-2 text-gray-400">
@@ -640,7 +595,7 @@ export default function AdminProductsPage() {
                     onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
                     required
                     placeholder="Ex: Drum Kit Trap 2025"
-                    className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
+                    className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
                 <div>
@@ -648,7 +603,7 @@ export default function AdminProductsPage() {
                   <select
                     value={form.locale}
                     onChange={e => setForm(f => ({ ...f, locale: e.target.value }))}
-                    className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500 bg-white"
+                    className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white"
                   >
                     <option value="pt">Português (PT)</option>
                     <option value="en">Inglês (EN)</option>
@@ -664,7 +619,7 @@ export default function AdminProductsPage() {
                   onChange={e => setForm(f => ({ ...f, description: e.target.value }))}
                   rows={3}
                   placeholder="Descreva o produto..."
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500 resize-none"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none"
                 />
               </div>
 
@@ -677,7 +632,7 @@ export default function AdminProductsPage() {
                     value={form.videoUrl}
                     onChange={e => setForm(f => ({ ...f, videoUrl: e.target.value }))}
                     placeholder="https://www.youtube.com/watch?v=..."
-                    className="w-full border border-gray-200 rounded-lg pl-3 pr-10 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
+                    className="w-full border border-gray-200 rounded-lg pl-3 pr-10 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                   <div className="absolute right-3 top-2.5">
                     <svg className="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 24 24">
@@ -702,7 +657,7 @@ export default function AdminProductsPage() {
                     onChange={e => setForm(f => ({ ...f, price: e.target.value }))}
                     required
                     placeholder="49.90"
-                    className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
+                    className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
                 <div>
@@ -711,7 +666,7 @@ export default function AdminProductsPage() {
                     value={form.category}
                     onChange={e => setForm(f => ({ ...f, category: e.target.value }))}
                     required
-                    className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500 bg-white"
+                    className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white"
                   >
                     <option value="">Selecionar...</option>
                     {categories
@@ -736,75 +691,36 @@ export default function AdminProductsPage() {
                 </div>
               </div>
 
-              {/* Digital File */}
-              <div className="pt-2 border-t border-gray-100">
-                <label className="block text-sm font-medium text-gray-700 mb-2">Arquivo digital (PDF, ZIP, WAV...)</label>
+              {/* Logzz Product Info */}
+              <div className="pt-6 border-t border-gray-100 space-y-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Package className="w-5 h-5 text-orange-600" />
+                  <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider">Logística Logzz</h3>
+                </div>
                 
-                {form.digitalFile && !uploadingFile ? (
-                  <div className="border border-green-200 bg-green-50 rounded-xl p-4 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <File className="w-8 h-8 text-green-600" />
-                      <div>
-                        <p className="text-sm font-semibold text-green-700 line-clamp-1 max-w-[280px]">
-                          {digitalFiles.find(f => f._id === form.digitalFile)?.name || 'Arquivo selecionado'} 
-                        </p>
-                        <p className="text-xs text-green-600/80">Arquivo vinculado</p>
-                      </div>
-                    </div>
-                    <button 
-                      type="button" 
-                      onClick={() => setForm(f => ({ ...f, digitalFile: '' }))} 
-                      className="text-xs font-medium text-red-500 hover:text-red-700 hover:bg-red-50 px-2 py-1 rounded transition-colors"
-                    >
-                      Remover
-                    </button>
+                <div className="grid grid-cols-1 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">ID do Produto no Logzz *</label>
+                    <input
+                      type="text"
+                      value={form.logzzProductId}
+                      onChange={e => setForm(f => ({ ...f, logzzProductId: e.target.value }))}
+                      placeholder="Ex: PROD-12345"
+                      className="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    />
+                    <p className="text-[10px] text-gray-400 mt-1">Obrigatório para o checkout e rastreio automático.</p>
                   </div>
-                ) : (
-                  <>
-                    {/* Drag and Drop Zone */}
-                    <div
-                      onClick={() => !uploadingFile && fileInputRef.current?.click()}
-                      onDragOver={handleFileDragOver}
-                      onDragLeave={handleFileDragLeave}
-                      onDrop={handleFileDrop}
-                      className={`border-2 border-dashed rounded-xl p-4 text-center cursor-pointer transition-colors mb-3 ${
-                        isFileDragging
-                          ? 'border-pink-500 bg-pink-50'
-                          : 'border-gray-200 hover:border-pink-400 hover:bg-pink-50'
-                      } ${uploadingFile ? 'opacity-80 pointer-events-none' : ''}`}
-                    >
-                      <input ref={fileInputRef} type="file" className="hidden" onChange={handleDigitalFileUpload} />
-                      
-                      {uploadingFile ? (
-                        <div className="flex flex-col items-center justify-center gap-2 text-pink-500 py-2">
-                           <Loader2 className="w-6 h-6 animate-spin" />
-                           <span className="text-sm font-medium">Enviando para Nuvem (Vercel Blob)...</span>
-                        </div>
-                      ) : (
-                        <div className="flex flex-col items-center gap-1 py-2 text-gray-400">
-                           <Upload className="w-8 h-8 text-gray-300" />
-                           <p className="text-sm">Arraste o arquivo ou clique para fazer upload</p>
-                           <p className="text-xs text-gray-400">Substitui a versão antiga se você estiver atualizando o e-book.</p>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Ou select */}
-                    <div className="flex items-center gap-3">
-                      <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider shrink-0">Reaproveitar existente:</span>
-                      <select
-                        value={form.digitalFile}
-                        onChange={e => setForm(f => ({ ...f, digitalFile: e.target.value }))}
-                        className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500 bg-white"
-                      >
-                        <option value="">Nenhum arquivo vinculado</option>
-                        {digitalFiles.map(f => (
-                          <option key={f._id} value={f._id}>{f.name}</option>
-                        ))}
-                      </select>
-                    </div>
-                  </>
-                )}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Link da Oferta no Logzz (Opcional)</label>
+                    <input
+                      type="url"
+                      value={form.logzzProductUrl}
+                      onChange={e => setForm(f => ({ ...f, logzzProductUrl: e.target.value }))}
+                      placeholder="https://app.logzz.com.br/o/..."
+                      className="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    />
+                  </div>
+                </div>
               </div>
 
               {/* Toggles */}
@@ -814,7 +730,7 @@ export default function AdminProductsPage() {
                     type="checkbox"
                     checked={form.active}
                     onChange={e => setForm(f => ({ ...f, active: e.target.checked }))}
-                    className="w-4 h-4 rounded accent-pink-500"
+                    className="w-4 h-4 rounded accent-orange-600"
                   />
                   <span className="text-sm font-medium text-gray-700">Ativo</span>
                 </label>
@@ -823,7 +739,7 @@ export default function AdminProductsPage() {
                     type="checkbox"
                     checked={form.featured}
                     onChange={e => setForm(f => ({ ...f, featured: e.target.checked }))}
-                    className="w-4 h-4 rounded accent-pink-500"
+                    className="w-4 h-4 rounded accent-orange-600"
                   />
                   <span className="text-sm font-medium text-gray-700">Destaque ⭐</span>
                 </label>
@@ -841,7 +757,7 @@ export default function AdminProductsPage() {
                 <button
                   type="submit"
                   disabled={saving || uploading}
-                  className="flex-1 bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2.5 rounded-lg text-sm flex items-center justify-center gap-2 disabled:opacity-60 transition-colors"
+                  className="flex-1 bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2.5 rounded-lg text-sm flex items-center justify-center gap-2 disabled:opacity-60 transition-colors shadow-lg shadow-orange-100"
                 >
                   {saving && <Loader2 className="w-4 h-4 animate-spin" />}
                   {editing ? 'Salvar alterações' : 'Criar produto'}

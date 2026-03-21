@@ -4,7 +4,7 @@ import { useCartStore } from '@/lib/stores/cart'
 import { formatPrice } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Trash2, ShoppingBag, ArrowRight } from 'lucide-react'
+import { Trash2, ShoppingBag, ShoppingCart, ArrowRight, Loader2 } from 'lucide-react'
 import { useState } from 'react'
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
@@ -44,74 +44,74 @@ export default function CartPage() {
 
   if (items.length === 0) {
     return (
-      <div className="max-w-2xl mx-auto px-4 py-20 text-center">
-        <ShoppingBag className="w-16 h-16 text-gray-200 mx-auto mb-4" />
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">Carrinho vazio</h1>
-        <p className="text-gray-500 mb-6">Adicione produtos para continuar</p>
+      <div className="max-w-2xl mx-auto px-4 py-20 text-center bg-viva-surface min-h-[60vh] flex flex-col items-center justify-center">
+        <ShoppingCart className="w-20 h-20 text-viva-teal-mid/30 mb-8" />
+        <h1 className="text-3xl font-bold text-viva-text mb-4 font-serif">Seu carrinho está vazio</h1>
+        <p className="text-xl text-gray-500 mb-10 leading-relaxed">Adicione produtos para continuar suas compras e cuidar de você.</p>
         <Link
           href="/products"
-          className="inline-flex items-center gap-2 bg-pink-500 hover:bg-pink-600 text-white font-semibold px-6 py-3 rounded-full transition-colors"
+          className="inline-flex items-center gap-3 bg-viva-primary hover:bg-viva-primary-hover text-white font-bold px-10 py-5 rounded-2xl transition-all shadow-xl shadow-viva-primary/10 text-xl hover:scale-105"
         >
-          Ver produtos <ArrowRight className="w-4 h-4" />
+          Ver produtos <ArrowRight className="w-6 h-6" />
         </Link>
       </div>
     )
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-10">
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Carrinho</h1>
+    <div className="max-w-3xl mx-auto px-4 py-12 md:py-16">
+      <h1 className="text-4xl font-black text-viva-text mb-12 tracking-tight font-serif">Minha Cestinha</h1>
 
-      <div className="space-y-4">
+      <div className="space-y-6">
         {items.map((item) => (
           <div
             key={item.id}
-            className="bg-white border rounded-xl p-4 flex items-center gap-4"
+            className="bg-white border border-gray-100 rounded-2xl p-6 flex items-center gap-6 shadow-sm hover:shadow-md transition-shadow"
           >
-            <div className="w-16 h-16 bg-gray-100 rounded-lg overflow-hidden relative shrink-0">
+            <div className="w-24 h-24 bg-viva-surface rounded-xl overflow-hidden relative shrink-0 border border-gray-100">
               {item.image ? (
-                <Image src={item.image} alt={item.name} fill sizes="64px" className="object-cover" />
+                <Image src={item.image} alt={item.name} fill sizes="96px" className="object-contain p-2" />
               ) : (
-                <div className="w-full h-full flex items-center justify-center text-gray-300 text-xs">
-                  IMG
+                <div className="w-full h-full flex items-center justify-center text-viva-teal-mid/20">
+                  <ShoppingBag className="w-8 h-8" />
                 </div>
               )}
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="font-semibold text-gray-900 truncate">{item.name}</h3>
-              <p className="text-pink-500 font-bold">
+              <h3 className="text-xl font-bold text-viva-text mb-1 truncate">{item.name}</h3>
+              <p className="text-2xl font-black text-viva-primary">
                 {formatPrice(Math.round(item.price * 100))}
               </p>
             </div>
             <button
               onClick={() => {
                 removeItem(item.id)
-                toast.info('Item removido do carrinho')
+                toast.info('Item removido')
               }}
-              className="text-gray-400 hover:text-red-500 transition-colors p-1.5"
-              aria-label="Remover"
+              className="text-gray-400 hover:text-red-500 transition-colors p-3 rounded-full hover:bg-red-50"
+              aria-label="Remover item"
             >
-              <Trash2 className="w-4 h-4" />
+              <Trash2 className="w-6 h-6" />
             </button>
           </div>
         ))}
       </div>
 
-      <div className="mt-6 bg-white border rounded-xl p-6">
-        <div className="flex justify-between text-lg font-bold text-gray-900 mb-4">
+      <div className="mt-12 bg-viva-surface border border-gray-100 rounded-3xl p-8 shadow-2xl shadow-viva-teal-mid/5">
+        <div className="flex justify-between items-center text-2xl font-black text-viva-text mb-10 pb-8 border-b border-gray-200/50">
           <span>Total</span>
-          <span>{formatPrice(Math.round(total() * 100))}</span>
+          <span className="text-4xl text-viva-primary">{formatPrice(Math.round(total() * 100))}</span>
         </div>
         <button
           id="checkout-btn"
           onClick={handleCheckout}
           disabled={loading}
-          className="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3.5 rounded-xl transition-colors disabled:opacity-60 shadow-lg shadow-pink-100"
+          className="w-full h-16 bg-viva-primary hover:bg-viva-primary-hover text-white font-black rounded-2xl transition-all disabled:opacity-60 shadow-xl shadow-viva-primary/10 text-2xl hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3"
         >
-          {loading ? 'Carregando...' : 'Finalizar compra'}
+          {loading ? <Loader2 className="w-6 h-6 animate-spin" /> : 'Finalizar minha compra'}
         </button>
-        <p className="text-xs text-center text-gray-500 mt-3">
-          Você será redirecionado para o Stripe para concluir o pagamento
+        <p className="text-lg text-center text-gray-500 mt-8 leading-relaxed">
+          O próximo passo será informar seu endereço <br className="hidden md:block" /> e escolher a forma de pagamento de forma segura.
         </p>
       </div>
     </div>

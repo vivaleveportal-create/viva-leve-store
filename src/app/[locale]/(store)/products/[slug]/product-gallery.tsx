@@ -85,7 +85,7 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
                   key={idx} 
                   className={cn(
                     "h-1.5 rounded-full transition-all duration-300",
-                    activeIndex === idx ? "w-6 bg-pink-500" : "w-1.5 bg-gray-300/60"
+                    activeIndex === idx ? "w-6 bg-viva-primary" : "w-1.5 bg-gray-300/60"
                   )} 
                 />
               ))}
@@ -94,7 +94,7 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
         )}
       </div>
 
-      {/* Thumbnails (only if multi-image) */}
+      {/* Miniaturas (only if multi-image) */}
       {images.length > 1 && (
         <div className="flex gap-3 overflow-x-auto py-2 px-1 scrollbar-hide snap-x no-scrollbar">
           {images.map((img, idx) => (
@@ -104,13 +104,13 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
               className={cn(
                 "relative aspect-square w-20 sm:w-24 rounded-2xl overflow-hidden flex-shrink-0 bg-white border transition-all duration-300 snap-start",
                 activeIndex === idx
-                  ? "border-pink-500 ring-4 ring-pink-500/10 shadow-lg scale-95"
-                  : "border-gray-100 hover:border-gray-300 shadow-sm opacity-60 hover:opacity-100"
+                  ? "border-viva-primary ring-4 ring-viva-primary/10 shadow-lg scale-95"
+                  : "border-transparent hover:border-viva-teal-light/30"
               )}
             >
               <Image
                 src={img}
-                alt={`${productName} thumbnail ${idx + 1}`}
+                alt={`${productName} miniatura ${idx + 1}`}
                 fill
                 sizes="(max-width: 768px) 80px, 96px"
                 className="object-contain p-2 drop-shadow-sm"

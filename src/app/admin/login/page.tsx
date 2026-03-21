@@ -37,8 +37,8 @@ export default function AdminLoginPage() {
     <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-8">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 bg-pink-100 rounded-full mb-4">
-            <Lock className="w-7 h-7 text-pink-500" />
+          <div className="inline-flex items-center justify-center w-14 h-14 bg-viva-primary/10 rounded-full mb-4">
+            <Lock className="w-7 h-7 text-viva-primary" />
           </div>
           <h1 className="text-2xl font-bold text-gray-900">Admin</h1>
           <p className="text-gray-500 text-sm mt-1">Acesso restrito ao painel</p>
@@ -55,7 +55,7 @@ export default function AdminLoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-viva-primary focus:border-transparent"
               placeholder="admin@loja.com"
             />
           </div>
@@ -70,7 +70,7 @@ export default function AdminLoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-viva-primary focus:border-transparent"
               placeholder="••••••••"
             />
           </div>
@@ -85,7 +85,7 @@ export default function AdminLoginPage() {
             id="admin-login-btn"
             type="submit"
             disabled={loading}
-            className="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2.5 rounded-lg transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
+            className="w-full bg-viva-primary hover:bg-viva-primary-hover text-white font-semibold py-2.5 rounded-lg transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
           >
             {loading && <Loader2 className="w-4 h-4 animate-spin" />}
             Entrar

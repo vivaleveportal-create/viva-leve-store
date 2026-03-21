@@ -40,7 +40,7 @@ export default function AdminCustomersPage() {
           placeholder="Buscar clientes..."
           value={search}
           onChange={(e) => { setSearch(e.target.value); load(e.target.value) }}
-          className="pl-9 pr-3 py-2 border border-gray-200 rounded-lg text-sm w-full focus:outline-none focus:ring-2 focus:ring-pink-500"
+          className="pl-9 pr-3 py-2 border border-gray-200 rounded-lg text-sm w-full focus:outline-none focus:ring-2 focus:ring-viva-primary"
         />
       </div>
 

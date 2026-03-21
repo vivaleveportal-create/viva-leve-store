@@ -12,12 +12,12 @@ const schema = z.object({
     price: z.number().min(0),
     category: z.string(),
     images: z.array(z.string()).optional(),
-    digitalFile: z.string().optional(),
+    logzzProductId: z.string().optional(),
+    logzzProductUrl: z.string().optional(),
     active: z.boolean().optional(),
     featured: z.boolean().optional(),
     metaTitle: z.string().optional(),
     metaDescription: z.string().optional(),
-    demoUrl: z.string().optional(),
     videoUrl: z.string().optional(),
 })
 
@@ -38,7 +38,6 @@ export async function GET(req: Request) {
     const [products, total] = await Promise.all([
         ProductModel.find(query)
             .populate('category', 'label value')
-            .populate('digitalFile', 'name')
             .sort({ createdAt: -1 })
             .skip((page - 1) * limit)
             .limit(limit)

@@ -134,10 +134,10 @@ export default function AdminSettingsPage() {
                 <img
                   src={profile.avatar}
                   alt={profile.name}
-                  className="w-20 h-20 rounded-full object-cover ring-4 ring-pink-100"
+                  className="w-20 h-20 rounded-full object-cover ring-4 ring-viva-primary/10"
                 />
               ) : (
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center ring-4 ring-pink-100">
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-viva-teal-mid to-viva-primary-hover flex items-center justify-center ring-4 ring-viva-primary/10">
                   <span className="text-white text-2xl font-bold">{initials}</span>
                 </div>
               )}
@@ -157,8 +157,8 @@ export default function AdminSettingsPage() {
               <h2 className="text-xl font-bold text-gray-900">{profile?.name}</h2>
               <p className="text-sm text-gray-500">{profile?.email}</p>
               <div className="flex items-center gap-1.5 mt-2">
-                <Shield className="w-3.5 h-3.5 text-pink-500" />
-                <span className="text-xs font-semibold text-pink-600 bg-pink-50 px-2 py-0.5 rounded-full">
+                <Shield className="w-3.5 h-3.5 text-viva-primary" />
+                <span className="text-xs font-semibold text-viva-primary-hover bg-viva-primary/10 px-2 py-0.5 rounded-full">
                   {roleLabel}
                 </span>
               </div>
@@ -175,7 +175,7 @@ export default function AdminSettingsPage() {
           {/* Info form */}
           <div className="bg-white border rounded-2xl p-6">
             <h3 className="text-base font-bold text-gray-900 mb-5 flex items-center gap-2">
-              <User className="w-4 h-4 text-pink-500" />
+              <User className="w-4 h-4 text-viva-primary" />
               Informações pessoais
             </h3>
             <form onSubmit={handleSaveProfile} className="space-y-4">
@@ -187,7 +187,7 @@ export default function AdminSettingsPage() {
                     value={name}
                     onChange={e => setName(e.target.value)}
                     required
-                    className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500 transition-shadow"
+                    className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-viva-primary transition-shadow"
                   />
                 </div>
                 <div>
@@ -200,7 +200,7 @@ export default function AdminSettingsPage() {
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     required
-                    className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500 transition-shadow"
+                    className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-viva-primary transition-shadow"
                   />
                 </div>
               </div>
@@ -208,7 +208,7 @@ export default function AdminSettingsPage() {
                 <button
                   type="submit"
                   disabled={savingProfile}
-                  className="flex items-center gap-2 bg-pink-500 hover:bg-pink-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm disabled:opacity-60 transition-colors"
+                  className="flex items-center gap-2 bg-viva-primary hover:bg-viva-primary-hover text-white font-semibold px-5 py-2.5 rounded-xl text-sm disabled:opacity-60 transition-colors"
                 >
                   {savingProfile
                     ? <Loader2 className="w-4 h-4 animate-spin" />
@@ -223,7 +223,7 @@ export default function AdminSettingsPage() {
           {/* Password form */}
           <div className="bg-white border rounded-2xl p-6">
             <h3 className="text-base font-bold text-gray-900 mb-5 flex items-center gap-2">
-              <Lock className="w-4 h-4 text-pink-500" />
+              <Lock className="w-4 h-4 text-viva-primary" />
               Alterar senha
             </h3>
             <form onSubmit={handleChangePassword} className="space-y-4">
@@ -235,7 +235,7 @@ export default function AdminSettingsPage() {
                   onChange={e => setCurrentPassword(e.target.value)}
                   required
                   placeholder="••••••••"
-                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500 transition-shadow"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-viva-primary transition-shadow"
                 />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -248,7 +248,7 @@ export default function AdminSettingsPage() {
                     required
                     minLength={8}
                     placeholder="Mín. 8 caracteres"
-                    className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500 transition-shadow"
+                    className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-viva-primary transition-shadow"
                   />
                 </div>
                 <div>
@@ -259,7 +259,7 @@ export default function AdminSettingsPage() {
                     onChange={e => setConfirmPassword(e.target.value)}
                     required
                     placeholder="Repita a senha"
-                    className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500 transition-shadow"
+                    className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-viva-primary transition-shadow"
                   />
                 </div>
               </div>

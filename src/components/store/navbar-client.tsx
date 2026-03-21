@@ -29,7 +29,7 @@ export default function NavbarClient({ user }: NavbarClientProps) {
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5">
           <img src="/favicon.ico" alt="Logo" className="w-8 h-8 object-contain" />
-          <span className="font-bold text-lg text-pink-500">
+          <span className="font-bold text-lg text-viva-primary">
             {process.env.NEXT_PUBLIC_STORE_NAME || 'Loja'}
           </span>
         </Link>
@@ -52,8 +52,8 @@ export default function NavbarClient({ user }: NavbarClientProps) {
                 onClick={() => setDropdownOpen(!dropdownOpen)}
                 className="flex items-center gap-1.5 text-sm text-gray-700 hover:text-gray-900 font-medium"
               >
-                <div className="w-7 h-7 rounded-full bg-pink-100 flex items-center justify-center">
-                  <User className="w-4 h-4 text-pink-500" />
+                <div className="w-7 h-7 rounded-full bg-viva-primary/10 flex items-center justify-center">
+                  <User className="w-4 h-4 text-viva-primary" />
                 </div>
                 <span className="max-w-[120px] truncate">{user.email.split('@')[0]}</span>
               </button>
@@ -90,7 +90,7 @@ export default function NavbarClient({ user }: NavbarClientProps) {
 
           <Link
             href="/cart"
-            className="relative flex items-center gap-1.5 bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-full text-sm font-medium transition-colors"
+            className="relative flex items-center gap-1.5 bg-viva-primary hover:bg-viva-primary-hover text-white px-4 py-2 rounded-full text-sm font-medium transition-colors"
           >
             <ShoppingCart className="w-4 h-4" />
             <span>{t('cart')}</span>

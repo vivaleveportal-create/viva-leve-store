@@ -7,42 +7,42 @@
         "save": "Salvar"
     },
     "Navigation": {
-        "home": "Início",
-        "products": "Produtos",
-        "contact": "Contato",
-        "signIn": "Entrar",
+        "home": "Página Inicial",
+        "products": "Ver Produtos",
+        "contact": "Fale Conosco",
+        "signIn": "Entrar na Conta",
         "signOut": "Sair",
-        "cart": "Carrinho",
-        "myOrders": "Meus pedidos"
+        "cart": "Cestinha de Compras",
+        "myOrders": "Meus Pedidos"
     },
     "Footer": {
         "rights": "Todos os direitos reservados.",
-        "terms": "Termos",
+        "terms": "Termos de Uso",
         "privacy": "Privacidade",
-        "contact": "Contato"
+        "contact": "Fale Conosco"
     },
     "HomePage": {
-        "heroTitle": "Produtos digitais de",
-        "heroHighlight": "alta qualidade",
-        "heroSubtitle": "Downloads instantâneos. Acesso imediato após o pagamento.",
-        "heroCta": "Ver produtos",
-        "feature1Title": "Download instantâneo",
-        "feature1Desc": "Acesse seus arquivos imediatamente após o pagamento",
-        "feature2Title": "Pagamento seguro",
-        "feature2Desc": "Processado pelo Stripe com criptografia de ponta a ponta",
-        "feature3Title": "Acesso vitalício",
-        "feature3Desc": "Seus arquivos ficam disponíveis para sempre na sua conta",
-        "sectionTitle": "Novidades & Destaques",
-        "seeAll": "Ver todos"
+        "heroTitle": "Viver bem não precisa ser",
+        "heroHighlight": "complicado.",
+        "heroSubtitle": "Produtos selecionados com carinho para facilitar a sua rotina e trazer mais conforto para o seu dia a dia.",
+        "heroCta": "Ver nossos produtos",
+        "feature1Title": "Qualidade garantida",
+        "feature1Desc": "Produtos testados e aprovados para o seu bem-estar",
+        "feature2Title": "Total segurança",
+        "feature2Desc": "Sua compra segura e protegida em cada etapa",
+        "feature3Title": "Entrega em casa",
+        "feature3Desc": "Receba seus produtos com todo o conforto e praticidade",
+        "sectionTitle": "Selecionamos para você",
+        "seeAll": "Ver todas as opções"
     },
     "ProductsPage": {
-        "title": "Produtos",
+        "title": "Nossos Produtos",
         "all": "Todos",
         "featured": "Destaque",
-        "noProducts": "Nenhum produto encontrado",
-        "seeAll": "Ver todos os produtos",
+        "noProducts": "Ops, não encontramos o que você procura. Tente outra categoria!",
+        "seeAll": "Ver todos os nossos produtos",
         "securePayment": "Pagamento 100% seguro via Stripe",
-        "instantDownload": "Download imediato após a confirmação",
-        "aboutContent": "Sobre o conteúdo"
+        "instantDownload": "Entrega garantida pela Logzz",
+        "aboutContent": "Detalhes do Produto"
     }
 }

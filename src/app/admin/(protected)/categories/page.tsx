@@ -237,7 +237,7 @@ export default function AdminCategoriesPage() {
               <button
                 onClick={() => { openCreate(node._id); setExpanded(prev => new Set(prev).add(node._id)) }}
                 title="Adicionar subcategoria"
-                className="p-1.5 text-gray-300 hover:text-pink-500 transition-colors"
+                className="p-1.5 text-gray-300 hover:text-viva-primary transition-colors"
               >
                 <Plus className="w-3.5 h-3.5" />
               </button>
@@ -286,7 +286,7 @@ export default function AdminCategoriesPage() {
       <div className="flex justify-end">
         <button
           onClick={() => openCreate()}
-          className="flex items-center gap-2 bg-pink-500 hover:bg-pink-600 text-white font-medium px-4 py-2 rounded-lg text-sm transition-colors"
+          className="flex items-center gap-2 bg-viva-primary hover:bg-viva-primary-hover text-white font-medium px-4 py-2 rounded-lg text-sm transition-colors"
         >
           <Plus className="w-4 h-4" />
           Nova categoria
@@ -345,7 +345,7 @@ export default function AdminCategoriesPage() {
                 <select
                   value={form.parent}
                   onChange={e => setForm(f => ({ ...f, parent: e.target.value }))}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500 bg-white"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-viva-primary bg-white"
                 >
                   <option value="">— Categoria raiz (sem pai) —</option>
                   {rootCats
@@ -370,7 +370,7 @@ export default function AdminCategoriesPage() {
                     value={form.label}
                     onChange={e => setForm(f => ({ ...f, label: e.target.value }))}
                     placeholder="Ex: Beats, Trap..."
-                    className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
+                    className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-viva-primary"
                   />
                 </div>
                 <div>
@@ -380,7 +380,7 @@ export default function AdminCategoriesPage() {
                   <select
                     value={form.locale}
                     onChange={e => setForm(f => ({ ...f, locale: e.target.value }))}
-                    className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500 bg-white"
+                    className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-viva-primary bg-white"
                   >
                     <option value="pt">Português (PT)</option>
                     <option value="en">Inglês (EN)</option>
@@ -398,7 +398,7 @@ export default function AdminCategoriesPage() {
                   value={form.description}
                   onChange={e => setForm(f => ({ ...f, description: e.target.value }))}
                   placeholder="Breve descrição..."
-                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-viva-primary"
                 />
               </div>
 
@@ -408,7 +408,7 @@ export default function AdminCategoriesPage() {
                   type="checkbox"
                   checked={form.active}
                   onChange={e => setForm(f => ({ ...f, active: e.target.checked }))}
-                  className="w-4 h-4 rounded accent-pink-500"
+                  className="w-4 h-4 rounded accent-viva-primary"
                 />
                 <span className="text-sm font-medium text-gray-700">Categoria ativa</span>
               </label>
@@ -425,7 +425,7 @@ export default function AdminCategoriesPage() {
                 <button
                   type="submit"
                   disabled={saving}
-                  className="flex-1 bg-pink-500 hover:bg-pink-600 disabled:opacity-60 text-white font-semibold py-2.5 rounded-xl text-sm flex items-center justify-center gap-2 transition-colors"
+                  className="flex-1 bg-viva-primary hover:bg-viva-primary-hover disabled:opacity-60 text-white font-semibold py-2.5 rounded-xl text-sm flex items-center justify-center gap-2 transition-colors"
                 >
                   {saving
                     ? <Loader2 className="w-4 h-4 animate-spin" />

@@ -8,11 +8,21 @@ const OrderSchema = new Schema(
         currency: { type: String, default: 'BRL' },
         status: {
             type: String,
-            enum: ['pending', 'paid', 'failed', 'refunded'],
+            enum: ['pending', 'paid', 'failed', 'refunded', 'processing', 'shipped', 'delivered', 'canceled', 'logzz_failed'],
             default: 'pending',
+        },
+        shippingAddress: {
+            street: String,
+            number: String,
+            complement: String,
+            neighborhood: String,
+            city: String,
+            state: String,
+            zipCode: String,
         },
         stripeSessionId: { type: String, index: true },
         stripePaymentIntentId: { type: String },
+        logzzOrderId: { type: String, index: true },
         receiptEmailSent: { type: Boolean, default: false },
     },
     { timestamps: true }

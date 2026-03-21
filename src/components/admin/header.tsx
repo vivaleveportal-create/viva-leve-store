@@ -65,10 +65,10 @@ export function AdminHeader({ title }: AdminHeaderProps) {
               <img
                 src={avatar}
                 alt={name}
-                className="w-8 h-8 rounded-full object-cover ring-2 ring-pink-200"
+                className="w-8 h-8 rounded-full object-cover ring-2 ring-viva-primary/10"
               />
             ) : (
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center ring-2 ring-pink-200 shrink-0">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-viva-teal-mid to-viva-primary-hover flex items-center justify-center ring-2 ring-viva-primary/10 shrink-0">
                 <span className="text-white text-xs font-bold">{initials}</span>
               </div>
             )}

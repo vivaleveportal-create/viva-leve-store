@@ -38,15 +38,15 @@ export default async function OrdersPage() {
         <div className="text-center py-16">
           <Package className="w-16 h-16 text-gray-200 mx-auto mb-4" />
           <p className="text-gray-500">Nenhum pedido ainda</p>
-          <Link
-            href="/products"
-            className="mt-4 inline-block bg-pink-500 hover:bg-pink-600 text-white font-semibold px-6 py-2.5 rounded-full transition-colors"
-          >
-            Explorar produtos
-          </Link>
-        </div>
-      ) : (
-        <div className="space-y-4">
+            <Link
+              href="/products"
+              className="mt-6 inline-block bg-viva-primary hover:bg-viva-primary-hover text-white font-bold px-10 py-4 rounded-2xl transition-all shadow-xl shadow-viva-primary/10 text-lg hover:scale-105"
+            >
+              Começar a cuidar de você
+            </Link>
+          </div>
+        ) : (
+          <div className="space-y-6">
           {(orders as unknown as Array<{
             _id: { toString(): string }
             total: number
@@ -86,7 +86,7 @@ export default async function OrdersPage() {
                     {product.digitalFile && (
                       <a
                         href={`/api/store/orders/${order._id}/download/${product.digitalFile._id}`}
-                        className="flex items-center gap-2 bg-pink-50 hover:bg-pink-100 text-pink-600 font-medium text-sm px-4 py-2 rounded-lg transition-colors"
+                        className="flex items-center gap-2 bg-viva-primary/10 hover:bg-viva-primary/20 text-viva-primary font-medium text-sm px-4 py-2 rounded-lg transition-colors"
                       >
                         <Download className="w-4 h-4" />
                         Download

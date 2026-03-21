@@ -8,41 +8,41 @@
     },
     "Navigation": {
         "home": "Home",
-        "products": "Products",
-        "contact": "Contact",
+        "products": "View Products",
+        "contact": "Contact Us",
         "signIn": "Sign In",
         "signOut": "Sign Out",
-        "cart": "Cart",
+        "cart": "My Cart",
         "myOrders": "My Orders"
     },
     "Footer": {
         "rights": "All rights reserved.",
-        "terms": "Terms",
+        "terms": "Terms of Use",
         "privacy": "Privacy",
-        "contact": "Contact"
+        "contact": "Contact Us"
     },
     "HomePage": {
-        "heroTitle": "Premium digital products",
-        "heroHighlight": "for musicians",
-        "heroSubtitle": "Instant downloads. Immediate access after payment.",
-        "heroCta": "Browse products",
-        "feature1Title": "Instant download",
-        "feature1Desc": "Access your files immediately after payment",
-        "feature2Title": "Secure payment",
-        "feature2Desc": "Processed by Stripe with end-to-end encryption",
-        "feature3Title": "Lifetime access",
-        "feature3Desc": "Your files are available forever in your account",
-        "sectionTitle": "New & Featured",
-        "seeAll": "See all"
+        "heroTitle": "Living well doesn't have to be",
+        "heroHighlight": "complicated.",
+        "heroSubtitle": "Thoughtfully selected products to simplify your routine and bring more comfort to your daily life.",
+        "heroCta": "See our products",
+        "feature1Title": "Guaranteed quality",
+        "feature1Desc": "Products tested and approved for your well-being",
+        "feature2Title": "Total security",
+        "feature2Desc": "Your purchase is safe and protected at every step",
+        "feature3Title": "Home delivery",
+        "feature3Desc": "Receive your products with all the comfort and convenience",
+        "sectionTitle": "Selected for you",
+        "seeAll": "See all options"
     },
     "ProductsPage": {
-        "title": "Products",
+        "title": "Our Products",
         "all": "All",
         "featured": "Featured",
-        "noProducts": "No products found",
-        "seeAll": "See all products",
+        "noProducts": "Oops, we couldn't find what you're looking for. Try another category!",
+        "seeAll": "See all our products",
         "securePayment": "100% secure payment via Stripe",
-        "instantDownload": "Immediate download after confirmation",
-        "aboutContent": "About the content"
+        "instantDownload": "Guaranteed delivery by Logzz",
+        "aboutContent": "Product Details"
     }
 }

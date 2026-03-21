@@ -177,7 +177,7 @@ export default function AdminTeamPage() {
         </h2>
         <button
           onClick={() => setModalOpen(true)}
-          className="flex items-center gap-2 bg-pink-500 hover:bg-pink-600 text-white font-medium px-4 py-2 rounded-lg text-sm transition-colors"
+          className="flex items-center gap-2 bg-viva-primary hover:bg-viva-primary-hover text-white font-medium px-4 py-2 rounded-lg text-sm transition-colors"
         >
           <Plus className="w-4 h-4" />
           Adicionar membro
@@ -202,7 +202,7 @@ export default function AdminTeamPage() {
                   {member.avatar ? (
                     <img src={member.avatar} alt={member.name} className="w-10 h-10 rounded-full object-cover shrink-0" />
                   ) : (
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-viva-teal-mid to-viva-primary-hover flex items-center justify-center shrink-0">
                       <span className="text-white text-sm font-bold">
                         {member.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
                       </span>
@@ -285,7 +285,7 @@ export default function AdminTeamPage() {
                   type="text" required value={form.name}
                   onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
                   placeholder="Ex: Maria Silva"
-                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-viva-primary"
                 />
               </div>
               <div>
@@ -294,7 +294,7 @@ export default function AdminTeamPage() {
                   type="email" required value={form.email}
                   onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
                   placeholder="maria@exemplo.com"
-                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-viva-primary"
                 />
               </div>
               <div>
@@ -305,7 +305,7 @@ export default function AdminTeamPage() {
                     value={form.password}
                     onChange={e => setForm(f => ({ ...f, password: e.target.value }))}
                     placeholder="Mínimo 8 caracteres"
-                    className="w-full border border-gray-200 rounded-xl px-4 py-2.5 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
+                    className="w-full border border-gray-200 rounded-xl px-4 py-2.5 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-viva-primary"
                   />
                   <button type="button" onClick={() => setShowPw(!showPw)}
                     className="absolute right-3 top-2.5 text-gray-400 hover:text-gray-600">
@@ -322,7 +322,7 @@ export default function AdminTeamPage() {
                     const selected = form.role === r
                     return (
                       <button key={r} type="button" onClick={() => setForm(f => ({ ...f, role: r }))}
-                        className={`flex items-center gap-2 px-3 py-2.5 rounded-xl border-2 text-sm font-medium transition-all ${selected ? 'border-pink-500 bg-pink-50 text-pink-700' : 'border-gray-200 text-gray-600 hover:border-gray-300'}`}>
+                        className={`flex items-center gap-2 px-3 py-2.5 rounded-xl border-2 text-sm font-medium transition-all ${selected ? 'border-viva-primary bg-viva-primary/10 text-viva-primary' : 'border-gray-200 text-gray-600 hover:border-gray-300'}`}>
                         <Icon className="w-4 h-4 shrink-0" />
                         {info.label}
                       </button>
@@ -337,7 +337,7 @@ export default function AdminTeamPage() {
                   Cancelar
                 </button>
                 <button type="submit" disabled={saving}
-                  className="flex-1 bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2.5 rounded-xl text-sm flex items-center justify-center gap-2 disabled:opacity-60">
+                  className="flex-1 bg-viva-primary hover:bg-viva-primary-hover text-white font-semibold py-2.5 rounded-xl text-sm flex items-center justify-center gap-2 disabled:opacity-60">
                   {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
                   Adicionar
                 </button>
@@ -360,7 +360,7 @@ export default function AdminTeamPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-1">Nome</label>
                 <input type="text" required value={editForm.name}
                   onChange={e => setEditForm(f => ({ ...f, name: e.target.value }))}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500" />
+                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-viva-primary" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Nível de acesso</label>
@@ -370,7 +370,7 @@ export default function AdminTeamPage() {
                     const Icon = info.icon
                     return (
                       <button key={r} type="button" onClick={() => setEditForm(f => ({ ...f, role: r }))}
-                        className={`flex items-center gap-2 px-3 py-2.5 rounded-xl border-2 text-sm font-medium transition-all ${editForm.role === r ? 'border-pink-500 bg-pink-50 text-pink-700' : 'border-gray-200 text-gray-600 hover:border-gray-300'}`}>
+                        className={`flex items-center gap-2 px-3 py-2.5 rounded-xl border-2 text-sm font-medium transition-all ${editForm.role === r ? 'border-viva-primary bg-viva-primary/10 text-viva-primary' : 'border-gray-200 text-gray-600 hover:border-gray-300'}`}>
                         <Icon className="w-4 h-4 shrink-0" />
                         {info.label}
                       </button>
@@ -385,7 +385,7 @@ export default function AdminTeamPage() {
                 <input type="password" minLength={8} value={editForm.newPassword}
                   onChange={e => setEditForm(f => ({ ...f, newPassword: e.target.value }))}
                   placeholder="••••••••"
-                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500" />
+                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-viva-primary" />
               </div>
               <div className="flex gap-3 pt-1">
                 <button type="button" onClick={() => setEditTarget(null)}
@@ -393,7 +393,7 @@ export default function AdminTeamPage() {
                   Cancelar
                 </button>
                 <button type="submit" disabled={saving}
-                  className="flex-1 bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2.5 rounded-xl text-sm flex items-center justify-center gap-2 disabled:opacity-60">
+                  className="flex-1 bg-viva-primary hover:bg-viva-primary-hover text-white font-semibold py-2.5 rounded-xl text-sm flex items-center justify-center gap-2 disabled:opacity-60">
                   {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
                   Salvar
                 </button>

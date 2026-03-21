@@ -1,14 +1,14 @@
 export const metadata = {
-  title: 'Termos de Serviço | Loja Digital',
+  title: 'Termos de Serviço | Viva Leve Portal',
   description: 'Termos de Serviço e condições de uso da plataforma.',
 }
 
 export default function TermosPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-16">
-      <h1 className="text-4xl font-bold text-gray-900 mb-8">Termos de Serviço</h1>
+      <h1 className="text-4xl font-bold text-gray-900 mb-8 font-serif">Termos de Serviço</h1>
       
-      <div className="prose prose-pink max-w-none text-gray-600 space-y-6">
+      <div className="prose prose-teal max-w-none text-gray-600 space-y-6">
         <p>
           Bem-vindo à nossa loja digital. Ao acessar e utilizar este site, você concorda em cumprir os nossos Termos de Serviço. Leia atentamente as condições abaixo antes de realizar qualquer compra.
         </p>
