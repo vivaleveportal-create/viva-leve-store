@@ -12,8 +12,7 @@ async function getUserOrders(userId: string) {
   return OrderModel.find({ user: userId, status: 'paid' })
     .populate({
       path: 'products',
-      select: 'name price slug digitalFile',
-      populate: { path: 'digitalFile', select: '_id name' },
+      select: 'name price slug',
     })
     .sort({ createdAt: -1 })
     .lean()
@@ -83,15 +82,7 @@ export default async function OrdersPage() {
                         {formatPrice(Math.round(product.price * 100))}
                       </p>
                     </div>
-                    {product.digitalFile && (
-                      <a
-                        href={`/api/store/orders/${order._id}/download/${product.digitalFile._id}`}
-                        className="flex items-center gap-2 bg-viva-primary/10 hover:bg-viva-primary/20 text-viva-primary font-medium text-sm px-4 py-2 rounded-lg transition-colors"
-                      >
-                        <Download className="w-4 h-4" />
-                        Download
-                      </a>
-                    )}
+                    {/* No download link for physical products */}
                   </div>
                 ))}
               </div>

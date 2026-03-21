@@ -18,7 +18,6 @@ const ALL_LINKS = [
   { href: '/admin/categories', label: 'Categorias',    icon: Tags,            minRole: 'admin'       as AdminRole },
   { href: '/admin/orders',     label: 'Pedidos',       icon: ShoppingCart,    minRole: 'support'     as AdminRole },
   { href: '/admin/customers',  label: 'Clientes',      icon: Users,           minRole: 'support'     as AdminRole },
-  { href: '/admin/files',      label: 'Arquivos',      icon: FolderOpen,      minRole: 'admin'       as AdminRole },
   { href: '/admin/team',       label: 'Equipe',        icon: UsersRound,      minRole: 'super_admin' as AdminRole },
   { href: '/admin/settings',   label: 'Configurações', icon: Settings,        minRole: 'support'     as AdminRole },
 ]

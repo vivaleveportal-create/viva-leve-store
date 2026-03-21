@@ -13,7 +13,6 @@ export async function GET(
     await connectMongo()
     const product = await ProductModel.findById(params.id)
         .populate('category', 'label value')
-        .populate('digitalFile', 'name url size')
         .lean()
 
     if (!product) return NextResponse.json({ error: 'Não encontrado' }, { status: 404 })
