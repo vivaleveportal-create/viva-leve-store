@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+export const dynamic = 'force-dynamic'
 import { connectMongo } from '@/lib/mongodb'
 import CategoryModel from '@/lib/models/Category'
 

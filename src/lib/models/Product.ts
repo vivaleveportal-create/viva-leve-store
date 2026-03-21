@@ -28,7 +28,6 @@ const ProductSchema = new Schema(
 ProductSchema.index({ active: 1, featured: 1 })
 ProductSchema.index({ category: 1, active: 1 })
 ProductSchema.index({ slug: 1, locale: 1 }, { unique: true })
-ProductSchema.index({ logzzProductId: 1 })
 
 // Force re-registration in Next.js HMR to avoid stale schema
 if (process.env.NODE_ENV === 'development' && (global as any).mongoose?.models?.Product) {

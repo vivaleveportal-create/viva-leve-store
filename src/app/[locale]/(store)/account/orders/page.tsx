@@ -54,7 +54,6 @@ export default async function OrdersPage() {
               _id: { toString(): string }
               name: string
               price: number
-              digitalFile?: { _id: { toString(): string }; name: string }
             }>
           }>).map((order) => (
             <div
