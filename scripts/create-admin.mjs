@@ -16,21 +16,27 @@ function question(q) {
 }
 
 async function main() {
-  console.log('\n🐷 Create Admin — Pink Pig Store\n')
+  console.log('\n🌿 Criar Admin — Viva Leve Portal\n')
 
   const uri = process.env.MONGODB_URI
   if (!uri) {
-    console.error('Error: MONGODB_URI not set')
+    console.error('Erro: MONGODB_URI não configurado no .env')
     process.exit(1)
   }
 
-  const name = await question('Nome do admin: ')
-  const email = await question('Email: ')
-  const password = await question('Senha (min 8 caracteres): ')
+  // Tenta ler do .env primeiro
+  let name = process.env.ADMIN_NAME
+  let email = process.env.ADMIN_EMAIL
+  let password = process.env.ADMIN_PASSWORD
+
+  if (!name) name = await question('Nome do admin: ')
+  if (!email) email = await question('Email: ')
+  if (!password) password = await question('Senha (mín 8 caracteres): ')
+
   rl.close()
 
-  if (!name || !email || password.length < 8) {
-    console.error('Dados inválidos')
+  if (!name || !email || !password || password.length < 8) {
+    console.error('Erro: Dados inválidos ou senha muito curta (mín 8 caracteres).')
     process.exit(1)
   }
 
@@ -38,12 +44,15 @@ async function main() {
 
   try {
     await client.connect()
-    const db = client.db(process.env.MONGODB_DB_NAME)
+    console.log('Conectado ao MongoDB...')
+    
+    const dbName = process.env.MONGODB_DB_NAME || 'VivaLevePortal'
+    const db = client.db(dbName)
     const collection = db.collection('admins')
 
     const existing = await collection.findOne({ email })
     if (existing) {
-      console.error(`\nAdmin com email "${email}" já existe.`)
+      console.error(`\n❌ ERRO: O admin com email "${email}" já existe na base "${dbName}". Operação cancelada.`)
       process.exit(1)
     }
 
@@ -54,14 +63,18 @@ async function main() {
       email,
       password: hashed,
       role: 'super_admin',
+      isActive: true,
       createdAt: new Date(),
       updatedAt: new Date(),
     })
 
-    console.log(`\n✅ Admin criado com sucesso!`)
+    console.log(`\n✅ Admin "${name}" criado com sucesso!`)
     console.log(`   Email: ${email}`)
-    console.log(`   Role:  super_admin`)
-    console.log('\nAcesse: /admin/login\n')
+    console.log(`   Nível: super_admin`)
+    console.log(`   Base:  ${dbName}`)
+    console.log('\nPara acessar: /admin/login\n')
+  } catch (error) {
+    console.error('\nErro ao criar admin:', error.message)
   } finally {
     await client.close()
   }
