@@ -12,7 +12,8 @@ import {
   Sparkles, 
   Moon, 
   Home, 
-  PawPrint 
+  PawPrint,
+  Smile 
 } from 'lucide-react'
 import Image from 'next/image'
 
@@ -47,11 +48,13 @@ export default async function StoreHomePage({
     'Conforto e Sono': Moon,
     'Casa e Utilidades': Home,
     'Pets': PawPrint,
+    'Beleza e Cuidados Pessoais': Smile,
     'Health and Mobility': Activity,
     'Skin Care': Sparkles,
     'Comfort and Sleep': Moon,
     'Home and Utilities': Home,
     'Pets EN': PawPrint,
+    'Beauty and Personal Care': Smile,
   }
 
   return (

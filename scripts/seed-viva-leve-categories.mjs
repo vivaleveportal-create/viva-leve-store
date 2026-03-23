@@ -17,6 +17,7 @@ const categories = [
   { label: 'Conforto e Sono', value: 'conforto-e-sono', active: true },
   { label: 'Casa e Utilidades', value: 'casa-e-utilidades', active: true },
   { label: 'Pets', value: 'pets', active: true },
+  { label: 'Beleza e Cuidados Pessoais', value: 'beleza-e-cuidados-pessoais', active: true },
 ];
 
 async function seed() {
@@ -43,6 +44,7 @@ async function seed() {
            if (cat.label === 'Conforto e Sono') label = 'Comfort and Sleep';
            if (cat.label === 'Casa e Utilidades') label = 'Home and Utilities';
            if (cat.label === 'Pets') label = 'Pets';
+           if (cat.label === 'Beleza e Cuidados Pessoais') label = 'Beauty and Personal Care';
         }
 
         const doc = {
