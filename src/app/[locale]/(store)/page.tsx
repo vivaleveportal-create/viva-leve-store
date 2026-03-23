@@ -9,10 +9,10 @@ import {
   Truck, 
   MessageCircle, 
   Activity, 
-  Dumbbell, 
   Sparkles, 
   Moon, 
-  Brain 
+  Home, 
+  PawPrint 
 } from 'lucide-react'
 import Image from 'next/image'
 
@@ -43,15 +43,15 @@ export default async function StoreHomePage({
 
   const categoryIcons: Record<string, any> = {
     'Saúde e Mobilidade': Activity,
-    'Exercícios em Casa': Dumbbell,
     'Cuidados com a Pele': Sparkles,
     'Conforto e Sono': Moon,
-    'Mente Ativa': Brain,
+    'Casa e Utilidades': Home,
+    'Pets': PawPrint,
     'Health and Mobility': Activity,
-    'Home Exercise': Dumbbell,
     'Skin Care': Sparkles,
     'Comfort and Sleep': Moon,
-    'Active Mind': Brain,
+    'Home and Utilities': Home,
+    'Pets EN': PawPrint,
   }
 
   return (
@@ -112,7 +112,7 @@ export default async function StoreHomePage({
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {categories.map((cat: any) => {
-              const label = cat.name;
+              const label = cat.label || cat.name;
               const IconComp = categoryIcons[label] || Activity;
               return (
                 <Link
