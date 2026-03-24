@@ -23,6 +23,8 @@ interface Product {
 
   description?: any
   videoUrl?: string
+  metaTitle?: string
+  metaDescription?: string
   createdAt: string
 }
 interface FormState {
@@ -38,12 +40,14 @@ interface FormState {
   featured: boolean
   images: string[]
   videoUrl: string
+  metaTitle: string
+  metaDescription: string
 }
 
 const EMPTY_FORM: FormState = {
   name: '', description: '', locale: 'pt', price: '', category: '',
   logzzProductId: '', logzzProductUrl: '', active: true, featured: false, images: [],
-  videoUrl: '',
+  videoUrl: '', metaTitle: '', metaDescription: '',
 }
 
 // ─── Main Page ────────────────────────────────────────────
@@ -104,6 +108,8 @@ export default function AdminProductsPage() {
       featured: p.featured,
       images: p.images ?? [],
       videoUrl: p.videoUrl || '',
+      metaTitle: p.metaTitle || '',
+      metaDescription: p.metaDescription || '',
     })
     setModalOpen(true)
   }
@@ -222,6 +228,8 @@ export default function AdminProductsPage() {
       featured: form.featured,
       images: form.images,
       videoUrl: form.videoUrl,
+      metaTitle: form.metaTitle,
+      metaDescription: form.metaDescription,
     }
 
     const url = editing ? `/api/admin/products/${editing._id}` : '/api/admin/products'
@@ -594,7 +602,7 @@ export default function AdminProductsPage() {
                     value={form.name}
                     onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
                     required
-                    placeholder="Ex: Drum Kit Trap 2025"
+                    placeholder="Ex: Kit Massageador EMS"
                     className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
@@ -618,7 +626,31 @@ export default function AdminProductsPage() {
                   value={form.description}
                   onChange={e => setForm(f => ({ ...f, description: e.target.value }))}
                   rows={3}
-                  placeholder="Descreva o produto..."
+                  placeholder="Descreva os benefícios e características do produto para os clientes..."
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none"
+                />
+              </div>
+
+              {/* Meta Title */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Meta Title (SEO)</label>
+                <input
+                  type="text"
+                  value={form.metaTitle}
+                  onChange={e => setForm(f => ({ ...f, metaTitle: e.target.value }))}
+                  placeholder="Ex: Kit Massageador EMS — Alívio de Dores Musculares em Casa"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                />
+              </div>
+
+              {/* Meta Description */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Meta Description (SEO)</label>
+                <textarea
+                  value={form.metaDescription}
+                  onChange={e => setForm(f => ({ ...f, metaDescription: e.target.value }))}
+                  rows={2}
+                  placeholder="Ex: Conheça o Kit Massageador EMS. Tecnologia EMS para aliviar dores e relaxar. Entrega garantida."
                   className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none"
                 />
               </div>
@@ -656,7 +688,7 @@ export default function AdminProductsPage() {
                     value={form.price}
                     onChange={e => setForm(f => ({ ...f, price: e.target.value }))}
                     required
-                    placeholder="49.90"
+                    placeholder="149.90"
                     className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
@@ -705,7 +737,7 @@ export default function AdminProductsPage() {
                       type="text"
                       value={form.logzzProductId}
                       onChange={e => setForm(f => ({ ...f, logzzProductId: e.target.value }))}
-                      placeholder="Ex: PROD-12345"
+                      placeholder="Ex: LGZ-12345"
                       className="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
                     />
                     <p className="text-[10px] text-gray-400 mt-1">Obrigatório para o checkout e rastreio automático.</p>
