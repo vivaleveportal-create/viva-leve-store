@@ -203,16 +203,16 @@ export default async function StoreHomePage({
       <section className="py-20 px-4 bg-[#0a1f1e] text-white">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
           <div className="space-y-4 text-center md:text-left">
-            <h2 className="font-display text-3xl sm:text-4xl font-semibold leading-tight">
+            <h2 className="font-display text-4xl sm:text-5xl font-semibold leading-tight text-white mb-2">
               Ainda com dúvidas? <br />
-              <span className="text-white/60">Fale com nossos especialistas.</span>
+              <span className="text-viva-accent-warm">Fale com nossos especialistas.</span>
             </h2>
           </div>
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center bg-viva-accent-warm text-white hover:bg-viva-accent font-bold px-8 py-4 rounded-full shadow-[0_10px_40px_-10px_rgba(234,123,51,0.5)] transition-all hover:scale-105 active:scale-95 text-lg shrink-0"
+            className="flex items-center justify-center bg-[#25D366] text-white hover:bg-[#128C7E] font-bold px-10 py-5 rounded-full shadow-[0_10px_40px_-10px_rgba(37,211,102,0.4)] transition-all hover:scale-105 active:scale-95 text-lg shrink-0"
           >
             Chamar no WhatsApp
             <MessageCircle className="ml-3 w-6 h-6" />
