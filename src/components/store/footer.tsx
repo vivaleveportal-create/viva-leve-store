@@ -14,15 +14,15 @@ export default async function StoreFooter() {
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-12 items-start mb-12">
           
-          {/* Column 1: Imposing Brand */}
-          <div className="flex flex-col pt-4">
+          {/* Column 1: Imposing Brand - Centered Content */}
+          <div className="flex flex-col items-center text-center pt-4">
             <div className="relative mb-2">
               <Image 
                 src="/logo/logo-white.png" 
                 alt={name} 
                 width={300} 
                 height={120} 
-                className="h-[120px] w-auto object-contain object-left -mt-4"
+                className="md:h-[120px] h-[80px] w-auto object-contain object-center -mt-4 transition-all"
                 priority
               />
             </div>

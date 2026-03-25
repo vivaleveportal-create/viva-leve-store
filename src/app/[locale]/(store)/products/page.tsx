@@ -1,7 +1,7 @@
 import { connectMongo } from '@/lib/mongodb'
 import ProductModel from '@/lib/models/Product'
 import CategoryModel from '@/lib/models/Category'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import { formatPrice } from '@/lib/utils'
 import { Truck, Search, ArrowRight } from 'lucide-react'

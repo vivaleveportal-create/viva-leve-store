@@ -27,14 +27,14 @@ export default function NavbarClient({ user }: NavbarClientProps) {
 
   return (
     <header className="sticky top-0 left-0 right-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
-      <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center overflow-visible">
           <Image 
             src="/logo/logo.png" 
             alt="Viva Leve Portal" 
             width={320} 
             height={90} 
-            className="h-[90px] w-auto scale-115 origin-left" 
+            className="md:h-[90px] h-[60px] w-auto md:scale-115 scale-100 origin-left transition-all" 
             priority
           />
         </Link>

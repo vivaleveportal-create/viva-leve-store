@@ -29,11 +29,11 @@
 
   html {
     font-size: 112.5%; /* Base 18px */
-    @apply scroll-smooth;
+    @apply scroll-smooth overflow-x-hidden;
   }
 
   body {
-    @apply bg-background text-foreground leading-[1.8] antialiased;
+    @apply bg-background text-foreground leading-[1.8] antialiased overflow-x-hidden w-full;
   }
 
   /* Accessibility for 60+ — Minimum touch target size 48px */
