@@ -23,10 +23,10 @@ async function getHomeData(locale: string) {
   const [products, categories] = await Promise.all([
     ProductModel.find({ active: true, locale, featured: true })
       .populate('category', 'label name value')
-      .limit(4)
+      .limit(8)
       .lean(),
     CategoryModel.find({ locale })
-      .limit(5)
+      .limit(10)
       .lean()
   ])
   return { products, categories }
@@ -59,50 +59,88 @@ export default async function StoreHomePage({
     'Beauty and Personal Care': Smile,
   }
 
+  const firstProduct = products?.[0] as any
+  const categoryLabel = firstProduct?.category?.label || firstProduct?.category?.name
+
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      {/* Section 1 — Hero */}
-      <section className="bg-gradient-to-br from-viva-primary via-[#006b65] to-[#005a55] py-24 px-4 md:py-36 lg:py-40 overflow-hidden relative">
-        {/* Decorative Element */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(255,255,255,0.06)_0%,transparent_60%)] pointer-events-none" />
-        
-        <div className="max-w-6xl mx-auto flex flex-col items-center text-center text-white relative z-10">
-          <div className="mb-10 animate-in fade-in zoom-in duration-700">
-            <Image 
-              src="/logo/logo-white.png" 
-              alt="Viva Leve Portal" 
-              width={220} 
-              height={60} 
-              className="h-auto"
-              priority
-            />
-          </div>
-          <h1 className="text-4xl md:text-6xl lg:text-6xl font-bold font-display mb-6 tracking-tight leading-tight max-w-4xl">
-            Cuide bem de você.
-          </h1>
-          <p className="text-xl md:text-2xl mb-12 opacity-90 max-w-2xl leading-relaxed">
-            Produtos pensados para quem sabe o valor de viver com qualidade.
-          </p>
-          <Link
-            href="/products"
-            className="inline-flex items-center justify-center bg-white text-viva-primary hover:bg-viva-accent hover:text-white font-bold px-12 py-5 rounded-xl transition-all shadow-xl hover:shadow-2xl hover:scale-105 group text-lg"
-          >
-            Ver produtos
-            <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />
-          </Link>
+      {/* Section 1 — Hero Split (Produto + Texto) */}
+      <section className="py-8 md:py-12 lg:py-16 px-4 bg-gradient-to-br from-[#f0faf9] via-white to-[#f8faf8] overflow-hidden relative border-b border-gray-100">
+        <div className="max-w-6xl mx-auto">
+          {firstProduct && firstProduct.images?.[0] ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              {/* Coluna esquerda: Texto + CTA */}
+              <div className="lg:col-span-5 order-2 md:order-1 space-y-6">
+                <div className="animate-in fade-in slide-in-from-left-4 duration-500">
+                  {categoryLabel && (
+                    <span className="bg-viva-accent text-white text-xs px-3 py-1 rounded-full uppercase font-bold mb-4 inline-block tracking-wider">
+                      {categoryLabel}
+                    </span>
+                  )}
+                  <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold font-display text-viva-text leading-tight mb-4">
+                    {firstProduct.name}
+                  </h1>
+                  <p className="text-3xl md:text-4xl font-black text-viva-primary mb-8">
+                    {formatPrice(Math.round(firstProduct.price * 100), currency)}
+                  </p>
+                  <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
+                    <Link
+                      href={`/products/${firstProduct.slug}`}
+                      className="w-full sm:w-auto inline-flex items-center justify-center bg-viva-primary text-white hover:bg-viva-primary-hover px-10 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all hover:scale-105 active:scale-95 group"
+                    >
+                      Ver produto
+                      <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                    <Link
+                      href="/products"
+                      className="text-gray-500 hover:text-viva-primary font-bold transition-colors underline-offset-8 hover:underline text-lg decoration-2"
+                    >
+                      Ver todos os produtos →
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              {/* Coluna direita: Imagem destaque */}
+              <div className="lg:col-span-7 order-1 md:order-2">
+                <div className="relative aspect-[4/3] md:aspect-square bg-white/50 backdrop-blur-sm rounded-[2rem] p-8 animate-in fade-in zoom-in duration-700">
+                  <Image
+                    src={firstProduct.images[0]}
+                    alt={firstProduct.name}
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, 600px"
+                    className="object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+            </div>
+          ) : (
+            /* Fallback Hero */
+            <div className="text-center py-12 flex flex-col items-center">
+              <div className="mb-8">
+                <Image src="/logo/logo.png" alt="Viva Leve" width={200} height={60} />
+              </div>
+              <h1 className="text-4xl font-bold font-display text-viva-text mb-4">Conheça nossos produtos</h1>
+              <p className="text-xl text-gray-500 mb-8 max-w-xl">Produtos pensados para quem sabe o valor de viver com qualidade.</p>
+              <Link href="/products" className="bg-viva-primary text-white px-8 py-3 rounded-xl font-bold hover:scale-105 transition-transform shadow-lg">
+                Ver todos os produtos
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Section 4 — Trust bar */}
-      <section className="bg-viva-teal-dark text-white py-4 border-y border-white/10 overflow-x-auto whitespace-nowrap scrollbar-hide">
-        <div className="max-w-6xl mx-auto flex justify-around gap-8 px-4 items-center">
+      {/* Section 2 — Trust bar */}
+      <section className="bg-viva-teal-dark text-white py-4 border-y border-white/10 overflow-x-auto whitespace-nowrap scrollbar-hide min-h-[48px] flex items-center">
+        <div className="max-w-6xl mx-auto flex justify-around gap-8 px-4 items-center w-full">
           <div className="flex items-center gap-3 text-sm font-medium shrink-0">
             <Truck className="w-5 h-5 opacity-80" />
-            Entrega garantida pela Logzz
+            Entrega nacional garantida pela Logzz
           </div>
           <div className="flex items-center gap-3 text-sm font-medium shrink-0">
             <ShieldCheck className="w-5 h-5 opacity-80" />
-            Pagamento seguro via Stripe
+            Pagamento 100% seguro via Stripe
           </div>
           <div className="flex items-center gap-3 text-sm font-medium shrink-0">
             <MessageCircle className="w-5 h-5 opacity-80" />
@@ -111,30 +149,44 @@ export default async function StoreHomePage({
         </div>
       </section>
 
-      {/* Section 2 — Categories */}
-      <section className="py-24 px-4 bg-viva-surface">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">Escolha por categoria</h2>
-            <div className="w-20 h-1.5 bg-viva-accent mx-auto rounded-full" />
+      {/* Section 3 — Grid de Produtos Destaques */}
+      {products.length > 0 && (
+        <section className="py-12 md:py-16 px-4 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-2xl font-bold font-display text-viva-text">Destaques</h2>
+              <Link 
+                href="/products" 
+                className="flex items-center gap-1.5 text-viva-primary font-bold hover:text-viva-accent-warm hover:underline underline-offset-4 transition-all"
+              >
+                Ver todos <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+              {(products as any[]).map((product) => (
+                <ProductCard key={product._id.toString()} product={product} currency={currency} />
+              ))}
+            </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        </section>
+      )}
+
+      {/* Section 4 — Categorias (scroll horizontal) */}
+      <section className="py-10 px-4 bg-viva-surface border-y border-gray-100/50">
+        <div className="max-w-6xl mx-auto overflow-hidden">
+          <h2 className="text-xl font-bold font-display text-viva-text mb-6">Categorias</h2>
+          <div className="flex gap-3 overflow-x-auto scrollbar-hide -mx-4 px-4 pb-2 snap-x">
             {categories.map((cat: any) => {
               const label = cat.label || cat.name;
               const IconComp = categoryIcons[label] || Activity;
               return (
                 <Link
                   key={cat._id.toString()}
-                  href={`/products?categoria=${cat.slug || cat._id}`}
-                  className="bg-white p-6 rounded-xl shadow-sm border border-transparent hover:border-viva-primary hover:shadow-md hover:-translate-y-1 transition-all group flex flex-col items-center text-center"
+                  href={`/products?categoria=${cat.value}`}
+                  className="flex items-center gap-2.5 bg-white hover:bg-viva-primary hover:text-white px-5 py-3 rounded-full text-sm font-bold whitespace-nowrap transition-all border border-gray-200 hover:border-viva-primary shrink-0 shadow-sm hover:shadow-md snap-start group"
                 >
-                  <div className="w-14 h-14 rounded-full bg-viva-surface flex items-center justify-center mb-6 group-hover:bg-viva-primary group-hover:text-white transition-colors">
-                    <IconComp className="w-8 h-8" />
-                  </div>
-                  <h3 className="text-base font-bold font-display mb-3 leading-snug">{label}</h3>
-                  <div className="mt-auto text-viva-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                    <ArrowRight className="w-5 h-5 mx-auto" />
-                  </div>
+                  <IconComp className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                  {label}
                 </Link>
               );
             })}
@@ -142,56 +194,21 @@ export default async function StoreHomePage({
         </div>
       </section>
 
-      {/* Section 3 — Featured products */}
-      {products.length > 0 && (
-        <section className="py-24 px-4 bg-white">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex items-end justify-between mb-16">
-              <div className="max-w-md">
-                <h2 className="text-3xl md:text-4xl font-bold font-display mb-4 text-viva-text">Destaques para você</h2>
-                <p className="text-lg text-gray-600 leading-relaxed">Seleção exclusiva de produtos para o seu bem-estar.</p>
-              </div>
-              <Link 
-                href="/products" 
-                className="hidden md:flex items-center gap-2 text-viva-primary font-bold hover:text-viva-accent-warm hover:underline underline-offset-8 transition-colors text-lg"
-              >
-                Ver tudo <ArrowRight className="w-5 h-5 font-display" />
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {(products as any[]).map((product) => (
-                <ProductCard key={product._id.toString()} product={product} currency={currency} />
-              ))}
-            </div>
-            <div className="mt-12 md:hidden">
-              <Link 
-                href="/products" 
-                className="flex items-center justify-center gap-2 bg-viva-surface text-viva-primary font-bold py-4 rounded-xl text-lg hover:bg-white hover:border-viva-primary border border-transparent transition-all"
-              >
-                Ver tudo <ArrowRight className="w-5 h-5 font-display" />
-              </Link>
-            </div>
+      {/* Section 5 — Banner WhatsApp */}
+      <section className="py-12 md:py-16 px-4 bg-gradient-to-r from-viva-primary to-[#005a55] border-t border-white/10">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="text-white text-center md:text-left space-y-2">
+            <h2 className="text-2xl md:text-3xl font-bold font-display">Precisa de ajuda para escolher?</h2>
+            <p className="text-base text-white/90">Nossa equipe responde pelo WhatsApp em até 5 minutos.</p>
           </div>
-        </section>
-      )}
-
-      {/* Section 5 — WhatsApp CTA */}
-      <section className="py-24 px-4 bg-viva-surface text-center">
-        <div className="max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <div className="inline-flex p-4 rounded-2xl bg-viva-primary/10 text-viva-primary mb-8">
-            <MessageCircle className="w-10 h-10" />
-          </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-viva-text">Ficou com dúvida?</h2>
-          <p className="text-xl md:text-2xl text-gray-600 mb-10 max-w-lg mx-auto leading-relaxed">
-            Nossa equipe responde pelo WhatsApp e ajuda você a escolher o melhor produto.
-          </p>
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center bg-viva-primary hover:bg-viva-primary-hover text-white font-bold px-12 py-5 rounded-lg transition-all shadow-xl hover:shadow-2xl hover:scale-105 text-lg"
+            className="inline-flex items-center justify-center bg-white text-viva-primary hover:bg-viva-accent hover:text-white font-bold px-10 py-4 rounded-xl transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 text-lg shrink-0 outline-none"
           >
             Falar com a gente
+            <MessageCircle className="ml-2 w-5 h-5" />
           </a>
         </div>
       </section>
