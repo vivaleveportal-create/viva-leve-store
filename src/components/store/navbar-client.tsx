@@ -34,9 +34,9 @@ export default function NavbarClient({ user }: NavbarClientProps) {
             alt="Viva Leve Portal" 
             width={140} 
             height={40} 
-            className="h-11 w-auto" 
-            priority
-          />
+            className="h-14 w-auto" 
+                priority
+              />
         </Link>
 
         <nav className="hidden md:flex items-center gap-6">

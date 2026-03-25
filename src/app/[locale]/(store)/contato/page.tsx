@@ -1,42 +1,70 @@
 import { Metadata } from 'next'
+import { MessageCircle, Mail, MapPin, Clock } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Fale Conosco | Viva Leve Portal',
-  description: 'Tem dúvidas ou sugestões? Nossa equipe está pronta para ajudar você.',
+  title: 'Contato',
+  description: 'Fale com nossa equipe de atendimento no WhatsApp ou por e-mail.',
 }
 
-export default function ContatoPage() {
+export default function ContactPage() {
+  const whatsapp = process.env.NEXT_PUBLIC_WHATSAPP || ''
+  const whatsappUrl = whatsapp ? `https://wa.me/${whatsapp}` : '#'
+
   return (
-    <div className="max-w-4xl mx-auto px-4 py-20 bg-white">
-      <h1 className="text-5xl font-black text-viva-text mb-10 tracking-tight font-serif">Estamos aqui para ouvir você</h1>
-      
-      <div className="prose prose-teal lg:prose-xl max-w-none text-gray-700 space-y-8 leading-relaxed">
-        <p className="text-xl text-gray-600">
-          Seu bem-estar é a nossa prioridade. Se você tiver qualquer dúvida sobre um produto, precisar de ajuda com a sua entrega ou simplesmente quiser dar uma sugestão, saiba que estamos de braços abertos para conversar.
+    <div className="bg-white py-16 md:py-24 px-4 min-h-screen">
+      <div className="max-w-3xl mx-auto">
+        <h1 className="text-4xl md:text-5xl font-bold font-display text-viva-text mb-12">
+          Fale Conosco
+        </h1>
+        
+        <p className="text-xl text-gray-500 mb-12 leading-relaxed">
+          Nossa equipe de suporte está pronta para te atender. Respondemos em até 24 horas úteis.
         </p>
 
-        <section>
-          <h2 className="text-3xl font-bold text-viva-text mt-12 mb-6 font-serif">Como entrar em contato</h2>
-          <p className="text-xl text-gray-600">
-            A forma mais simples de falar conosco é através do nosso e-mail oficial. Respondemos com todo o carinho em até 48 horas úteis.
-            <br /><br />
-            <strong>E-mail: suporte@vivaleveportal.com.br</strong>
-          </p>
-        </section>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col p-8 bg-viva-primary/5 border border-viva-primary/10 rounded-2xl hover:bg-viva-primary hover:text-white transition-all group"
+          >
+            <div className="w-12 h-12 bg-viva-primary rounded-xl flex items-center justify-center mb-6 group-hover:bg-white/20">
+              <MessageCircle className="w-6 h-6 text-white" />
+            </div>
+            <h3 className="text-xl font-bold font-display mb-2">WhatsApp</h3>
+            <p className="text-sm opacity-80 mb-4 font-medium">Atendimento rápido e humano para tirar dúvidas.</p>
+            <span className="text-sm font-bold mt-auto underline group-hover:no-underline">Chamar Agora →</span>
+          </a>
 
-        <section>
-          <h2 className="text-3xl font-bold text-viva-text mt-12 mb-6 font-serif">Acompanhamento de Pedidos</h2>
-          <p className="text-xl text-gray-600">
-            Se você já fez uma compra e quer saber onde está o seu pacote, lembre-se que você recebeu um link de rastreio direto da <strong>Logzz</strong> no seu e-mail. Caso não encontre, nossa equipe pode localizar para você rapidinho.
-          </p>
-        </section>
+          <div className="flex flex-col p-8 bg-viva-surface border border-gray-100 rounded-2xl">
+            <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mb-6">
+              <Mail className="w-6 h-6 text-viva-text" />
+            </div>
+            <h3 className="text-xl font-bold font-display text-viva-text mb-2">E-mail</h3>
+            <p className="text-gray-500 text-sm mb-4">Envie sua dúvida, sugestão ou feedback por e-mail.</p>
+            <a href="mailto:suporte@vivaleveportal.com.br" className="text-viva-primary font-bold mt-auto hover:text-viva-accent-warm transition-colors">
+              suporte@vivaleveportal.com.br
+            </a>
+          </div>
+        </div>
 
-        <section className="bg-viva-surface p-8 rounded-3xl border border-gray-100">
-          <h2 className="text-2xl font-bold text-viva-teal-dark mb-4">Dica importante</h2>
-          <p className="text-viva-text text-lg">
-            Para que possamos ajudar você mais rápido, lembre-se de informar o número do seu pedido ou o e-mail que você usou na hora da compra.
-          </p>
-        </section>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 border-t pt-12 text-gray-600">
+          <div className="flex gap-4">
+            <Clock className="w-6 h-6 text-viva-primary shrink-0" />
+            <div>
+              <h4 className="font-bold text-viva-text mb-2">Horário de Atendimento</h4>
+              <p className="text-sm">Segunda a Sexta: 09:00 às 18:00</p>
+              <p className="text-sm">Sábado: 09:00 às 13:00</p>
+            </div>
+          </div>
+          <div className="flex gap-4 cursor-default">
+            <MapPin className="w-6 h-6 text-viva-primary shrink-0" />
+            <div>
+              <h4 className="font-bold text-viva-text mb-2">Sede Digital</h4>
+              <p className="text-sm italic">Entregas nacionais garantidas via parceiros logísticos Logzz.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

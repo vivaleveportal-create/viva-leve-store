@@ -32,6 +32,7 @@ export default async function StoreFooter() {
             <h4 className="text-white font-bold uppercase tracking-wider text-sm">Navegação</h4>
             <ul className="space-y-3 text-sm">
               <li><Link href="/products" className="hover:text-white transition-colors">Produtos</Link></li>
+              <li><Link href="/quem-somos" className="hover:text-white transition-colors">Quem Somos</Link></li>
               <li><Link href="/contato" className="hover:text-white transition-colors">Contato</Link></li>
             </ul>
           </div>
@@ -42,6 +43,7 @@ export default async function StoreFooter() {
             <ul className="space-y-3 text-sm">
               <li><Link href="/termos" className="hover:text-white transition-colors">{t('terms')}</Link></li>
               <li><Link href="/privacidade" className="hover:text-white transition-colors">{t('privacy')}</Link></li>
+              <li><Link href="/cookies" className="hover:text-white transition-colors">Cookies</Link></li>
               {whatsapp && (
                 <li>
                   <a 
