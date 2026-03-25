@@ -14,15 +14,15 @@ export default async function StoreFooter() {
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16 items-start">
           {/* Col 1: Logo & Tagline */}
-          <div className="space-y-6">
+          <div className="space-y-4">
             <Image 
               src="/logo/logo-white.png" 
               alt={name} 
-              width={300} 
-              height={130} 
-              className="h-[130px] w-auto -mt-5"
+              width={200} 
+              height={80} 
+              className="h-[80px] w-auto -mt-4"
             />
-            <p className="text-sm leading-relaxed max-w-xs">
+            <p className="text-sm leading-relaxed max-w-xs pt-1">
               Produtos pensados para quem sabe o valor de viver com qualidade.
             </p>
           </div>
