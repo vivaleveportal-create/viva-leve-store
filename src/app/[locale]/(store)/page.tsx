@@ -197,22 +197,31 @@ export default async function StoreHomePage({
 
       {/* Section 6 — Banner WhatsApp */}
       <section className="py-20 px-4 bg-[#0a1f1e] text-white">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
-          <div className="space-y-4 text-center md:text-left">
-            <h2 className="font-display text-4xl sm:text-5xl font-semibold leading-tight text-white mb-2">
-              Ainda com dúvidas? <br />
-              <span className="text-viva-accent-warm">Fale com nossos especialistas.</span>
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
+          <div className="space-y-4 text-center lg:text-left">
+            <h2 className="font-display text-4xl sm:text-5xl font-semibold leading-tight text-white">
+              Ficou com alguma dúvida? <br />
+              <span className="text-viva-accent-warm opacity-90">Tire suas dúvidas antes de comprar.</span>
             </h2>
           </div>
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center bg-[#075E54] text-white hover:bg-[#054c44] font-bold px-10 py-5 rounded-full shadow-[0_10px_40px_-10px_rgba(7,94,84,0.5)] transition-all hover:scale-105 active:scale-95 text-lg shrink-0"
-          >
-            Chamar no WhatsApp
-            <MessageCircle className="ml-3 w-6 h-6" />
-          </a>
+          
+          <div className="flex flex-wrap items-center justify-center gap-6 shrink-0">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center bg-[#075E54] text-white hover:bg-[#054c44] font-bold px-10 py-5 rounded-full shadow-[0_10px_40px_-10px_rgba(7,94,84,0.5)] transition-all hover:scale-105 active:scale-95 text-lg"
+            >
+              Falar pelo WhatsApp
+              <MessageCircle className="ml-3 w-6 h-6" />
+            </a>
+            <Link
+              href="/products"
+              className="border-2 border-white/30 hover:border-white text-white hover:bg-white hover:text-viva-primary font-bold px-10 py-5 rounded-full transition-all active:scale-95 text-lg"
+            >
+              Falar na página do produto
+            </Link>
+          </div>
         </div>
       </section>
     </div>
