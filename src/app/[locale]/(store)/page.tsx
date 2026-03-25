@@ -212,7 +212,7 @@ export default async function StoreHomePage({
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center bg-[#25D366] text-white hover:bg-[#128C7E] font-bold px-10 py-5 rounded-full shadow-[0_10px_40px_-10px_rgba(37,211,102,0.4)] transition-all hover:scale-105 active:scale-95 text-lg shrink-0"
+            className="flex items-center justify-center bg-[#075E54] text-white hover:bg-[#054c44] font-bold px-10 py-5 rounded-full shadow-[0_10px_40px_-10px_rgba(7,94,84,0.5)] transition-all hover:scale-105 active:scale-95 text-lg shrink-0"
           >
             Chamar no WhatsApp
             <MessageCircle className="ml-3 w-6 h-6" />
