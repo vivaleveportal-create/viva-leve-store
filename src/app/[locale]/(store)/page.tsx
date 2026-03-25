@@ -185,7 +185,7 @@ export default async function StoreHomePage({
             {categories.map((cat: any) => (
               <Link
                 key={cat._id.toString()}
-                href={`/products?categoria=${cat.value}`}
+                href={{ pathname: '/products', query: { categoria: cat.value } }}
                 className="inline-flex items-center px-6 py-2.5 rounded-full text-sm font-medium border border-gray-200 text-viva-muted bg-white hover:border-viva-primary hover:text-viva-primary hover:bg-viva-primary/5 transition-all duration-300 shadow-sm"
               >
                 {cat.label || cat.name}

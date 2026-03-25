@@ -85,7 +85,7 @@ export default async function ProductsPage({
           {categories.map((cat: any) => (
             <Link
               key={cat._id.toString()}
-              href={`/products?categoria=${cat.value}`}
+              href={{ pathname: '/products', query: { categoria: cat.value } }}
               className={`whitespace-nowrap px-4 py-2 rounded-full font-bold text-sm transition-all shadow-sm ${
                 categoria === cat.value
                   ? 'bg-viva-primary text-white shadow-md'
