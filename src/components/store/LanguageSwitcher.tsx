@@ -25,26 +25,26 @@ export default function LanguageSwitcher() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         disabled={isPending}
-        className="flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
+        className="flex items-center gap-1.5 p-2 text-sm font-semibold text-viva-muted hover:text-viva-primary transition-all duration-300 active:scale-95"
         aria-label="Switch Language"
       >
-        <Globe className="w-4 h-4 text-gray-500" />
+        <Globe className="w-4 h-4" />
         <span className="uppercase">{locale}</span>
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-8 w-32 bg-white rounded-xl border shadow-lg py-1 z-50">
+        <div className="absolute right-0 top-11 w-40 bg-white rounded-2xl border border-gray-100 shadow-xl py-2 z-50 overflow-hidden animate-in fade-in slide-in-from-top-1">
           <button
             onClick={() => toggleLanguage('pt')}
-            className={`flex items-center w-full px-4 py-2 text-sm text-left hover:bg-gray-50 ${locale === 'pt' ? 'font-bold text-viva-primary bg-viva-primary/10' : 'text-gray-700'}`}
+            className={`flex items-center w-full px-4 py-3 text-sm text-left hover:bg-gray-50 transition-colors ${locale === 'pt' ? 'font-bold text-viva-primary bg-viva-primary/5' : 'text-gray-700'}`}
           >
-            🇧🇷 Português
+            <span className="mr-2">🇧🇷</span> Português
           </button>
           <button
             onClick={() => toggleLanguage('en')}
-            className={`flex items-center w-full px-4 py-2 text-sm text-left hover:bg-gray-50 ${locale === 'en' ? 'font-bold text-viva-primary bg-viva-primary/10' : 'text-gray-700'}`}
+            className={`flex items-center w-full px-4 py-3 text-sm text-left hover:bg-gray-50 transition-colors ${locale === 'en' ? 'font-bold text-viva-primary bg-viva-primary/5' : 'text-gray-700'}`}
           >
-            🇺🇸 English
+            <span className="mr-2">🇺🇸</span> English
           </button>
         </div>
       )}

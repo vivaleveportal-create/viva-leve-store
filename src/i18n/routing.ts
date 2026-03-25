@@ -12,6 +12,10 @@ export const routing = defineRouting({
             pt: '/conta',
             en: '/account'
         },
+        '/account/orders': {
+            pt: '/conta/pedidos',
+            en: '/account/orders'
+        },
         '/sign-in': {
             pt: '/entrar',
             en: '/sign-in'
@@ -47,6 +51,14 @@ export const routing = defineRouting({
         '/termos': {
             pt: '/termos',
             en: '/terms'
+        },
+        '/quem-somos': {
+            pt: '/quem-somos',
+            en: '/about-us'
+        },
+        '/cookies': {
+            pt: '/cookies',
+            en: '/cookies'
         }
     }
 });

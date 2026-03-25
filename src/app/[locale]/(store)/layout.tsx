@@ -15,7 +15,7 @@ export default function StoreLayout({
   return (
     <div className="flex flex-col min-h-screen">
       <StoreNavbar />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 pt-24">{children}</main>
       <StoreFooter />
       <Toaster position="top-center" richColors />
     </div>

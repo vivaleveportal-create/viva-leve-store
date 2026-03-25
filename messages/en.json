@@ -9,6 +9,8 @@
     "Navigation": {
         "home": "Home",
         "products": "View Products",
+        "categories": "Categories",
+        "about": "About Us",
         "contact": "Contact Us",
         "signIn": "Sign In",
         "signOut": "Sign Out",

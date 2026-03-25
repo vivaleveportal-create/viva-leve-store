@@ -9,6 +9,8 @@
     "Navigation": {
         "home": "Página Inicial",
         "products": "Ver Produtos",
+        "categories": "Categorias",
+        "about": "Quem Somos",
         "contact": "Fale Conosco",
         "signIn": "Entrar na Conta",
         "signOut": "Sair",

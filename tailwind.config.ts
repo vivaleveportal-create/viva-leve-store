@@ -112,7 +112,8 @@ module.exports = {
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
       fontFamily: {
-        display: ['var(--font-display)', 'sans-serif'],
+        display: ['var(--font-fraunces)', 'serif'],
+        'display-alt': ['var(--font-display-alt)', 'sans-serif'],
       },
     },
   },
