@@ -199,10 +199,12 @@ export default async function StoreHomePage({
       <section className="py-20 px-4 bg-[#0a1f1e] text-white">
         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="space-y-4 text-center lg:text-left">
-            <h2 className="font-display text-4xl sm:text-5xl font-semibold leading-tight text-white">
-              Ficou com alguma dúvida? <br />
-              <span className="text-viva-accent-warm opacity-90">Tire suas dúvidas antes de comprar.</span>
+            <h2 className="font-display text-4xl sm:text-5xl font-semibold leading-[1.1] text-white">
+              Ficou com <br className="hidden sm:block" /> alguma dúvida?
             </h2>
+            <p className="text-xl sm:text-2xl text-viva-accent-warm font-medium opacity-90 leading-relaxed max-w-lg">
+              Tire suas dúvidas antes de comprar.
+            </p>
           </div>
           
           <div className="flex flex-wrap items-center justify-center gap-6 shrink-0">
