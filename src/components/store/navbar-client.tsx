@@ -26,35 +26,35 @@ export default function NavbarClient({ user }: NavbarClientProps) {
   }
 
   return (
-    <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
-      <div className="flex items-center gap-6 bg-white/80 backdrop-blur-xl rounded-full px-6 py-3 shadow-[0_4px_20px_-4px_rgba(26,46,45,0.15)] w-full max-w-6xl border border-white/20">
-        <Link href="/" className="shrink-0">
+    <header className="sticky top-0 left-0 right-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+      <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+        <Link href="/" className="flex items-center">
           <Image 
             src="/logo/logo.png" 
             alt="Viva Leve Portal" 
-            width={120} 
-            height={36} 
-            className="h-9 w-auto" 
+            width={160} 
+            height={48} 
+            className="h-12 w-auto" 
             priority
           />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6 flex-1 justify-center">
-          <Link href="/products" className="text-viva-muted hover:text-viva-text font-medium text-sm transition-colors">
+        <nav className="hidden md:flex items-center gap-8">
+          <Link href="/products" className="text-sm font-semibold text-viva-muted hover:text-viva-primary transition-colors">
             {t('products')}
           </Link>
-          <Link href={{ pathname: '/', hash: 'categories' }} className="text-viva-muted hover:text-viva-text font-medium text-sm transition-colors">
+          <Link href={{ pathname: '/', hash: 'categories' }} className="text-sm font-semibold text-viva-muted hover:text-viva-primary transition-colors">
             {t('categories')}
           </Link>
-          <Link href="/quem-somos" className="text-viva-muted hover:text-viva-text font-medium text-sm transition-colors">
+          <Link href="/quem-somos" className="text-sm font-semibold text-viva-muted hover:text-viva-primary transition-colors">
             {t('about')}
           </Link>
-          <Link href="/contato" className="text-viva-muted hover:text-viva-text font-medium text-sm transition-colors">
+          <Link href="/contato" className="text-sm font-semibold text-viva-muted hover:text-viva-primary transition-colors">
             {t('contact')}
           </Link>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           {user ? (
             <div className="relative hidden md:block">
               <button
@@ -66,11 +66,11 @@ export default function NavbarClient({ user }: NavbarClientProps) {
                 </div>
               </button>
               {dropdownOpen && (
-                <div className="absolute right-0 top-11 w-48 bg-white rounded-2xl border shadow-xl py-2 z-50 overflow-hidden">
+                <div className="absolute right-0 top-11 w-48 bg-white rounded-xl border shadow-lg py-1 z-50 overflow-hidden">
                   <Link
                     href="/account/orders"
                     onClick={() => setDropdownOpen(false)}
-                    className="flex items-center gap-2 px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                    className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50"
                   >
                     <Package className="w-4 h-4" />
                     {t('myOrders')}
@@ -78,7 +78,7 @@ export default function NavbarClient({ user }: NavbarClientProps) {
                   <hr className="my-1 border-gray-50" />
                   <button
                     onClick={() => { setDropdownOpen(false); handleLogout() }}
-                    className="flex items-center gap-2 px-4 py-3 text-sm text-red-600 hover:bg-red-50 w-full text-left transition-colors"
+                    className="flex items-center gap-2 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 w-full text-left"
                   >
                     <LogOut className="w-4 h-4" />
                     {t('signOut')}
@@ -89,7 +89,7 @@ export default function NavbarClient({ user }: NavbarClientProps) {
           ) : (
             <Link
               href="/sign-in"
-              className="hidden md:flex p-2 text-viva-muted hover:text-viva-text transition-colors"
+              className="hidden md:flex p-2 text-viva-muted hover:text-viva-primary transition-colors"
             >
               <User className="w-5 h-5" />
             </Link>
@@ -110,7 +110,7 @@ export default function NavbarClient({ user }: NavbarClientProps) {
           <LanguageSwitcher />
 
           <button
-            className="md:hidden p-2 text-viva-muted hover:text-viva-text"
+            className="md:hidden p-2 text-viva-muted hover:text-viva-primary"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
           >
@@ -119,21 +119,21 @@ export default function NavbarClient({ user }: NavbarClientProps) {
         </div>
       </div>
 
-      {/* Mobile menu - floating panel */}
-        {open && (
-          <div className="absolute top-full left-0 right-0 md:hidden bg-white rounded-2xl shadow-xl mt-3 p-6 space-y-4 animate-in slide-in-from-top-2 fade-in duration-200 border border-gray-100">
-            <Link href="/products" className="block text-lg font-semibold text-viva-text hover:text-viva-primary transition-colors" onClick={() => setOpen(false)}>
-              {t('products')}
-            </Link>
-            <Link href={{ pathname: '/', hash: 'categories' }} className="block text-lg font-semibold text-viva-text hover:text-viva-primary transition-colors" onClick={() => setOpen(false)}>
-              {t('categories')}
-            </Link>
-            <Link href="/quem-somos" className="block text-lg font-semibold text-viva-text hover:text-viva-primary transition-colors" onClick={() => setOpen(false)}>
-              {t('about')}
-            </Link>
-            <Link href="/contato" className="block text-lg font-semibold text-viva-text hover:text-viva-primary transition-colors" onClick={() => setOpen(false)}>
-              {t('contact')}
-            </Link>
+      {/* Mobile menu */}
+      {open && (
+        <div className="md:hidden border-t border-gray-100 bg-white px-6 py-4 space-y-4 animate-in slide-in-from-top-2 fade-in duration-200">
+          <Link href="/products" className="block text-base font-semibold text-viva-text" onClick={() => setOpen(false)}>
+            {t('products')}
+          </Link>
+          <Link href={{ pathname: '/', hash: 'categories' }} className="block text-base font-semibold text-viva-text" onClick={() => setOpen(false)}>
+            {t('categories')}
+          </Link>
+          <Link href="/quem-somos" className="block text-base font-semibold text-viva-text" onClick={() => setOpen(false)}>
+            {t('about')}
+          </Link>
+          <Link href="/contato" className="block text-base font-semibold text-viva-text" onClick={() => setOpen(false)}>
+            {t('contact')}
+          </Link>
           {user ? (
             <>
               <Link href="/account/orders" className="block text-base font-semibold text-viva-text py-1" onClick={() => setOpen(false)}>
