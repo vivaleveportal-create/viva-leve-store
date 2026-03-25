@@ -106,9 +106,9 @@ export default async function StoreHomePage({
             <ShieldCheck className="w-5 h-5 text-viva-blue" />
             PAGAMENTO 100% SEGURO
           </div>
-          <div className="flex items-center gap-2.5 text-xs sm:text-sm font-medium tracking-wide">
+          <div className="flex items-center gap-2.5 text-xs sm:text-sm font-medium tracking-wide font-display">
             <MessageCircle className="w-5 h-5 text-viva-blue" />
-            SUPORTE VIA WHATSAPP
+            ATENDIMENTO POR CHAT OU WHATSAPP
           </div>
         </div>
       </section>
@@ -198,10 +198,11 @@ export default async function StoreHomePage({
       <section className="py-24 px-4 bg-[#0a1f1e] text-white overflow-hidden">
         <div className="max-w-6xl mx-auto text-center flex flex-col items-center">
           <h2 className="font-display text-3xl md:text-4xl font-semibold text-white leading-tight">
-            Tire suas dúvidas antes de comprar.
+            Ficou com dúvida sobre algum produto?
           </h2>
-          <p className="text-white/70 text-lg max-w-xl mt-4 leading-relaxed">
-            Em cada página de produto você encontra atendimento pronto para responder qualquer dúvida — pagamento, entrega e como usar.
+          <p className="text-white/70 text-lg max-w-2xl mt-4 leading-relaxed">
+            Acesse a página do produto e use o chat para tirar dúvidas na hora. <br className="hidden md:block" />
+            Prefere o WhatsApp? Também estamos por lá.
           </p>
         </div>
       </section>
