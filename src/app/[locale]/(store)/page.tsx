@@ -168,9 +168,9 @@ export default async function StoreHomePage({
               <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto shadow-sm group-hover:shadow-md transition-shadow">
                 <MessageCircle className="w-8 h-8 text-viva-primary" />
               </div>
-              <h3 className="font-display font-bold text-viva-text text-lg">Suporte humano</h3>
+              <h3 className="font-display font-bold text-viva-text text-lg">Atendimento personalizado</h3>
               <p className="text-sm text-viva-muted leading-relaxed">
-                Esqueça os robôs. Nossa equipe real atende você diretamente pelo WhatsApp.
+                Tire suas dúvidas pelo chat na página do produto ou diretamente pelo WhatsApp.
               </p>
             </div>
           </div>
