@@ -26,7 +26,7 @@ export default function NavbarClient({ user }: NavbarClientProps) {
   }
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b shadow-sm">
       <div className="max-w-6xl mx-auto px-4 h-[72px] flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5">
           <Image 
@@ -34,17 +34,17 @@ export default function NavbarClient({ user }: NavbarClientProps) {
             alt="Viva Leve Portal" 
             width={140} 
             height={40} 
-            className="h-9 w-auto" 
+            className="h-11 w-auto" 
             priority
           />
         </Link>
 
         <nav className="hidden md:flex items-center gap-6">
-          <Link href="/products" className="text-gray-600 hover:text-gray-900 font-medium text-sm">
+          <Link href="/products" className="text-viva-muted hover:text-viva-primary font-semibold text-sm transition-colors">
             {t('products')}
           </Link>
           {user && (
-            <Link href="/account/orders" className="text-gray-600 hover:text-gray-900 font-medium text-sm">
+            <Link href="/account/orders" className="text-viva-muted hover:text-viva-primary font-semibold text-sm transition-colors">
               {t('myOrders')}
             </Link>
           )}
@@ -95,7 +95,7 @@ export default function NavbarClient({ user }: NavbarClientProps) {
 
           <Link
             href="/cart"
-            className="relative flex items-center gap-1.5 bg-viva-primary hover:bg-viva-primary-hover text-white px-5 py-2.5 rounded-full text-sm font-medium transition-colors"
+            className="relative flex items-center gap-1.5 bg-viva-primary hover:bg-viva-primary-hover text-white px-5 py-2.5 rounded-full text-sm font-bold transition-colors"
           >
             <ShoppingCart className="w-4 h-4" />
             <span>{t('cart')}</span>
@@ -120,24 +120,24 @@ export default function NavbarClient({ user }: NavbarClientProps) {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t bg-white px-4 py-4 space-y-3 animate-in slide-in-from-top-2 fade-in duration-200">
-          <Link href="/products" className="block text-gray-700 font-medium" onClick={() => setOpen(false)}>
+        <div className="md:hidden border-y border-gray-100 bg-white px-4 py-4 space-y-4 animate-in slide-in-from-top-2 fade-in duration-200">
+          <Link href="/products" className="block text-base font-semibold text-viva-text py-1" onClick={() => setOpen(false)}>
             {t('products')}
           </Link>
           {user ? (
             <>
-              <Link href="/account/orders" className="block text-gray-700 font-medium" onClick={() => setOpen(false)}>
+              <Link href="/account/orders" className="block text-base font-semibold text-viva-text py-1" onClick={() => setOpen(false)}>
                 {t('myOrders')}
               </Link>
               <button
                 onClick={() => { setOpen(false); handleLogout() }}
-                className="block text-red-600 font-medium w-full text-left"
+                className="block text-red-600 font-semibold w-full text-left py-1"
               >
                 {t('signOut')}
               </button>
             </>
           ) : (
-            <Link href="/sign-in" className="block text-gray-700 font-medium" onClick={() => setOpen(false)}>
+            <Link href="/sign-in" className="block text-base font-semibold text-viva-text py-1" onClick={() => setOpen(false)}>
               {t('signIn')}
             </Link>
           )}

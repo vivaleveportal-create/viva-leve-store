@@ -66,7 +66,7 @@ export default async function ProductsPage({
               placeholder="O que você procura?"
               className="w-full h-14 pl-12 pr-4 bg-viva-surface border-2 border-transparent focus:border-viva-primary rounded-xl text-lg outline-none transition-all shadow-sm hover:shadow-md focus:shadow-md"
             />
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-viva-teal-mid w-6 h-6" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-viva-muted w-6 h-6" />
           </form>
         </div>
 
@@ -77,7 +77,7 @@ export default async function ProductsPage({
             className={`whitespace-nowrap px-4 py-2 rounded-full font-bold text-sm transition-all shadow-sm ${
               !categoria
                 ? 'bg-viva-primary text-white shadow-md'
-                : 'bg-gray-100 text-viva-teal-dark hover:bg-viva-teal-light/10'
+                : 'bg-gray-50 text-viva-muted border border-gray-200 hover:border-viva-primary hover:text-viva-primary'
             }`}
           >
             Todos
@@ -85,11 +85,11 @@ export default async function ProductsPage({
           {categories.map((cat: any) => (
             <Link
               key={cat._id.toString()}
-              href={`/products?categoria=${cat.slug}`}
+              href={`/products?categoria=${cat.value}`}
               className={`whitespace-nowrap px-4 py-2 rounded-full font-bold text-sm transition-all shadow-sm ${
-                categoria === cat.slug
+                categoria === cat.value
                   ? 'bg-viva-primary text-white shadow-md'
-                  : 'bg-gray-100 text-viva-teal-dark hover:bg-viva-teal-light/10'
+                  : 'bg-gray-50 text-viva-muted border border-gray-200 hover:border-viva-primary hover:text-viva-primary'
               }`}
             >
               {cat.label || cat.name}

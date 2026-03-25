@@ -61,7 +61,7 @@ export default async function ProductPage({
 
   const p = product as any
   const pName = p.name
-  const catName = p.category?.name || ''
+  const catName = p.category?.label || p.category?.name || ''
   const deliveryText = p.deliveryDays 
     ? `${p.deliveryDays} dias úteis` 
     : "3 a 7 dias úteis"
@@ -114,14 +114,14 @@ export default async function ProductPage({
               {pName}
             </h1>
 
-            <div className="mb-8 p-6 bg-viva-surface rounded-2xl flex items-baseline gap-3">
-              <span className="text-4xl md:text-5xl font-black text-viva-text">
+            <div className="mb-8 p-6 bg-white border border-gray-100 shadow-sm rounded-2xl flex items-baseline gap-3">
+              <span className="text-4xl md:text-5xl font-black text-viva-accent-warm">
                 {formatPrice(Math.round(p.price * 100), p.currency || 'BRL')}
               </span>
             </div>
 
             {/* Delivery Alert */}
-            <div className="flex items-center gap-3 text-viva-green-deep font-bold text-lg mb-8 p-4 bg-viva-green-deep/10 rounded-xl">
+            <div className="flex items-center gap-3 text-viva-blue font-bold text-lg mb-8 p-4 bg-viva-blue/10 rounded-xl">
               <Truck className="w-6 h-6" />
               <span>Entrega em {deliveryText} via Logzz</span>
             </div>
@@ -156,15 +156,15 @@ export default async function ProductPage({
             {/* Trust Badges */}
             <div className="space-y-6 pt-8 border-t border-gray-100">
               <div className="flex items-center gap-4 text-viva-text font-medium text-lg leading-relaxed">
-                <ShieldCheck className="w-6 h-6 text-viva-teal-mid shrink-0" />
+                <ShieldCheck className="w-6 h-6 text-viva-blue shrink-0" />
                 Pagamento 100% seguro via Stripe
               </div>
               <div className="flex items-center gap-4 text-viva-text font-medium text-lg leading-relaxed">
-                <Truck className="w-6 h-6 text-viva-teal-mid shrink-0" />
+                <Truck className="w-6 h-6 text-viva-blue shrink-0" />
                 Entrega nacional garantida pela Logzz
               </div>
               <div className="flex items-center gap-4 text-viva-text font-medium text-lg leading-relaxed">
-                <MessageCircle className="w-6 h-6 text-viva-teal-mid shrink-0" />
+                <MessageCircle className="w-6 h-6 text-viva-blue shrink-0" />
                 Suporte humano via WhatsApp
               </div>
             </div>

@@ -57,6 +57,10 @@
     @apply underline-offset-4 transition-colors;
   }
 
+  .prose a {
+    @apply underline text-viva-primary hover:text-viva-accent-warm;
+  }
+
   * {
     @apply border-border;
   }

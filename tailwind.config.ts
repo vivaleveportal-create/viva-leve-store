@@ -61,6 +61,8 @@ module.exports = {
           'brown-earth': '#996b43',
           surface: '#f8faf8',
           text: '#1a2e2d',
+          blue: '#5b9db5',
+          muted: '#6b7f8a',
         },
         orange: {
           50: '#fff7ed',

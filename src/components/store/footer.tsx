@@ -20,7 +20,7 @@ export default async function StoreFooter() {
               alt={name} 
               width={160} 
               height={44} 
-              className="h-10 w-auto"
+              className="h-12 w-auto"
             />
             <p className="text-sm leading-relaxed max-w-xs">
               Produtos pensados para quem sabe o valor de viver com qualidade.
@@ -63,11 +63,11 @@ export default async function StoreFooter() {
             <h4 className="text-white font-bold uppercase tracking-wider text-sm">Segurança</h4>
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-sm text-gray-300">
-                <ShieldCheck className="w-5 h-5 text-viva-accent" />
+                <ShieldCheck className="w-5 h-5 text-viva-blue" />
                 <span>Pagamento Seguro via Stripe</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-gray-300">
-                <Truck className="w-5 h-5 text-viva-accent" />
+                <Truck className="w-5 h-5 text-viva-blue" />
                 <span>Entrega via Logzz</span>
               </div>
             </div>

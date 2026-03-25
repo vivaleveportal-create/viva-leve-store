@@ -56,7 +56,7 @@ export default function ProductCard({ product, currency }: ProductCardProps) {
         </h3>
         
         <div className="mt-auto flex items-center justify-between">
-          <span className="text-xl font-black text-viva-text">
+          <span className="text-xl font-black text-viva-accent-warm">
             {formatPrice(Math.round(product.price * 100), currency)}
           </span>
           <span className="text-sm font-semibold text-viva-primary group-hover:text-viva-accent-warm transition-colors flex items-center gap-1">
