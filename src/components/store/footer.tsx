@@ -18,9 +18,9 @@ export default async function StoreFooter() {
             <Image 
               src="/logo/logo-white.png" 
               alt={name} 
-              width={440} 
-              height={180} 
-              className="h-[180px] w-auto"
+              width={240} 
+              height={100} 
+              className="h-[100px] w-auto -mt-2"
             />
             <p className="text-sm leading-relaxed max-w-xs">
               Produtos pensados para quem sabe o valor de viver com qualidade.

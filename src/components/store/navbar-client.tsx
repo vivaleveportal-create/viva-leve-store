@@ -32,9 +32,9 @@ export default function NavbarClient({ user }: NavbarClientProps) {
           <Image 
             src="/logo/logo.png" 
             alt="Viva Leve Portal" 
-            width={220} 
-            height={64} 
-            className="h-[64px] w-auto" 
+            width={260} 
+            height={74} 
+            className="h-[74px] w-auto" 
             priority
           />
         </Link>
