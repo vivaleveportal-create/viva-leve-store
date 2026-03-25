@@ -12,15 +12,15 @@ export default async function StoreFooter() {
   return (
     <footer className="bg-[#0a1f1e] text-gray-400 py-16 md:py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16 items-start">
           {/* Col 1: Logo & Tagline */}
           <div className="space-y-6">
             <Image 
               src="/logo/logo-white.png" 
               alt={name} 
-              width={350} 
-              height={140} 
-              className="h-[140px] w-auto"
+              width={280} 
+              height={110} 
+              className="h-[110px] w-auto"
             />
             <p className="text-sm leading-relaxed max-w-xs">
               Produtos pensados para quem sabe o valor de viver com qualidade.
