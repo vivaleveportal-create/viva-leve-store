@@ -54,11 +54,11 @@
 
   /* Links */
   a {
-    @apply underline-offset-4 transition-colors;
+    @apply underline-offset-4 transition-colors no-underline;
   }
 
-  .prose a {
-    @apply underline text-viva-primary hover:text-viva-accent-warm;
+  .prose a:not(.rounded-full) {
+    @apply text-viva-primary hover:text-viva-accent-warm no-underline;
   }
 
   * {

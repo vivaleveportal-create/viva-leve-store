@@ -19,7 +19,7 @@ export default function AboutPage() {
             Operamos com transparência total: nossas entregas são garantidas pela rede <strong>Logzz</strong> e todos os pagamentos são processados com segurança máxima via <strong>Stripe</strong>.
           </p>
           <div className="pt-8 flex flex-col sm:flex-row items-center gap-6">
-            <Link href="/products" className="bg-viva-primary text-white px-10 py-5 rounded-full font-bold shadow-xl hover:brightness-110 transition-all">
+            <Link href="/products" className="bg-viva-primary !text-white !no-underline px-10 py-5 rounded-full font-bold shadow-xl hover:brightness-110 transition-all">
               Conhecer Produtos
             </Link>
             <Link href="/contato" className="text-viva-primary font-bold hover:underline">
