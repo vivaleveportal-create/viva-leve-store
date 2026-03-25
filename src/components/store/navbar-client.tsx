@@ -27,7 +27,7 @@ export default function NavbarClient({ user }: NavbarClientProps) {
 
   return (
     <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
-      <div className="flex items-center gap-6 bg-white/80 backdrop-blur-xl rounded-full px-6 py-3 shadow-[0_4px_20px_-4px_rgba(26,46,45,0.15)] w-full max-w-4xl border border-white/20">
+      <div className="flex items-center gap-6 bg-white/80 backdrop-blur-xl rounded-full px-6 py-3 shadow-[0_4px_20px_-4px_rgba(26,46,45,0.15)] w-full max-w-6xl border border-white/20">
         <Link href="/" className="shrink-0">
           <Image 
             src="/logo/logo.png" 
