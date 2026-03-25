@@ -1,4 +1,5 @@
 import { Schema, model, models } from 'mongoose'
+import './Admin'
 
 const UploadFileSchema = new Schema(
     {

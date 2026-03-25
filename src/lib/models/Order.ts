@@ -1,4 +1,6 @@
 import { Schema, model, models } from 'mongoose'
+import './User'
+import './Product'
 
 const OrderSchema = new Schema(
     {

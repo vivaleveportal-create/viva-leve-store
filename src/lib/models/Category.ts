@@ -15,8 +15,4 @@ const CategorySchema = new Schema(
 
 CategorySchema.index({ value: 1, locale: 1 }, { unique: true })
 
-// Force re-registration in Next.js HMR to avoid stale schema
-if (mongoose.models['Category']) {
-    delete mongoose.models['Category']
-}
-export default model('Category', CategorySchema)
+export default mongoose.models.Category || model('Category', CategorySchema)
