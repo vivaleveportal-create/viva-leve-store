@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { ShoppingCart, Menu, X, User, LogOut, Package } from 'lucide-react'
 import { useState } from 'react'
 import { useCartStore } from '@/lib/stores/cart'
@@ -26,12 +27,16 @@ export default function NavbarClient({ user }: NavbarClientProps) {
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b">
-      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 h-[72px] flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5">
-          <img src="/favicon.ico" alt="Logo" className="w-8 h-8 object-contain" />
-          <span className="font-bold text-lg text-viva-primary">
-            {process.env.NEXT_PUBLIC_STORE_NAME || 'Loja'}
-          </span>
+          <Image 
+            src="/logo/logo.png" 
+            alt="Viva Leve Portal" 
+            width={140} 
+            height={40} 
+            className="h-9 w-auto" 
+            priority
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-6">
@@ -90,7 +95,7 @@ export default function NavbarClient({ user }: NavbarClientProps) {
 
           <Link
             href="/cart"
-            className="relative flex items-center gap-1.5 bg-viva-primary hover:bg-viva-primary-hover text-white px-4 py-2 rounded-full text-sm font-medium transition-colors"
+            className="relative flex items-center gap-1.5 bg-viva-primary hover:bg-viva-primary-hover text-white px-5 py-2.5 rounded-full text-sm font-medium transition-colors"
           >
             <ShoppingCart className="w-4 h-4" />
             <span>{t('cart')}</span>
@@ -115,7 +120,7 @@ export default function NavbarClient({ user }: NavbarClientProps) {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t bg-white px-4 py-4 space-y-3">
+        <div className="md:hidden border-t bg-white px-4 py-4 space-y-3 animate-in slide-in-from-top-2 fade-in duration-200">
           <Link href="/products" className="block text-gray-700 font-medium" onClick={() => setOpen(false)}>
             {t('products')}
           </Link>

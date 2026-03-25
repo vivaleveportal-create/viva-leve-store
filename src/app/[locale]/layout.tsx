@@ -1,10 +1,16 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Outfit } from 'next/font/google'
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server';
 import '../globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
+const outfit = Outfit({ 
+  subsets: ['latin'], 
+  weight: ['600', '700', '800'], 
+  variable: '--font-display',
+  display: 'swap'
+})
 
 export const viewport: Viewport = {
   themeColor: '#00756e',
@@ -67,7 +73,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className="scroll-smooth">
-      <body className={`${inter.className} min-h-screen flex flex-col`}>
+      <body className={`${inter.className} ${outfit.variable} min-h-screen flex flex-col`}>
         <NextIntlClientProvider messages={messages}>
           <main className="flex-grow">
             {children}

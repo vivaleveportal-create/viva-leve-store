@@ -104,13 +104,13 @@ export default async function ProductPage({
           <div className="lg:col-span-5 flex flex-col">
             <div className="mb-6">
               {catName && (
-                <span className="bg-viva-accent text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-sm uppercase tracking-wider inline-block">
+                <span className="bg-viva-accent text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-sm uppercase tracking-wider inline-block font-display">
                   {catName}
                 </span>
               )}
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-viva-text mb-6 tracking-tight leading-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-viva-text mb-6 tracking-tight leading-tight font-display">
               {pName}
             </h1>
 
@@ -174,8 +174,8 @@ export default async function ProductPage({
         {/* Video Embed Section */}
         {p.videoUrl && (
           <div className="mt-24 pt-20 border-t border-gray-100 flex flex-col items-center">
-            <h2 className="text-3xl font-bold mb-12 text-center text-viva-text">Veja este produto em ação</h2>
-            <div className="w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl">
+            <h2 className="text-2xl font-bold mb-12 text-center text-viva-text font-display">Veja este produto em ação</h2>
+            <div className="w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl">
               <YouTubeEmbed url={p.videoUrl} title={pName} />
             </div>
           </div>
@@ -184,8 +184,8 @@ export default async function ProductPage({
         {/* Description Section */}
         {p.description && (
           <div className="mt-24 pt-20 border-t border-gray-100 max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-10 text-viva-text">Sobre este produto</h2>
-            <div className="prose prose-lg prose-teal max-w-none text-gray-700 leading-relaxed text-xl whitespace-pre-wrap">
+            <h2 className="text-3xl font-bold mb-10 text-viva-text font-display">Sobre este produto</h2>
+            <div className="prose prose-lg prose-teal max-w-none text-gray-700 leading-relaxed antialiased whitespace-pre-wrap">
               {p.description}
             </div>
           </div>

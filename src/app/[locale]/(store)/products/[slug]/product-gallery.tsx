@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
-import { Download, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react'
+import { Download, ChevronLeft, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface ProductGalleryProps {
@@ -45,48 +45,55 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
 
   return (
     <div className="space-y-4 lg:space-y-6">
-      {/* Main Image */}
+      {/* Main Image Viewer */}
       <div 
         className="group relative aspect-[4/5] sm:aspect-square bg-gradient-to-br from-white via-gray-50/80 to-gray-200/30 rounded-[2rem] overflow-hidden border border-white shadow-[0_20px_50px_-20px_rgba(0,0,0,0.12)] ring-1 ring-black/5 flex items-center justify-center transition-all duration-500"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <Image
-          src={images[activeIndex]}
-          alt={`${productName} - Image ${activeIndex + 1}`}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
-          className="object-contain p-4 sm:p-8 drop-shadow-[0_20px_30px_rgba(0,0,0,0.1)] transition-all duration-700 ease-out group-hover:scale-[1.05]"
-          priority
-        />
+        {/* All images stacked with opacity transition for crossfade */}
+        {images.map((img, idx) => (
+          <Image
+            key={idx}
+            src={img}
+            alt={`${productName} - Image ${idx + 1}`}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+            className={cn(
+              "object-contain p-4 sm:p-8 drop-shadow-[0_20px_30px_rgba(0,0,0,0.1)] transition-opacity duration-500 ease-in-out absolute inset-0",
+              activeIndex === idx ? "opacity-100 z-10" : "opacity-0 z-0"
+            )}
+            priority={idx === 0}
+          />
+        ))}
 
-        {/* Navigation Arrows (optimized for mobile/desktop) */}
+        {/* Navigation Arrows */}
         {images.length > 1 && (
           <>
             <button
               onClick={handlePrev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/90 backdrop-blur-md border border-gray-100 flex items-center justify-center text-gray-800 opacity-0 group-hover:opacity-100 transition-all shadow-lg hover:bg-white hover:scale-110 active:scale-95 sm:flex hidden z-10"
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/90 backdrop-blur-md border border-gray-100 flex items-center justify-center text-gray-800 opacity-0 group-hover:opacity-100 transition-all shadow-lg hover:bg-white hover:scale-110 active:scale-95 sm:flex hidden z-20"
               aria-label="Previous image"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
             <button
               onClick={handleNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/90 backdrop-blur-md border border-gray-100 flex items-center justify-center text-gray-800 opacity-0 group-hover:opacity-100 transition-all shadow-lg hover:bg-white hover:scale-110 active:scale-95 sm:flex hidden z-10"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/90 backdrop-blur-md border border-gray-100 flex items-center justify-center text-gray-800 opacity-0 group-hover:opacity-100 transition-all shadow-lg hover:bg-white hover:scale-110 active:scale-95 sm:flex hidden z-20"
               aria-label="Next image"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
 
             {/* Pagination dots for mobile */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 sm:hidden z-10">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 sm:hidden z-20">
               {images.map((_, idx) => (
                 <div 
-                  key={idx} 
-                  className={cn(
-                    "h-1.5 rounded-full transition-all duration-300",
-                    activeIndex === idx ? "w-6 bg-viva-primary" : "w-1.5 bg-gray-300/60"
-                  )} 
+                   key={idx} 
+                   className={cn(
+                     "h-1.5 rounded-full transition-all duration-300",
+                     activeIndex === idx ? "w-6 bg-viva-primary" : "w-1.5 bg-gray-300/60"
+                   )} 
                 />
               ))}
             </div>
@@ -94,7 +101,7 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
         )}
       </div>
 
-      {/* Miniaturas (only if multi-image) */}
+      {/* Miniaturas */}
       {images.length > 1 && (
         <div className="flex gap-3 overflow-x-auto py-2 px-1 scrollbar-hide snap-x no-scrollbar">
           {images.map((img, idx) => (
@@ -102,9 +109,9 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
               key={idx}
               onClick={() => setActiveIndex(idx)}
               className={cn(
-                "relative aspect-square w-20 sm:w-24 rounded-2xl overflow-hidden flex-shrink-0 bg-white border transition-all duration-300 snap-start",
+                "relative aspect-square w-20 sm:w-28 rounded-2xl overflow-hidden flex-shrink-0 bg-white border transition-all duration-300 snap-start",
                 activeIndex === idx
-                  ? "border-viva-primary ring-4 ring-viva-primary/10 shadow-lg scale-95"
+                  ? "border-viva-primary ring-4 ring-viva-primary/10 shadow-lg"
                   : "border-transparent hover:border-viva-teal-light/30"
               )}
             >
@@ -112,8 +119,8 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
                 src={img}
                 alt={`${productName} miniatura ${idx + 1}`}
                 fill
-                sizes="(max-width: 768px) 80px, 96px"
-                className="object-contain p-2 drop-shadow-sm"
+                sizes="(max-width: 768px) 80px, 112px"
+                className="object-contain p-1 drop-shadow-sm"
               />
             </button>
           ))}
