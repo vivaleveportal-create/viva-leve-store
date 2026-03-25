@@ -25,7 +25,7 @@ export default function ContactPage() {
             <MessageCircle className="w-12 h-12 text-viva-primary group-hover:text-white mb-6" />
             <h3 className="font-display text-xl font-bold mb-2">WhatsApp</h3>
             <p className="text-sm opacity-80 mb-6">Atendimento rápido e personalizado para suas dúvidas.</p>
-            <span className="text-sm font-bold mt-auto underline">Chamar Agora →</span>
+            <span className="text-sm font-bold mt-auto hover:text-viva-accent-warm transition-colors">Chamar Agora →</span>
           </a>
 
           <div className="flex flex-col p-8 bg-gray-50 border border-gray-100 rounded-2xl">

@@ -17,24 +17,24 @@ export default async function StoreFooter() {
           
           {/* Column 1: Brand */}
           <div className="flex flex-col">
-            <div className="h-12 flex items-center mb-6">
+            <div className="h-20 flex items-center mb-6">
               <Image 
                 src="/logo/logo-white.png" 
                 alt={name} 
-                width={200} 
-                height={60} 
-                className="h-12 w-auto"
+                width={340} 
+                height={140} 
+                className="h-[140px] w-auto -mt-32"
               />
             </div>
-            <p className="text-sm leading-relaxed max-w-xs text-gray-400/80">
+            <p className="text-sm leading-relaxed max-w-xs text-gray-400/80 pt-4">
               Produtos pensados para quem sabe o valor de viver com qualidade.
             </p>
           </div>
 
           {/* Column 2: Nav */}
           <div className="flex flex-col">
-            <div className="h-12 flex items-center mb-6">
-              <h4 className="text-white font-bold uppercase tracking-[0.2em] text-[11px]">Navegação</h4>
+            <div className="h-20 flex items-center mb-6">
+              <h4 className="text-white font-bold uppercase tracking-[0.2em] text-[12px]">Navegação</h4>
             </div>
             <ul className="space-y-4 text-sm">
               <li><Link href="/products" className="hover:text-viva-accent-warm transition-colors decoration-0">Produtos</Link></li>
@@ -45,8 +45,8 @@ export default async function StoreFooter() {
 
           {/* Column 3: Legal */}
           <div className="flex flex-col">
-            <div className="h-12 flex items-center mb-6">
-              <h4 className="text-white font-bold uppercase tracking-[0.2em] text-[11px]">Suporte</h4>
+            <div className="h-20 flex items-center mb-6">
+              <h4 className="text-white font-bold uppercase tracking-[0.2em] text-[12px]">Suporte</h4>
             </div>
             <ul className="space-y-4 text-sm">
               <li><Link href="/termos" className="hover:text-viva-accent-warm transition-colors decoration-0">{t('terms')}</Link></li>
@@ -70,8 +70,8 @@ export default async function StoreFooter() {
 
           {/* Column 4: Trust */}
           <div className="flex flex-col">
-            <div className="h-12 flex items-center mb-6">
-              <h4 className="text-white font-bold uppercase tracking-[0.2em] text-[11px]">Segurança</h4>
+            <div className="h-20 flex items-center mb-6">
+              <h4 className="text-white font-bold uppercase tracking-[0.2em] text-[12px]">Segurança</h4>
             </div>
             <div className="space-y-5">
               <div className="flex items-center gap-3 text-sm text-gray-400/80">

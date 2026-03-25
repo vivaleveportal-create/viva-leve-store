@@ -22,7 +22,7 @@ export default function AboutPage() {
             <Link href="/products" className="bg-viva-primary !text-white !no-underline px-10 py-5 rounded-full font-bold shadow-xl hover:brightness-110 transition-all">
               Conhecer Produtos
             </Link>
-            <Link href="/contato" className="text-viva-primary font-bold hover:underline">
+            <Link href="/contato" className="text-viva-primary font-bold">
               Fale com nossa equipe
             </Link>
           </div>
