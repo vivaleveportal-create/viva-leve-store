@@ -59,30 +59,26 @@ export default async function StoreHomePage({
             
             <div className="relative z-10 w-full max-w-6xl mx-auto px-4 py-20">
               <div className="max-w-2xl animate-in fade-in slide-in-from-left-8 duration-1000">
-                {categoryLabel && (
-                  <span className="bg-viva-accent-warm/20 text-viva-accent-warm text-xs px-4 py-1.5 rounded-full uppercase font-bold tracking-widest inline-block mb-6 backdrop-blur-sm border border-viva-accent-warm/20">
-                    {categoryLabel}
-                  </span>
-                )}
-                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-display font-semibold text-white leading-[1.1] mb-6 drop-shadow-sm">
-                  {firstProduct.name}
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-semibold text-white leading-tight mb-4">
+                  Porque viver bem não precisa ser complicado.
                 </h1>
-                <p className="text-3xl font-bold text-viva-accent-warm mb-10 font-display">
-                  {formatPrice(Math.round(firstProduct.price * 100), currency)}
+                <p className="text-lg text-white/80 max-w-md mb-8">
+                  Produtos selecionados para cuidar de você, da sua casa e de quem você ama.
                 </p>
                 <div className="flex flex-wrap items-center gap-6">
                   <Link
-                    href={`/products/${firstProduct.slug}` as any}
+                    href="/products"
                     className="inline-flex items-center justify-center bg-viva-primary text-white font-semibold px-10 py-5 rounded-full hover:brightness-110 transition-all shadow-xl hover:shadow-viva-primary/20 hover:-translate-y-1 active:scale-95 text-lg"
                   >
-                    Ver produto
+                    Ver produtos
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                   <Link
-                    href="/products"
-                    className="text-white/70 hover:text-white text-base font-medium transition-colors border-b border-white/20 hover:border-white py-1"
+                    href="/quem-somos"
+                    className="text-white hover:text-viva-accent-warm font-semibold transition-colors flex items-center gap-2 group text-lg"
                   >
-                    Ver todos os produtos →
+                    Conheça nossa história
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
                   </Link>
                 </div>
               </div>

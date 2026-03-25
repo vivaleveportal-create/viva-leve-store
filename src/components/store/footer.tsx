@@ -20,7 +20,7 @@ export default async function StoreFooter() {
               alt={name} 
               width={260} 
               height={110} 
-              className="h-[110px] w-auto -mt-10"
+              className="h-[110px] w-auto -mt-15"
             />
             <p className="text-sm leading-relaxed max-w-xs pt-1">
               Produtos pensados para quem sabe o valor de viver com qualidade.
