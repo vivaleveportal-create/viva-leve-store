@@ -105,15 +105,15 @@ export default async function StoreHomePage({
               </div>
 
               {/* Coluna direita: Imagem destaque */}
-              <div className="lg:col-span-7 order-1 md:order-2">
-                <div className="relative aspect-square drop-shadow-[0_20px_60px_rgba(0,0,0,0.5)] hover:scale-[1.03] transition-transform duration-700 animate-in fade-in zoom-in duration-700 p-8">
+              <div className="lg:col-span-7 order-1 md:order-2 animate-in fade-in zoom-in duration-700">
+                <div className="relative aspect-[4/3] md:aspect-square max-h-[500px] rounded-2xl overflow-hidden drop-shadow-[0_20px_60px_rgba(0,0,0,0.5)] hover:scale-[1.03] transition-transform duration-700">
                   <Image
                     src={firstProduct.images[0]}
                     alt={firstProduct.name}
                     fill
                     priority
                     sizes="(max-width: 768px) 100vw, 600px"
-                    className="object-contain"
+                    className="object-contain p-6"
                   />
                 </div>
               </div>
