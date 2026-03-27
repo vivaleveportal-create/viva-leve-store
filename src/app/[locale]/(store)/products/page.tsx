@@ -7,13 +7,17 @@ import { formatPrice } from '@/lib/utils'
 import { Truck, Search, ArrowRight } from 'lucide-react'
 import ProductCard from '@/components/store/product-card'
 
-async function getProducts(locale: string, categoria?: string, q?: string) {
+async function getProducts(locale: string, page: number = 1, categoria?: string, q?: string) {
   await connectMongo()
   const query: any = { active: true, locale }
 
   if (categoria) {
     const cat = await CategoryModel.findOne({ 
-      $or: [{ slug: categoria }, { _id: categoria.length === 24 ? categoria : null }], 
+      $or: [
+        { slug: categoria }, 
+        { value: categoria },
+        { _id: categoria.length === 24 ? categoria : null }
+      ], 
       locale 
     }).catch(() => null)
     if (cat) query.category = cat._id
@@ -23,11 +27,20 @@ async function getProducts(locale: string, categoria?: string, q?: string) {
     query.name = { $regex: q, $options: 'i' }
   }
 
-  return ProductModel.find(query)
-    .populate('category', 'name label slug')
-    .sort({ featured: -1, createdAt: -1 })
-    .limit(50)
-    .lean()
+  const limit = 12
+  const skip = (page - 1) * limit
+
+  const [products, total] = await Promise.all([
+    ProductModel.find(query)
+      .populate('category', 'name label slug')
+      .sort({ featured: -1, createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
+      .lean(),
+    ProductModel.countDocuments(query)
+  ])
+
+  return { products, total }
 }
 
 async function getCategories(locale: string) {
@@ -39,17 +52,20 @@ export default async function ProductsPage({
   searchParams,
   params
 }: {
-  searchParams: Promise<{ categoria?: string; q?: string }>
+  searchParams: Promise<{ categoria?: string; q?: string; page?: string }>
   params: Promise<{ locale: string }>
 }) {
-  const { categoria, q } = await searchParams
+  const { categoria, q, page: pageStr } = await searchParams
+  const page = parseInt(pageStr || '1')
   const { locale } = await params
   
-  const [products, categories] = await Promise.all([
-    getProducts(locale, categoria, q),
+  const [data, categories] = await Promise.all([
+    getProducts(locale, page, categoria, q),
     getCategories(locale),
   ])
 
+  const { products, total } = data
+  const totalPages = Math.ceil(total / 12)
   const currency = locale === 'en' ? 'USD' : 'BRL'
 
   return (
@@ -113,11 +129,65 @@ export default async function ProductsPage({
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
-            {(products as any[]).map((product) => (
-              <ProductCard key={product._id.toString()} product={product} currency={currency} />
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
+              {(products as any[]).map((product) => (
+                <ProductCard key={product._id.toString()} product={product} currency={currency} />
+              ))}
+            </div>
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="flex justify-center items-center gap-2 mt-16">
+                <Link
+                  href={{ 
+                    pathname: '/products', 
+                    query: { categoria, q, page: page - 1 } 
+                  }}
+                  className={`px-4 py-2 rounded-full border border-gray-200 text-sm font-medium transition-all ${
+                    page === 1 
+                      ? 'opacity-50 pointer-events-none' 
+                      : 'hover:border-viva-primary hover:text-viva-primary'
+                  }`}
+                >
+                  Anterior
+                </Link>
+
+                <div className="flex items-center gap-1">
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+                    <Link
+                      key={p}
+                      href={{ 
+                        pathname: '/products', 
+                        query: { categoria, q, page: p } 
+                      }}
+                      className={`w-10 h-10 flex items-center justify-center rounded-full border text-sm font-medium transition-all ${
+                        page === p
+                          ? 'bg-viva-primary text-white border-viva-primary shadow-sm'
+                          : 'border-gray-200 text-viva-muted hover:border-viva-primary hover:text-viva-primary'
+                      }`}
+                    >
+                      {p}
+                    </Link>
+                  ))}
+                </div>
+
+                <Link
+                  href={{ 
+                    pathname: '/products', 
+                    query: { categoria, q, page: page + 1 } 
+                  }}
+                  className={`px-4 py-2 rounded-full border border-gray-200 text-sm font-medium transition-all ${
+                    page === totalPages 
+                      ? 'opacity-50 pointer-events-none' 
+                      : 'hover:border-viva-primary hover:text-viva-primary'
+                  }`}
+                >
+                  Próxima
+                </Link>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
