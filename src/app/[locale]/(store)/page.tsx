@@ -8,10 +8,34 @@ import {
   ShieldCheck, 
   Truck, 
   MessageCircle,
-  ShoppingBag
+  ShoppingBag,
+  Cpu,
+  Activity,
+  Sparkles,
+  Moon,
+  Home,
+  PawPrint,
+  Smile
 } from 'lucide-react'
 import Image from 'next/image'
 import ProductCard from '@/components/store/product-card'
+
+const categoryIcons: Record<string, any> = {
+  'Saúde e Mobilidade': Activity,
+  'Cuidados com a Pele': Sparkles,
+  'Conforto e Sono': Moon,
+  'Casa e Utilidades': Home,
+  'Pets': PawPrint,
+  'Beleza e Cuidados Pessoais': Smile,
+  'Eletrônicos e Tecnologia': Cpu,
+  'Health and Mobility': Activity,
+  'Skin Care': Sparkles,
+  'Comfort and Sleep': Moon,
+  'Home and Utilities': Home,
+  'Pets EN': PawPrint,
+  'Beauty and Personal Care': Smile,
+  'Electronics and Technology': Cpu,
+}
 
 async function getHomeData(locale: string, page: number = 1) {
   await connectMongo()
