@@ -146,11 +146,11 @@ export default async function ProductsPage({
                   }}
                   className={`px-4 py-2 rounded-full border border-gray-200 text-sm font-medium transition-all ${
                     page === 1 
-                      ? 'opacity-50 pointer-events-none' 
+                      ? 'opacity-40 pointer-events-none' 
                       : 'hover:border-viva-primary hover:text-viva-primary'
                   }`}
                 >
-                  Anterior
+                  ← Anterior
                 </Link>
 
                 <div className="flex items-center gap-1">
@@ -161,10 +161,10 @@ export default async function ProductsPage({
                         pathname: '/products', 
                         query: { categoria, q, page: p } 
                       }}
-                      className={`w-10 h-10 flex items-center justify-center rounded-full border text-sm font-medium transition-all ${
+                      className={`w-10 h-10 flex items-center justify-center rounded-full text-sm font-medium transition-all ${
                         page === p
-                          ? 'bg-viva-primary text-white border-viva-primary shadow-sm'
-                          : 'border-gray-200 text-viva-muted hover:border-viva-primary hover:text-viva-primary'
+                          ? 'bg-viva-primary text-white'
+                          : 'border border-gray-200 text-viva-muted hover:border-viva-primary hover:text-viva-primary'
                       }`}
                     >
                       {p}
@@ -179,11 +179,11 @@ export default async function ProductsPage({
                   }}
                   className={`px-4 py-2 rounded-full border border-gray-200 text-sm font-medium transition-all ${
                     page === totalPages 
-                      ? 'opacity-50 pointer-events-none' 
+                      ? 'opacity-40 pointer-events-none' 
                       : 'hover:border-viva-primary hover:text-viva-primary'
                   }`}
                 >
-                  Próxima
+                  Próxima →
                 </Link>
               </div>
             )}

@@ -13,27 +13,38 @@ import {
 import Image from 'next/image'
 import ProductCard from '@/components/store/product-card'
 
-async function getHomeData(locale: string) {
+async function getHomeData(locale: string, page: number = 1) {
   await connectMongo()
-  const [products, categories] = await Promise.all([
+  const limit = 12
+  const skip = (page - 1) * limit
+  
+  const [products, totalFeatured, categories] = await Promise.all([
     ProductModel.find({ active: true, locale, featured: true })
       .populate('category', 'label name value')
-      .limit(12)
+      .skip(skip)
+      .limit(limit)
       .lean(),
+    ProductModel.countDocuments({ active: true, locale, featured: true }),
     CategoryModel.find({ locale })
       .limit(12)
       .lean()
   ])
-  return { products, categories }
+  return { products, totalFeatured, categories }
 }
 
 export default async function StoreHomePage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string }>
+  searchParams: Promise<{ page?: string }>
 }) {
   const { locale } = await params
-  const { products, categories } = await getHomeData(locale)
+  const { page: pageStr } = await searchParams
+  const page = parseInt(pageStr || '1')
+  
+  const { products, totalFeatured, categories } = await getHomeData(locale, page)
+  const totalPages = Math.ceil(totalFeatured / 12)
   const currency = locale === 'en' ? 'USD' : 'BRL'
   const whatsappUrl = process.env.NEXT_PUBLIC_WHATSAPP
     ? `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP}`
@@ -135,6 +146,49 @@ export default async function StoreHomePage({
                 <ProductCard key={product._id.toString()} product={product} currency={currency} />
               ))}
             </div>
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="flex justify-center items-center gap-2 mt-16">
+                <Link
+                  href={{ pathname: '/', query: { page: page - 1 } }}
+                  className={`px-4 py-2 rounded-full border border-gray-200 text-sm font-medium transition-all ${
+                    page === 1 
+                      ? 'opacity-40 pointer-events-none' 
+                      : 'hover:border-viva-primary hover:text-viva-primary'
+                  }`}
+                >
+                  ← Anterior
+                </Link>
+
+                <div className="flex items-center gap-1">
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+                    <Link
+                      key={p}
+                      href={{ pathname: '/', query: { page: p } }}
+                      className={`w-10 h-10 flex items-center justify-center rounded-full text-sm font-medium transition-all ${
+                        page === p
+                          ? 'bg-viva-primary text-white'
+                          : 'border border-gray-200 text-viva-muted hover:border-viva-primary hover:text-viva-primary'
+                      }`}
+                    >
+                      {p}
+                    </Link>
+                  ))}
+                </div>
+
+                <Link
+                  href={{ pathname: '/', query: { page: page + 1 } }}
+                  className={`px-4 py-2 rounded-full border border-gray-200 text-sm font-medium transition-all ${
+                    page === totalPages 
+                      ? 'opacity-40 pointer-events-none' 
+                      : 'hover:border-viva-primary hover:text-viva-primary'
+                  }`}
+                >
+                  Próxima →
+                </Link>
+              </div>
+            )}
           </div>
         </section>
       )}
