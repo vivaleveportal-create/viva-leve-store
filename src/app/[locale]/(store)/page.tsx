@@ -18,10 +18,10 @@ async function getHomeData(locale: string) {
   const [products, categories] = await Promise.all([
     ProductModel.find({ active: true, locale, featured: true })
       .populate('category', 'label name value')
-      .limit(8)
+      .limit(12)
       .lean(),
     CategoryModel.find({ locale })
-      .limit(10)
+      .limit(12)
       .lean()
   ])
   return { products, categories }
@@ -120,7 +120,7 @@ export default async function StoreHomePage({
             <div className="flex items-end justify-between mb-12">
               <div className="space-y-2">
                 <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-viva-text">Nossa Vitrine</h2>
-                <div className="h-1 w-20 bg-viva-accent rounded-full" />
+                <div className="h-1 w-20 bg-viva-primary rounded-full" />
               </div>
               <Link 
                 href="/products" 
