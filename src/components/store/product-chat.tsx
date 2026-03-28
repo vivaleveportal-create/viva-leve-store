@@ -36,20 +36,53 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
       const timer = setTimeout(() => {
         handleOpen()
         sessionStorage.setItem(chatOpenedKey, 'true')
-      }, 5000)
+      }, 7000)
       return () => clearTimeout(timer)
     }
   }, [productSlug])
 
-  const handleOpen = () => {
+  const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+
+  const handleOpen = async () => {
     setIsOpen(true)
     if (messages.length === 0) {
-      setMessages([
-        {
-          role: 'assistant',
-          content: `Olá! 👋 Sou Fly, da Viva Leve. Vi que você está vendo o ${productName}. Posso te ajudar com alguma dúvida? 😊`,
-        },
-      ])
+      const initialText = `Olá! 👋 Sou Fly, da Viva Leve. Vi que você está vendo o ${productName}. Posso te ajudar com alguma dúvida? 😊`
+      
+      // Delays per manual
+      await sleep(600)
+      setIsTyping(true)
+      await sleep(1500)
+      setIsTyping(false)
+      
+      await runTypewriter(initialText)
+    }
+  }
+
+  const runTypewriter = async (text: string) => {
+    setMessages((prev) => [...prev, { role: 'assistant', content: '' }])
+    
+    let currentText = ''
+    const chars = Array.from(text)
+    
+    for (let i = 0; i < chars.length; i++) {
+      const char = chars[i]
+      currentText += char
+      
+      setMessages((prev) => {
+        const copy = [...prev]
+        if (copy.length > 0) {
+          copy[copy.length - 1] = { ...copy[copy.length - 1], content: currentText }
+        }
+        return copy
+      })
+
+      // Interval between characters
+      await sleep(20)
+
+      // Pause after sentences (. ? !)
+      if (['.', '?', '!'].includes(char) && i < chars.length - 1) {
+        await sleep(400)
+      }
     }
   }
 
@@ -77,31 +110,14 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
 
       const data = await response.json()
       const fullText = data.reply
-      
+
       // Espera 1 segundo simulando digitação
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      setIsTyping(true)
+      await sleep(1000)
       setIsTyping(false)
 
-      // Efeito Typewriter
-      let currentText = ''
-      setMessages((prev) => [...prev, { role: 'assistant', content: '' }])
-      
-      let i = 0
-      const interval = setInterval(() => {
-        if (i < fullText.length) {
-          currentText += fullText[i]
-          setMessages((prev) => {
-            const copy = [...prev]
-            if (copy.length > 0) {
-              copy[copy.length - 1] = { ...copy[copy.length - 1], content: currentText }
-            }
-            return copy
-          })
-          i++
-        } else {
-          clearInterval(interval)
-        }
-      }, 18)
+      // Efeito Typewriter sofisticado
+      await runTypewriter(fullText)
 
     } catch (error) {
       console.error('Error sending message:', error)
