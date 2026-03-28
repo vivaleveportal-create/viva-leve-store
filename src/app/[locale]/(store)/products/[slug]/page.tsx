@@ -158,7 +158,7 @@ export default async function ProductPage({
             <div className="space-y-6 pt-8 border-t border-gray-100">
               <div className="flex items-center gap-4 text-viva-text font-medium text-lg leading-relaxed">
                 <ShieldCheck className="w-6 h-6 text-viva-blue shrink-0" />
-                Pagamento 100% seguro via Stripe
+                Pague na entrega — dinheiro, cartão ou PIX
               </div>
               <div className="flex items-center gap-4 text-viva-text font-medium text-lg leading-relaxed">
                 <Truck className="w-6 h-6 text-viva-blue shrink-0" />
