@@ -47,7 +47,7 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
       setMessages([
         {
           role: 'assistant',
-          content: `Olá! 👋 Sou o Fly, da Viva Leve. Vi que você está vendo o ${productName}. Posso te ajudar com alguma dúvida? 😊`,
+          content: `Olá! 👋 Sou Fly, da Viva Leve. Vi que você está vendo o ${productName}. Posso te ajudar com alguma dúvida? 😊`,
         },
       ])
     }
@@ -76,15 +76,40 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
       })
 
       const data = await response.json()
-      setMessages((prev) => [...prev, { role: 'assistant', content: data.reply }])
+      const fullText = data.reply
+      
+      // Espera 1 segundo simulando digitação
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      setIsTyping(false)
+
+      // Efeito Typewriter
+      let currentText = ''
+      setMessages((prev) => [...prev, { role: 'assistant', content: '' }])
+      
+      let i = 0
+      const interval = setInterval(() => {
+        if (i < fullText.length) {
+          currentText += fullText[i]
+          setMessages((prev) => {
+            const copy = [...prev]
+            if (copy.length > 0) {
+              copy[copy.length - 1] = { ...copy[copy.length - 1], content: currentText }
+            }
+            return copy
+          })
+          i++
+        } else {
+          clearInterval(interval)
+        }
+      }, 18)
+
     } catch (error) {
       console.error('Error sending message:', error)
+      setIsTyping(false)
       setMessages((prev) => [
         ...prev,
         { role: 'assistant', content: 'Desculpe, tive um problema. Poderia tentar novamente?' },
       ])
-    } finally {
-      setIsTyping(false)
     }
   }
 
