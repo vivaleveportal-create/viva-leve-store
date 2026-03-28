@@ -17,7 +17,7 @@
             "modelo": "Cash on Delivery (COD) — o cliente paga no momento da entrega, sem precisar pagar antecipado online.",
             "prazo_capitais": "24 horas nas principais capitais",
             "prazo_demais": "3 a 7 dias úteis para demais regiões",
-            "cobertura": "Capitais e interiores — cobertura em aproximadamente 1/3 do Brasil com frota própria da Logzz.",
+            "cobertura": "Capitais e interiores — cobertura em aproximadamente 1/3 do Brasil com frota própria.",
             "rastreamento": "Sim, o cliente recebe atualizações sobre o status do pedido.",
             "formas_pagamento_na_entrega": [
                 "Dinheiro",
@@ -46,20 +46,36 @@
             "slug": "kit-massagem-ems",
             "categoria": "Saúde e Mobilidade",
             "preco": "R$ 89,90",
-            "descricao_curta": "Kit de massagem com tecnologia EMS (estimulação elétrica muscular) para alívio de dores, relaxamento e recuperação muscular em casa.",
+            "descricao_curta": "Kit de massagem com tecnologia EMS (estimulação elétrica muscular) para alívio de dores, relaxamento, melhora da circulação e redução de inchaço nos pés e pernas — resultado profissional em casa.",
             "beneficios": [
-                "Alivia dores musculares e nas costas",
-                "Relaxa a tensão do dia a dia",
-                "Ajuda na recuperação pós-exercício",
-                "Fácil de usar em qualquer parte do corpo",
-                "Compacto e sem fio"
+                "Alivia dores e tensões musculares no corpo todo",
+                "Melhora a circulação sanguínea e diminui o inchaço nos pés e pernas",
+                "Estimula o sistema linfático, reduzindo inflamações",
+                "Ajuda a reduzir varizes e vasinhos",
+                "Relaxa os músculos após um longo dia de trabalho",
+                "6 modos de massagem EMS e 9 velocidades ajustáveis",
+                "Resultados visíveis com apenas 15 minutos por dia",
+                "Leve, discreto e portátil — usa em qualquer lugar",
+                "Desenvolvido com base em fisioterapia e acupuntura"
             ],
-            "publico_alvo": "Pessoas com dores musculares, tensão nas costas, praticantes de exercício que buscam recuperação, público 40+",
-            "diferenciais": "Tecnologia EMS de estimulação elétrica muscular, resultado profissional em casa, sem precisar de fisioterapeuta",
+            "publico_alvo": "Pessoas com dores musculares, inchaço nos pés e pernas, varizes, quem fica muito tempo em pé ou sentado, praticantes de exercício que buscam recuperação, público 40+",
+            "diferenciais": "Tecnologia EMS usada em fisioterapia profissional há décadas, agora para uso em casa. 6 modos e 9 velocidades ajustáveis. Resultado em apenas 15 minutos por dia. Portátil e sem fio.",
             "objecoes_comuns": {
-                "dói usar?": "Não dói. A estimulação EMS é suave e pode ser regulada conforme a sensibilidade de cada pessoa.",
-                "é seguro?": "Sim, é totalmente seguro para uso doméstico. Evitar uso em pessoas com marca-passo ou gestantes.",
-                "funciona mesmo?": "Sim. A tecnologia EMS é usada em fisioterapia profissional há décadas. O kit traz essa tecnologia para uso em casa."
+                "dói usar?": "Não dói. A estimulação EMS é suave e pode ser regulada conforme a sensibilidade de cada pessoa. A maioria sente um formigamento leve e agradável.",
+                "é seguro?": "Sim, é totalmente seguro para uso doméstico. Apenas evitar em pessoas com marca-passo ou gestantes.",
+                "funciona mesmo?": "Sim. A tecnologia EMS é usada em fisioterapia profissional há décadas. O kit traz essa tecnologia para uso em casa, com resultados visíveis em poucos dias.",
+                "quanto tempo por dia?": "Apenas 15 minutos por dia já são suficientes para sentir os resultados.",
+                "posso usar em pé?": "O ideal é usar sentada em um lugar confortável, relaxando enquanto o aparelho age no seu corpo.",
+                "precisa carregar?": "Sim, é recarregável. Após cada sessão, recarregue para garantir o máximo desempenho na próxima.",
+                "ajuda com varizes?": "Sim. A estimulação melhora a circulação e pode reduzir o aparecimento de varizes e vasinhos com o uso regular.",
+                "ajuda com inchaço nas pernas?": "Sim! Esse é um dos principais benefícios — os pulsos EMS estimulam o sistema linfático e reduzem o inchaço nos pés, pernas e coxas."
+            },
+            "script_atendimento": {
+                "abertura": "Oi! Vi que você está vendo o Kit Massagem EMS. Posso te contar um pouquinho sobre ele?",
+                "promessa": "Ele foi desenvolvido pra quem sofre com dores, cansaço nas pernas ou inchaço — e quer sentir alívio em casa, sem precisar ir a uma clínica.",
+                "gancho_apos_beneficios": "Ficou alguma dúvida ou posso te dizer o preço?",
+                "escassez": "Temos unidades à pronta entrega aí, e você só paga quando o produto chegar na sua mão — no débito, crédito em até 12x ou PIX.",
+                "pos_venda": "Assim que chegar, me conta o que achou! E qualquer dúvida sobre o uso, é só chamar aqui no chat ou pelo WhatsApp."
             },
             "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
         },
@@ -79,7 +95,7 @@
                 "Ideal para apartamentos, casas com pets e home office"
             ],
             "publico_alvo": "Donos de pets, pessoas que trabalham fora, quem mora em apartamento, quem tem mobilidade reduzida",
-            "diferenciais": "Libera tempo do cliente, sensor anticolisão, baixo ruído, recarregável",
+            "diferenciais": "Libera tempo do cliente, sensor anticolisão, baixo ruído, recarregável via USB",
             "objecoes_comuns": {
                 "aspira bem?": "Sim, aspira pelos, poeira e sujeira do dia a dia com eficiência. Ideal para manutenção diária.",
                 "passa embaixo de móveis?": "Sim, o design slim permite que passe embaixo de sofás, camas e móveis baixos.",
@@ -93,23 +109,34 @@
             "slug": "camera-lampada-360-wi-fi",
             "categoria": "Eletrônicos e Tecnologia",
             "preco": "R$ 149,90",
-            "descricao_curta": "Câmera de segurança Full HD disfarçada de lâmpada que encaixa no bocal E27 padrão. Rotação 360°, visão noturna e áudio bidirecional pelo celular.",
+            "descricao_curta": "Câmera de segurança Full HD disfarçada de lâmpada que encaixa no bocal E27 padrão. Rotação 360°, visão noturna e áudio bidirecional pelo celular — instalação em menos de 60 segundos, sem furar paredes.",
             "beneficios": [
-                "Instalação plug & play — encaixa no bocal E27 padrão",
-                "Rotação 360° pelo app — sem pontos cegos",
-                "Visão noturna infravermelha",
-                "Áudio bidirecional — fala e ouve pelo celular",
-                "Detecção de movimento com alerta no celular",
-                "Entrada para cartão SD",
-                "Ideal para casa, apartamento, comércio e monitoramento de pets"
+                "Instalação plug & play — encaixa no bocal E27 padrão como uma lâmpada comum",
+                "Rotação 360° pelo app — sem pontos cegos, controle total pelo celular",
+                "Visão noturna infravermelha — enxerga mesmo no escuro total",
+                "Áudio bidirecional — fala e ouve pelo celular em tempo real",
+                "Detecção de movimento com alerta imediato no celular",
+                "Entrada para cartão SD — grava localmente mesmo sem internet",
+                "Zero mensalidade — sem contratos ou cobranças mensais",
+                "Ideal para casa, apartamento, comércio, monitoramento de pets e crianças"
             ],
-            "publico_alvo": "Pais de família, donos de pets, moradores de apartamento, pequenos comerciantes, quem quer monitorar babá ou funcionários",
-            "diferenciais": "Instalação em 60 segundos sem furar paredes, disfarçada de lâmpada, sem mensalidade, sem técnico",
+            "publico_alvo": "Pais de família, donos de pets, moradores de apartamento (inclusive de aluguel), pequenos comerciantes, quem quer monitorar babá ou cuidadores, pessoas que viajam e querem ver a casa de longe",
+            "diferenciais": "Instalação em 60 segundos sem furar paredes, disfarçada de lâmpada comum — ninguém percebe que é câmera. Sem mensalidade, sem técnico, sem obra.",
+            "problema_que_resolve": "A 'Síndrome da Porta Fechada' — a insegurança que bate quando o cliente sai de casa para trabalhar ou viajar. Sistemas de CFTV tradicionais custam caro e exigem instalação. Câmeras fixas têm pontos cegos. Esta câmera elimina tudo isso.",
             "objecoes_comuns": {
-                "é difícil instalar?": "Não. É só encaixar no bocal de lâmpada padrão, como trocar uma lâmpada comum. Em 60 segundos está funcionando.",
-                "funciona sem internet?": "Precisa de Wi-Fi para monitoramento remoto pelo celular. Com cartão SD, grava localmente mesmo sem internet.",
-                "a imagem é boa à noite?": "Sim, tem visão noturna infravermelha que permite ver mesmo no escuro total.",
-                "e se o ladrão desencaixar?": "A câmera registra tudo antes disso. Além disso, por parecer uma lâmpada comum, dificilmente é identificada."
+                "é difícil instalar?": "Não. É só encaixar no bocal de lâmpada padrão, como trocar uma lâmpada comum. Em 60 segundos está funcionando — sem furar paredes, sem eletricista.",
+                "funciona sem internet?": "Precisa de Wi-Fi para monitoramento remoto pelo celular. Com cartão SD inserido, grava localmente mesmo sem internet.",
+                "a imagem é boa à noite?": "Sim, tem visão noturna infravermelha que permite ver claramente mesmo no escuro total.",
+                "e se o ladrão desencaixar?": "A câmera registra tudo antes disso. E por parecer uma lâmpada comum, dificilmente é identificada como câmera.",
+                "vai sobrecarregar meu Wi-Fi?": "Não. O consumo de dados é baixo e estável, similar a qualquer câmera IP doméstica.",
+                "o app é difícil de usar?": "Não. É simples e intuitivo — você instala, pareia e já está monitorando em minutos.",
+                "e se acabar a luz?": "Sem energia elétrica no bocal, a câmera fica offline. Com cartão SD ela retoma a gravação assim que a energia volta.",
+                "tem mensalidade?": "Não. É compra única, sem nenhuma cobrança mensal."
+            },
+            "angulos_de_venda": {
+                "seguranca": "Sua casa tem olhos, e eles giram 360°. Elimine pontos cegos e tenha controle total pelo celular.",
+                "familia": "Veja o que seu pet ou seus filhos estão fazendo agora, de onde você estiver — e ainda pode falar com eles pelo áudio.",
+                "conveniencia": "Tão fácil quanto trocar uma lâmpada. Sem obra, sem técnico, sem mensalidade."
             },
             "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
         },
@@ -129,7 +156,7 @@
                 "Ideal para chaves, carteira, mochila, carro e coleira de pets"
             ],
             "publico_alvo": "Pessoas esquecidas, viajantes, universitários, profissionais que se deslocam muito, pais que querem monitorar mochila dos filhos",
-            "diferenciais": "Alerta quando o objeto se afasta, funciona como controle de selfie, bateria dura meses",
+            "diferenciais": "Alerta quando o objeto se afasta, funciona como controle de selfie, bateria dura meses sem precisar recarregar",
             "objecoes_comuns": {
                 "funciona longe?": "Funciona por Bluetooth, com alcance de aproximadamente 30 a 60 metros. Para distâncias maiores, o mapa mostra o último local registrado.",
                 "a bateria dura quanto?": "Meses com uso normal. Usa pilha CR2032 comum, fácil de encontrar e barata para repor.",
@@ -143,21 +170,36 @@
             "slug": "caneta-depiladora-eletrica-recarregavel",
             "categoria": "Beleza e Cuidados Pessoais",
             "preco": "R$ 119,90",
-            "descricao_curta": "Caneta depiladora elétrica recarregável via USB com luz LED embutida. Remove pelos do rosto e corpo sem dor, com precisão profissional.",
+            "descricao_curta": "Caneta depiladora elétrica recarregável via USB com luz LED embutida. Remove pelos do rosto e corpo sem dor, sem puxar, com precisão profissional — sobrancelhas perfeitas em segundos, em casa.",
             "beneficios": [
-                "Depilação indolor — sem dor, sem irritação",
-                "Luz LED embutida para maior precisão",
+                "Depilação 100% indolor — sem dor, sem irritação, sem vermelhidão",
+                "Micro-Aparação Circular com 12.000 vibrações por minuto — corta o pelo na superfície sem tocar na pele",
+                "Não causa flacidez nas pálpebras — diferente da cera que puxa o colágeno",
+                "Luz LED embutida — enxerga até os pelos mais finos e transparentes",
                 "Recarregável via USB — sem pilhas",
-                "Design caneta — compacta e fácil de usar",
+                "Design caneta — compacta, leve e fácil de usar",
                 "Ideal para sobrancelhas, buço, rosto e corpo",
-                "Resultado profissional em casa"
+                "Resultado de salão em casa, em segundos"
             ],
-            "publico_alvo": "Mulheres que querem praticidade na depilação, quem quer economizar com salão, público que busca autocuidado em casa",
-            "diferenciais": "Sem dor, sem cera quente, sem pinça, recarregável, luz LED para precisão",
+            "publico_alvo": "Mulheres de 36 a 45 anos que sofrem com a dor da pinça, têm medo da cera causar flacidez nas pálpebras, têm dificuldade de enxergar pelos finos, querem economizar com salão e ter autonomia sobre a própria beleza",
+            "diferenciais": "Mecanismo de Micro-Aparação Circular — ao contrário da pinça que puxa o nervo e dói, ou da cera que puxa o colágeno da pele, esta caneta vibra 12.000 vezes por minuto e corta o pelo suavemente na superfície, sem encravar e sem agredir a pele. A luz LED resolve o problema de quem tem dificuldade de enxergar pelos finos.",
+            "problema_que_resolve": "O ciclo doloroso entre pinça (que dói e lacrimeja) e salão (que custa caro e depende de agenda). A cliente quer sobrancelhas perfeitas sem sofrimento, sem depender de terceiros e sem medo de estragar o rosto.",
             "objecoes_comuns": {
-                "dói?": "Não dói. É completamente indolor, diferente de pinça ou cera.",
-                "remove bem os pelos?": "Sim, com precisão profissional. A luz LED ajuda a ver até os pelos mais finos.",
-                "precisa de pilha?": "Não. É recarregável via USB, como um celular."
+                "dói?": "Não dói nada. É completamente indolor — diferente da pinça que puxa o nervo, esta caneta apenas corta o pelo na superfície, sem nenhum contato com a pele.",
+                "remove bem os pelos?": "Sim, com precisão profissional. A luz LED ajuda a enxergar até os pelos mais finos e transparentes que a gente normalmente não vê no espelho.",
+                "precisa de pilha?": "Não. É recarregável via USB, como um celular.",
+                "pode causar flacidez na pálpebra?": "Não. Ao contrário da cera, que puxa o colágeno da pálpebra a cada aplicação, esta caneta corta o pelo sem nenhuma tração na pele — preservando o colágeno.",
+                "tenho mão tremida, consigo usar?": "Sim. O formato ergonômico em caneta dá estabilidade total, e a luz LED foca exatamente no pelo — mesmo quem não tem mão firme consegue um resultado preciso.",
+                "pode cortar a pele?": "Não. A ponteira cônica foi projetada para que apenas o pelo entre na zona de corte, protegendo completamente a pele ao redor.",
+                "o pelo cresce mais grosso?": "Não. Esse é um mito. O pelo cortado na superfície volta exatamente igual — não muda a espessura nem a textura.",
+                "quanto tempo economizo com salão?": "Em 2 meses de uso, o produto já se paga só em economia com design de sobrancelhas. Além de eliminar o tempo de deslocamento e a dependência de agenda."
+            },
+            "script_atendimento": {
+                "abertura": "Oi! Que bom que você entrou em contato. Posso te explicar rapidinho como a Caneta Depiladora funciona e o que ela resolve?",
+                "apresentacao": "Muitas clientes me procuram cansadas de sofrer com a dor da pinça ou com medo de a cera deixar a pálpebra flácida com o tempo. Essa caneta foi feita justamente pra resolver isso — sem dor, sem risco, com resultado de salão em casa.",
+                "mecanismo": "O segredo é a Micro-Aparação Circular de Precisão. Ela vibra 12.000 vezes por minuto e corta o pelo suavemente na superfície, sem encravar e sem agredir a sua pele. E ainda tem luz LED embutida pra você enxergar até os pelinhos mais fininhos.",
+                "gancho": "Ficou com alguma dúvida ou posso te mostrar as condições especiais de hoje?",
+                "fechamento": "Você só paga quando o produto chegar na sua mão — sem risco nenhum. E qualquer dúvida no uso, é só me chamar aqui!"
             },
             "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
         },
@@ -167,21 +209,22 @@
             "slug": "escova-a-vapor-para-pets-3-em-1",
             "categoria": "Pets",
             "preco": "R$ 129,90",
-            "descricao_curta": "Escova a vapor 3 em 1 para cães e gatos que remove pelos mortos, desembaraça nós e faz massagem relaxante ao mesmo tempo, com vapor frio seguro.",
+            "descricao_curta": "Escova a vapor 3 em 1 para cães e gatos que remove pelos mortos, desembaraça nós e faz massagem relaxante ao mesmo tempo, com vapor frio 100% seguro.",
             "beneficios": [
                 "Remove pelos mortos com facilidade",
                 "Desembaraça nós sem puxar e sem machucar",
-                "Massagem relaxante — o pet ama",
+                "Massagem relaxante — o pet ama e fica tranquilo",
                 "Vapor frio — 100% seguro para cães e gatos",
-                "3 em 1: escova, remove pelos e limpa",
-                "Reduz pelos espalhados pela casa"
+                "3 em 1: escova, remove pelos e limpa ao mesmo tempo",
+                "Reduz pelos espalhados pela casa e nos móveis"
             ],
-            "publico_alvo": "Donos de cães e gatos, quem tem problema com pelos espalhados pela casa, quem quer cuidar do pet em casa",
-            "diferenciais": "Vapor frio seguro, pet fica relaxado durante o uso, resolve 3 problemas ao mesmo tempo",
+            "publico_alvo": "Donos de cães e gatos, quem tem problema com pelos espalhados pela casa, quem quer cuidar do pet em casa com praticidade",
+            "diferenciais": "Vapor frio seguro para qualquer raça ou tamanho. O pet relaxa durante o uso em vez de fugir. Resolve 3 problemas ao mesmo tempo: escova, desembaraça e limpa.",
             "objecoes_comuns": {
-                "machuca o pet?": "Não. O vapor frio é suave e seguro. A maioria dos pets relaxa durante o uso.",
-                "funciona em gatos?": "Sim, funciona em cães e gatos de todos os tamanhos.",
-                "resolve pelos na casa?": "Sim, ao remover pelos mortos regularmente, reduz muito a quantidade de pelos espalhados pelos móveis e chão."
+                "machuca o pet?": "Não. O vapor frio é completamente suave e seguro. A maioria dos pets relaxa durante o uso — muitos adoram a sensação.",
+                "funciona em gatos?": "Sim, funciona em cães e gatos de todos os tamanhos e raças.",
+                "resolve pelos espalhados na casa?": "Sim. Ao remover os pelos mortos regularmente, reduz muito a quantidade de pelos nos móveis, sofá e chão.",
+                "o vapor é quente?": "Não. É vapor frio — sem risco de queimadura para o pet ou para você."
             },
             "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
         },
@@ -191,21 +234,23 @@
             "slug": "modelador-termico-de-cilios-eletrico",
             "categoria": "Beleza e Cuidados Pessoais",
             "preco": "R$ 69,90",
-            "descricao_curta": "Modelador elétrico que aquece em 15 a 30 segundos e curva os cílios com precisão de pente, deixando a curvatura mais bonita e duradoura.",
+            "descricao_curta": "Modelador elétrico que aquece em 15 a 30 segundos e curva os cílios com precisão de pente, deixando a curvatura mais bonita e duradoura que o curvador manual.",
             "beneficios": [
-                "Aquece em 15 a 30 segundos",
+                "Aquece em 15 a 30 segundos — pronto para usar rapidinho",
                 "Separa e alinha os cílios com precisão",
+                "Curvatura mais duradoura que curvador manual",
                 "Funciona com ou sem rímel",
                 "Para efeito mais duradouro, aplique rímel após o uso",
                 "Leve e compacto — cabe em qualquer necessaire",
                 "Fácil de usar — liga e desliga com um botão"
             ],
-            "publico_alvo": "Mulheres que querem cílios curvados sem curvador manual, quem quer resultado mais duradouro, público de maquiagem",
-            "diferenciais": "Resultado mais duradouro que curvador manual, separa e alinha os cílios, funciona com ou sem rímel",
+            "publico_alvo": "Mulheres que querem cílios curvados sem curvador manual, quem quer resultado mais duradouro, público de maquiagem e autocuidado",
+            "diferenciais": "Resultado mais duradouro que curvador manual, separa e alinha os cílios individualmente, funciona com ou sem rímel",
             "objecoes_comuns": {
-                "queima os cílios?": "Não. O calor é controlado e suave, projetado especificamente para cílios.",
-                "dura o dia todo?": "Sim, especialmente se aplicar rímel após o uso, a curvatura dura o dia todo.",
-                "é fácil de usar?": "Sim. Liga, aguarda 30 segundos aquecer e aplica nos cílios. Simples como um pente."
+                "queima os cílios?": "Não. O calor é controlado e suave, projetado especificamente para cílios — sem risco de queimar ou danificar.",
+                "dura o dia todo?": "Sim, especialmente se aplicar rímel após o uso. A curvatura fica firme o dia todo.",
+                "é fácil de usar?": "Sim. Liga, aguarda 30 segundos aquecer e aplica nos cílios — simples como usar um pente.",
+                "funciona com extensão de cílios?": "Não é recomendado para extensões. É ideal para cílios naturais."
             },
             "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
         },
@@ -215,21 +260,34 @@
             "slug": "lixa-de-pe-eletrica-recarregavel",
             "categoria": "Cuidados com a Pele",
             "preco": "R$ 119,90",
-            "descricao_curta": "Lixa elétrica recarregável que remove calos e pele ressecada dos pés com resultado profissional em minutos. Duas velocidades e cabeças intercambiáveis.",
+            "descricao_curta": "Lixa elétrica recarregável que remove calos e pele ressecada dos pés com resultado profissional em minutos. Duas velocidades, cabeças intercambiáveis e sem esforço físico.",
             "beneficios": [
-                "Remove calos e pele ressecada rapidamente",
+                "Remove calos e pele ressecada em menos de 10 minutos",
                 "2 velocidades — pele sensível ou calos mais resistentes",
-                "Cabeças intercambiáveis fina e grossa",
+                "Cabeças intercambiáveis fina e grossa — para cada tipo de pele",
+                "Micro-esfoliação mecânica com rotação 360° — acabamento uniforme",
                 "Recarregável via USB — sem pilhas",
-                "Design ergonômico — alcança todas as áreas do pé",
-                "Kit completo: aparelho + cabo de carregamento + 2 cabeças"
+                "Design ergonômico — alcança todas as áreas do pé sem esforço",
+                "Kit completo: aparelho + cabo de carregamento + 2 cabeças",
+                "Liberdade para usar sandálias e andar descalça sem vergonha"
             ],
-            "publico_alvo": "Mulheres 35+, pessoas com calos e pés ressecados, quem quer pedicure em casa, profissionais que ficam muito tempo em pé",
-            "diferenciais": "Resultado de podólogo em casa, sem esforço, sem dor, 2 velocidades para qualquer tipo de pele",
+            "publico_alvo": "Mulheres 35+, pessoas com calos e pés ressecados, quem quer resultado de pedicure em casa, profissionais que ficam muito tempo em pé, quem evita sandálias por vergonha dos pés",
+            "diferenciais": "Mecanismo de micro-pulverização elétrica — diferente da lixa manual que cansa o braço e deixa o acabamento irregular, este aparelho desintegra apenas as células mortas em alta rotação, entregando uniformidade impossível de replicar manualmente. Se pressionar demais, o motor reduz — a pele saudável nunca é atingida.",
+            "problema_que_resolve": "A 'síndrome dos pés escondidos' — vergonha de usar sandálias, de ficar descalça na piscina ou em momentos de intimidade. Pedicure de salão custa caro e tem risco de fungo. Lixa manual cansa e não entrega resultado uniforme. Este aparelho resolve em 10 minutos em casa.",
             "objecoes_comuns": {
-                "dói usar?": "Não dói. É suave e pode ser regulada entre 2 velocidades conforme a sensibilidade.",
-                "remove calos difíceis?": "Sim. A cabeça grossa é específica para calos mais resistentes.",
-                "precisa de pilha?": "Não. É recarregável via USB."
+                "dói usar?": "Não dói. É suave e pode ser regulada entre 2 velocidades conforme a sensibilidade da sua pele.",
+                "remove calos difíceis?": "Sim. A cabeça grossa é específica para calos mais resistentes, e o motor tem torque suficiente para peles endurecidas.",
+                "o motor vai parar se eu pressionar?": "Ele tem proteção inteligente — se pressionar demais, reduz a rotação para não machucar. Isso é um recurso de segurança, não fraqueza.",
+                "precisa de pilha?": "Não. É recarregável via USB.",
+                "voa pó de pele pela casa?": "O pó fica concentrado na área de contato. É recomendado usar em banheiro ou sobre uma toalha para facilitar a limpeza.",
+                "as cabeças têm reposição?": "Sim. As cabeças de reposição são encontradas facilmente.",
+                "a bateria vicia rápido?": "Não. A bateria recarregável tem boa durabilidade com uso regular.",
+                "vai machucar se lixar demais?": "Não. O mecanismo de torque inteligente reduz a força automaticamente se a pressão for excessiva, protegendo a pele saudável."
+            },
+            "angulos_de_venda": {
+                "economia": "O aparelho se paga em 1 a 2 sessões de pedicure. Depois disso, é lucro puro todo mês.",
+                "estetica": "A liberdade de usar qualquer sandália, andar descalça e se sentir bonita — sem depender de salão.",
+                "praticidade": "Resultado de podólogo em 10 minutos, no conforto de casa, enquanto assiste TV."
             },
             "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
         },
@@ -239,21 +297,33 @@
             "slug": "luminaria-mata-mosquito-uv",
             "categoria": "Casa e Utilidades",
             "preco": "R$ 89,90",
-            "descricao_curta": "Luminária com tecnologia UV que atrai e elimina mosquitos silenciosamente, sem químicos, sem cheiro e sem refis. Conexão USB.",
+            "descricao_curta": "Luminária com tecnologia UV que atrai mosquitos pela luz, captura com micro-ventilador silencioso e elimina por desidratação natural — zero química, zero cheiro, zero barulho, zero refil.",
             "beneficios": [
-                "Tecnologia UV — atrai e elimina mosquitos sem químicos",
-                "Sem cheiro, sem barulho, sem refis",
-                "Conexão USB — funciona em tomada, carregador ou power bank",
-                "Portátil — ideal para quartos, salas e acampamentos",
-                "Design moderno — parece luminária, não armadilha",
-                "Proteção contínua para toda a família"
+                "Tecnologia UV — atrai mosquitos pelo instinto natural, sem química",
+                "Micro-ventilador silencioso — suga o mosquito para dentro da câmara (menos de 35dB, como um sussurro)",
+                "Elimina por desidratação natural — zero veneno, zero cheiro",
+                "Sem refil para comprar — economia contínua",
+                "Conexão USB — funciona em tomada, carregador de celular ou power bank",
+                "Portátil — ideal para quartos, salas, área externa e acampamentos",
+                "Design moderno — parece luminária decorativa, não armadilha",
+                "Proteção contínua 24h para toda a família"
             ],
-            "publico_alvo": "Famílias com crianças, pessoas com alergia a repelente químico, quem sofre com mosquitos à noite, moradores de áreas litorâneas",
-            "diferenciais": "Sem químicos, sem odor, sem refis para comprar, portátil via USB, silenciosa",
+            "publico_alvo": "Famílias com crianças, pessoas com alergia a inseticida químico, quem sofre com mosquitos à noite, moradores de áreas litorâneas ou com muito mato próximo",
+            "diferenciais": "Diferente do inseticida que polui o ar e do repelente que tem cheiro forte, esta luminária trabalha em silêncio, sem química e sem nenhum custo adicional após a compra — sem refis, sem recargas.",
+            "problema_que_resolve": "O incômodo de dormir com zumbido de mosquito no ouvido, o cheiro forte de inseticida, o barulho da raquete elétrica e o custo contínuo de refis. Esta luminária trabalha sozinha, em silêncio, enquanto você dorme.",
             "objecoes_comuns": {
-                "funciona de verdade?": "Sim. A luz UV atrai mosquitos naturalmente — é o mesmo princípio usado em armadilhas profissionais.",
-                "faz barulho?": "Não. É completamente silenciosa, ideal para o quarto.",
-                "precisa de tomada?": "Funciona via USB — tomada, carregador de celular ou power bank. Muito versátil."
+                "funciona de verdade?": "Sim. A luz UV atrai mosquitos pelo instinto natural — é o mesmo princípio usado em armadilhas profissionais de controle de pragas.",
+                "faz barulho?": "Não. É completamente silenciosa — menos de 35dB, equivalente a um sussurro. Ideal para usar no quarto durante o sono.",
+                "precisa de tomada?": "Funciona via USB — pode usar em tomada, carregador de celular ou até power bank. Muito versátil.",
+                "tem cheiro?": "Não. Zero química, zero odor — segura para crianças, bebês e pets.",
+                "precisa de refil?": "Não. Funciona indefinidamente sem nenhum custo adicional após a compra.",
+                "funciona em área aberta?": "Funciona melhor em ambientes fechados. Em áreas externas com muito vento, a eficiência reduz."
+            },
+            "script_atendimento": {
+                "abertura": "Oi! Vi que você está vendo a Luminária Mata Mosquito. Vou te explicar rapidinho como ela funciona — é bem inteligente!",
+                "mecanismo": "Ela usa luz UV para atrair o mosquito pelo instinto natural, um micro-ventilador silencioso puxa ele para dentro, e lá ele é eliminado por desidratação — sem veneno, sem cheiro, sem barulho.",
+                "diferencial": "Diferente do inseticida e da raquete, você nem percebe que ela está funcionando. Só nota quando vê a quantidade de mosquitos que ela eliminou.",
+                "fechamento": "E você só paga quando receber — sem risco nenhum. Qualquer dúvida, é só chamar!"
             },
             "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
         },
@@ -263,21 +333,34 @@
             "slug": "barbeador-eletrico-3-em-1",
             "categoria": "Beleza e Cuidados Pessoais",
             "preco": "R$ 139,90",
-            "descricao_curta": "Barbeador elétrico 3 em 1 com cabeças intercambiáveis para barba, cabelo e pelos de nariz/ouvido. Recarregável via USB, sem fio.",
+            "descricao_curta": "Barbeador elétrico 3 em 1 com Malha de Proteção Titanium Shave — pele zero irritação, zero foliculite. Cabeças para barba, cabelo e pelos de nariz/ouvido. Recarregável via USB, sem fio.",
             "beneficios": [
-                "3 em 1: barbeador, aparador de cabelo e pelos de nariz/ouvido",
-                "Cabeças removíveis e intercambiáveis",
+                "Pele sem irritação — a lâmina nunca toca a pele diretamente",
+                "Zero foliculite — corte não invasivo que respeita o sentido de crescimento do pelo",
+                "3 em 1: barbeador, aparador de cabelo e aparador de pelos de nariz/ouvido",
+                "Malha de Proteção Titanium Shave — pelo entra pelos microfuros e é cortado por baixo com segurança",
+                "Cabeças removíveis, intercambiáveis e fáceis de lavar",
                 "Recarregável via USB — sem pilhas",
-                "Design ergonômico e leve",
-                "Cabeças fáceis de lavar",
+                "Design ergonômico e leve — fácil de usar no banho ou antes de sair",
                 "Kit completo: motor + 3 cabeças + cabo de carregamento"
             ],
-            "publico_alvo": "Homens que buscam praticidade, viajantes, profissionais, homens modernos que se cuidam",
-            "diferenciais": "3 funções num só aparelho, sem pilhas, cabeças laváveis, custo-benefício alto",
+            "publico_alvo": "Homens de 26 a 35 anos, profissionais urbanos que precisam manter aparência polida, quem sofre com irritação e foliculite após a lâmina, quem quer reduzir idas ao barbeiro e economizar com lâminas descartáveis",
+            "diferenciais": "Mecanismo de Corte Não Invasivo com Malha Titanium Shave — ao contrário da lâmina descartável que toca a derme e causa microcortes, irritação e foliculite, este barbeador corta o pelo pelos microfuros da tela protetora, sem a lâmina jamais tocar a pele. Sistema modular concentra o torque do motor em cada função específica.",
+            "problema_que_resolve": "O ciclo de irritação matinal — fazer a barba com lâmina e passar o dia com pele ardendo, manchas no pescoço e foliculite. Além da dependência de barbeiro para manter o acabamento e o gasto contínuo com lâminas descartáveis que perdem o fio em 3 usos.",
             "objecoes_comuns": {
-                "corta bem a barba?": "Sim, a cabeça de barbeador é específica para aparar barba com precisão.",
-                "precisa de fio?": "Não. É recarregável via USB e funciona sem fio.",
-                "as cabeças são fáceis de trocar?": "Sim, a troca é feita em segundos sem nenhuma ferramenta."
+                "corta bem a barba?": "Sim. A cabeça de barbeador tem motor de alta rotação específico para aparar barba com precisão.",
+                "precisa de fio?": "Não. É totalmente sem fio — recarregável via USB.",
+                "as cabeças são fáceis de trocar?": "Sim, a troca é feita em segundos sem nenhuma ferramenta.",
+                "funciona em barba grossa?": "Sim. O sistema modular concentra o torque do motor na função específica, sem engasgar em fios mais grossos.",
+                "a bateria dura a barba inteira?": "Sim. A autonomia é suficiente para uso completo sem interrupções.",
+                "onde compro cabeças de reposição?": "As cabeças de reposição são encontradas facilmente para repor quando necessário.",
+                "causa foliculite?": "Não. Ao contrário da lâmina que altera o sentido de crescimento do pelo, este barbeador corta sem tocar na derme — reduzindo drasticamente a inflamação dos poros.",
+                "vale mais que lâmina descartável?": "Muito mais. O aparelho equivale a 4 ou 5 pacotes de lâminas premium. Em 6 meses já se pagou e você não gasta mais nada."
+            },
+            "angulos_de_venda": {
+                "saude": "Fim da tortura matinal — pele sem irritação, sem foliculite, sem manchas no pescoço.",
+                "visual": "Aparência de 'saído do barbeiro' todos os dias, sem depender de agenda.",
+                "financeiro": "Matemática simples: o aparelho se paga em menos de 6 meses comparado ao gasto com lâminas e idas extras ao barbeiro."
             },
             "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
         },
@@ -287,21 +370,34 @@
             "slug": "mini-camera-wi-fi-a9",
             "categoria": "Eletrônicos e Tecnologia",
             "preco": "R$ 109,90",
-            "descricao_curta": "Mini câmera Wi-Fi compacta e discreta com visão noturna, detecção de movimento e monitoramento em tempo real pelo celular.",
+            "descricao_curta": "Microcâmera Wi-Fi de 4cm com Full HD, visão noturna, detecção de movimento e monitoramento em tempo real pelo celular — discreta o suficiente para se esconder em qualquer ambiente.",
             "beneficios": [
-                "Monitoramento em tempo real pelo celular",
-                "Visão noturna — enxerga no escuro",
-                "Detecção de movimento com alerta no celular",
-                "Design ultra compacto e discreto",
+                "Monitoramento em tempo real pelo celular de qualquer lugar",
+                "Visão noturna infravermelha — enxerga claramente no escuro",
+                "Detecção de movimento com alerta imediato no celular",
+                "Design ultra compacto (4cm) e discreto — se encaixa em qualquer ambiente",
+                "Lente grande-angular 150° — campo de visão amplo",
                 "Conexão Wi-Fi — sem fio",
-                "Ideal para casa, comércio, monitoramento de babá e pets"
+                "Entrada para cartão SD — grava localmente sem depender de internet",
+                "Zero mensalidade — sem contratos mensais",
+                "Ideal para monitorar babá, cuidadores de idosos, pets e segurança patrimonial"
             ],
-            "publico_alvo": "Pais que querem monitorar babá, donos de pets, pequenos comerciantes, quem quer segurança discreta em casa",
-            "diferenciais": "Ultra compacta, discreta, visão noturna, alerta de movimento, sem mensalidade",
+            "publico_alvo": "Pais que querem monitorar babá ou cuidadores, donos de pets, filhos de pais idosos que moram sozinhos, pequenos comerciantes, quem quer segurança discreta em casa sem revelar que há câmeras",
+            "diferenciais": "Mimetismo de Monitoramento — diferente das câmeras CFTV que giram, piscam e alertam que estão filmando (gerando o 'efeito teatro' onde o comportamento muda), a A9 é tão pequena e discreta que se torna parte do ambiente. Ninguém sabe que está sendo monitorado — o que garante ver o comportamento real.",
+            "problema_que_resolve": "A ansiedade de não saber o que acontece em casa quando você não está — se o filho está sendo bem tratado pela babá, se o idoso está seguro, se funcionários estão cumprindo o combinado. Câmeras grandes e óbvias não resolvem porque mudam o comportamento de quem é vigiado.",
             "objecoes_comuns": {
                 "precisa de Wi-Fi?": "Sim, para monitoramento remoto pelo celular. Sem Wi-Fi, pode gravar localmente com cartão SD.",
-                "a imagem é boa?": "Sim, Full HD com visão noturna infravermelha.",
-                "é difícil configurar?": "Não. Baixa o app, conecta no Wi-Fi e está funcionando em minutos."
+                "a imagem é boa?": "Sim, Full HD com visão noturna infravermelha — imagem clara o suficiente para ser usada como prova se necessário.",
+                "é difícil configurar?": "Não. Baixa o app, conecta no Wi-Fi e está funcionando em minutos.",
+                "a bateria dura quanto?": "Quando ligada na tomada, funciona continuamente. Com bateria interna, a autonomia varia conforme o uso.",
+                "a imagem fica granulada?": "Não. A resolução Full HD garante imagem nítida mesmo à noite com a visão noturna ativa.",
+                "é legal filmar sem avisar?": "Para monitoramento dentro da própria residência ou estabelecimento comercial, é um direito do proprietário. Em caso de dúvida específica, consulte um advogado.",
+                "é difícil esconder?": "Com apenas 4cm, ela cabe em estantes, ao lado de objetos decorativos, eletrônicos e em praticamente qualquer canto discreto."
+            },
+            "angulos_de_venda": {
+                "familia": "Veja o que acontece na sua casa quando você vira as costas — babás, cuidadores, filhos e pets monitorados com discrição total.",
+                "patrimonio": "Câmera invisível que ninguém percebe — ideal para quem tem circulação de prestadores de serviço em casa.",
+                "idosos": "Paz de espírito para quem tem pais idosos morando sozinhos — monitore com discrição sem tirar a autonomia deles."
             },
             "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
         },
@@ -311,21 +407,34 @@
             "slug": "fone-bluetooth-m10-com-power-bank-integrado",
             "categoria": "Eletrônicos e Tecnologia",
             "preco": "R$ 129,90",
-            "descricao_curta": "Fone Bluetooth 5.3 com case que funciona como power bank, display LED de bateria, resistente à água IPX7 e zero delay para games.",
+            "descricao_curta": "Fone Bluetooth 5.3 com cancelamento de ruído, microfone de alta qualidade, case resistente a quedas com power bank e display LED de bateria — 20h de autonomia, resistente à água IPX6.",
             "beneficios": [
-                "Bluetooth 5.3 — conexão estável e sem atraso",
-                "Case com power bank — carrega o fone e o celular em emergências",
-                "Display LED — mostra a bateria com precisão",
-                "Resistente à água IPX7 — ideal para treinos",
-                "Som de alta qualidade com zero delay",
-                "Ideal para música, academia, trabalho e games"
+                "Cancelamento de ruído — sem chiados em ligações ou gravações de áudio",
+                "Microfone embutido de alta qualidade — as pessoas te ouvem com clareza máxima",
+                "Case com power bank integrado — carrega o fone várias vezes e ainda dá carga extra ao celular",
+                "Display LED na case — mostra a bateria com precisão",
+                "20 horas de autonomia total — para o dia inteiro sem interrupção",
+                "Resistente a quedas e à água IPX6 — suporta suor e respingos",
+                "Bluetooth 5.3 — conexão estável e zero delay para games e vídeos",
+                "Kit de borrachas incluso — encaixe personalizado para cada ouvido",
+                "Controle de volume e troca de música no próprio fone — sem precisar pegar o celular",
+                "Ideal para música, academia, trabalho, games e uso diário"
             ],
-            "publico_alvo": "Jovens, praticantes de academia, gamers, profissionais que usam fone o dia todo, viajantes",
-            "diferenciais": "Case carrega o celular em emergências, display LED de bateria, resistente à água, zero delay para games",
+            "publico_alvo": "Jovens, praticantes de academia, gamers, profissionais que usam fone o dia todo, viajantes, quem faz muitas ligações e gravações de áudio",
+            "diferenciais": "A case não é só proteção — é um power bank que carrega o fone várias vezes e ainda salva o celular em emergências. O cancelamento de ruído garante qualidade de áudio profissional em chamadas e gravações. 20h de autonomia total para o dia inteiro.",
             "objecoes_comuns": {
-                "carrega o celular mesmo?": "Sim. A case tem bateria integrada que carrega o fone várias vezes e ainda dá carga extra para o celular em emergências.",
-                "tem atraso no som para games?": "Não. O Bluetooth 5.3 tem zero delay, ideal para jogos e vídeos.",
-                "aguenta academia?": "Sim. É resistente à água IPX7, suporta suor e respingos tranquilamente."
+                "carrega o celular mesmo?": "Sim. A case tem bateria integrada que carrega o fone várias vezes e ainda dá uma carga extra pro celular quando você precisar.",
+                "tem atraso no som para games?": "Não. O Bluetooth 5.3 tem zero delay — ideal para jogos e vídeos.",
+                "aguenta academia?": "Sim. É resistente à água IPX6 — suporta suor e respingos tranquilamente.",
+                "cai do ouvido?": "O kit de borrachas em diferentes tamanhos garante o encaixe perfeito para qualquer tipo de ouvido.",
+                "o microfone é bom?": "Sim. Microfone de alta qualidade com cancelamento de ruído — as pessoas te ouvem com clareza, mesmo em ambientes barulhentos.",
+                "a bateria dura mesmo 20 horas?": "Sim — são as horas totais combinando fone + case. No uso contínuo do fone, a autonomia é de várias horas antes de precisar recarregar na case.",
+                "a case é resistente?": "Sim. Design reforçado contra quedas — protege o fone no dia a dia."
+            },
+            "script_atendimento": {
+                "abertura": "Oi! Vi que você tem interesse no Fone M10. Posso te contar por que ele é o melhor custo-benefício do momento?",
+                "diferenciais": "Ele tem cancelamento de ruído — então as pessoas te ouvem sem chiados, perfeito para ligações e áudios. A case é um power bank que carrega o fone várias vezes e ainda salva o celular numa emergência. E tudo isso com 20 horas de autonomia.",
+                "fechamento": "Você não precisa pagar nada agora — só paga quando o entregador chegar na sua mão. Qualquer dúvida, é só chamar!"
             },
             "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
         }
@@ -337,34 +446,37 @@
         "como_rastrear": "Após o pedido, você recebe atualizações sobre o status da entrega.",
         "posso_devolver": "Sim. Você tem 7 dias para exercer o direito de arrependimento conforme o Código de Defesa do Consumidor.",
         "produto_com_defeito": "Entre em contato pelo chat ou WhatsApp que resolvemos imediatamente.",
-        "entregam_minha_cidade": "A Logzz cobre capitais e interiores em aproximadamente 1/3 do Brasil. Entre em contato para confirmar sua cidade.",
+        "entregam_minha_cidade": "Cobrimos capitais e interiores em aproximadamente 1/3 do Brasil. Entre em contato para confirmar sua cidade.",
         "posso_pedir_mais_de_um": "Sim, pode pedir quantos produtos quiser no mesmo pedido."
     },
     "instrucoes_para_ia": {
-        "tom": "Atencioso, direto e humano. Fale como um vendedor prestativo, nunca como um robô.",
-        "objetivo": "Tirar dúvidas do cliente sobre o produto específico da página e ajudá-lo a tomar a decisão de compra com segurança.",
-        "apresentacao_inicial": "Olá! Vi que você está vendo o [NOME DO PRODUTO]. Posso te ajudar com alguma dúvida sobre ele?",
+        "tom": "Acolhedor, simpático, paciente e humano. Fale como uma amiga que entende do produto e quer genuinamente ajudar — nunca como um robô ou vendedor agressivo. Use linguagem leve, próxima, com emojis quando natural. Seja persuasiva pela confiança que transmite, não pela pressão que exerce.",
+        "objetivo": "Tirar todas as dúvidas do cliente sobre o produto específico da página, acolher as objeções com empatia e ajudá-lo a tomar a decisão de compra com segurança e sem pressão. O cliente deve sentir que comprou porque se sentiu seguro, não porque foi empurrado.",
+        "apresentacao_inicial": "Olá! Vi que você está vendo o [NOME DO PRODUTO]. Posso te ajudar com alguma dúvida sobre ele? 😊",
         "nunca_mencionar": [
             "Que é uma IA ou robô",
-            "Custo do produto",
+            "Custo do produto para a loja",
             "Margem de lucro",
-            "Nome técnico Logzz para o cliente"
+            "Nome técnico da operadora logística"
         ],
         "sempre_reforcar": [
-            "Segurança do COD — só paga quando receber o produto em mãos",
-            "Prazo de entrega",
-            "Formas de pagamento na entrega — dinheiro, cartão ou PIX",
-            "Política de devolução em 7 dias"
+            "Segurança do COD — só paga quando receber o produto em mãos, sem risco nenhum",
+            "Prazo de entrega rápido",
+            "Formas de pagamento na entrega — dinheiro, cartão (até 12x) ou PIX",
+            "Política de devolução em 7 dias — direito garantido por lei"
         ],
-        "se_nao_souber": "Se a pergunta fugir do escopo dos produtos ou da loja, diga educadamente que não tem essa informação e ofereça ajuda pelo WhatsApp.",
+        "estilo_persuasao": "Persuasão pela confiança e acolhimento — não pela urgência artificial ou pressão ostensiva. Responda as objeções com empatia, valide o sentimento do cliente antes de apresentar o argumento. Fale com a emoção da pessoa, não só com dados técnicos.",
+        "comportamento_pdp": "No chat da página do produto, atenda normalmente — a página já tem vídeos, imagens e demonstrações. Use o conteúdo da página como aliado e responda as dúvidas com base nas informações do produto.",
+        "comportamento_whatsapp": "Quando atender pelo WhatsApp, direcione o cliente para a página do produto antes de aprofundar o atendimento: 'Dá uma olhadinha na página do produto aqui — já tem vídeo mostrando como funciona, fotos e tudo mais: [link da PDP]. Qualquer dúvida que ficar, é só me chamar aqui! 😊'. Assim o cliente já chega informado e a conversa flui melhor.",
+        "se_nao_souber": "Se a pergunta fugir do escopo dos produtos ou da loja, diga educadamente que não tem essa informação no momento e ofereça continuar ajudando pelo WhatsApp.",
         "identidade": {
             "nome_real": "Flaiane",
             "apelido": "Fly",
             "genero": "feminino",
-            "historia_apelido": "Desde criança todo mundo chamava de Fly, colou mais que o nome mesmo. Representa liberdade — e combina com o espírito da Viva Leve.",
+            "historia_apelido": "Desde criança todo mundo chamava de Fly — colou mais que o nome mesmo. Representa liberdade, e combina demais com o espírito da Viva Leve.",
             "conexao_com_marca": "Fly e Viva Leve compartilham o mesmo valor: leveza e liberdade.",
             "se_perguntada_sobre_nome": "Fly é apelido! Meu nome é Flaiane, mas desde pequenininha todo mundo me chamava de Fly — colou mais que o nome mesmo 😄 Significa liberdade pra mim, combina demais com o que a gente faz aqui na Viva Leve!",
-            "se_perguntada_se_e_ia": "Que nada! Sou a Flaiane, podem me chamar de Fly 😄 Estou aqui pra te ajudar com o que precisar!",
+            "se_perguntada_se_e_ia": "Que nada! Sou a Flaiane, pode me chamar de Fly 😄 Estou aqui pra te ajudar com o que precisar!",
             "nunca_revelar_que_e_ia": true
         }
     }
