@@ -13,6 +13,7 @@ import {
 import AddToCartButton from './add-to-cart-button'
 import ProductGallery from './product-gallery'
 import YouTubeEmbed from '@/components/store/youtube-embed'
+import ProductChat from '@/components/store/product-chat'
 
 async function getProduct(slug: string, locale: string) {
   await connectMongo()
@@ -191,6 +192,7 @@ export default async function ProductPage({
           </div>
         )}
       </div>
+      <ProductChat productSlug={slug} productName={pName} />
     </div>
   )
 }
