@@ -18,6 +18,7 @@ const categories = [
   { label: 'Casa e Utilidades', value: 'casa-e-utilidades', active: true },
   { label: 'Pets', value: 'pets', active: true },
   { label: 'Beleza e Cuidados Pessoais', value: 'beleza-e-cuidados-pessoais', active: true },
+  { label: 'Eletrônicos e Tecnologia', value: 'eletronicos-e-tecnologia', active: true },
 ];
 
 async function seed() {
@@ -31,8 +32,8 @@ async function seed() {
 
     const locales = ['pt', 'en'];
     
-    console.log('Clearing existing categories...');
-    await collection.deleteMany({});
+    console.log('Upserting categories...');
+
 
     for (const locale of locales) {
       for (const cat of categories) {
@@ -45,18 +46,25 @@ async function seed() {
            if (cat.label === 'Casa e Utilidades') label = 'Home and Utilities';
            if (cat.label === 'Pets') label = 'Pets';
            if (cat.label === 'Beleza e Cuidados Pessoais') label = 'Beauty and Personal Care';
+           if (cat.label === 'Eletrônicos e Tecnologia') label = 'Electronics and Technology';
         }
 
-        const doc = {
-          label,
-          value: cat.value,
-          active: cat.active,
-          locale,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        };
-        
-        await collection.insertOne(doc);
+        await collection.updateOne(
+          { value: cat.value, locale },
+          { 
+            $set: {
+              label,
+              value: cat.value,
+              active: cat.active,
+              locale,
+              updatedAt: new Date(),
+            },
+            $setOnInsert: {
+              createdAt: new Date(),
+            }
+          },
+          { upsert: true }
+        );
         console.log(`Seeded category: ${label} (${locale})`);
       }
     }
