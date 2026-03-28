@@ -1,0 +1,361 @@
+{
+    "loja": {
+        "nome": "Viva Leve Portal",
+        "slogan": "Porque viver bem não precisa ser complicado.",
+        "descricao": "Loja de produtos físicos de bem-estar, saúde, beleza, tecnologia e utilidades domésticas.",
+        "site": "vivaleveportal.com.br",
+        "atendimento": {
+            "canais": [
+                "Chat na página do produto",
+                "WhatsApp"
+            ],
+            "whatsapp": "5521982266075",
+            "horario": "Respondemos pelo chat e WhatsApp"
+        },
+        "logistica": {
+            "operadora": "Logzz",
+            "modelo": "Cash on Delivery (COD) — o cliente paga no momento da entrega, sem precisar pagar antecipado online.",
+            "prazo_capitais": "24 horas nas principais capitais",
+            "prazo_demais": "3 a 7 dias úteis para demais regiões",
+            "cobertura": "Capitais e interiores — cobertura em aproximadamente 1/3 do Brasil com frota própria da Logzz.",
+            "rastreamento": "Sim, o cliente recebe atualizações sobre o status do pedido.",
+            "formas_pagamento_na_entrega": [
+                "Dinheiro",
+                "Cartão de débito via maquininha",
+                "Cartão de crédito até 12x via maquininha",
+                "PIX — na entrega ou via link enviado pelo entregador"
+            ],
+            "vantagens_cod": [
+                "Cliente não precisa pagar online nem expor dados bancários",
+                "Só paga quando o produto chega em mãos",
+                "Produto conferido antes de efetuar o pagamento",
+                "Sem risco de golpe virtual ou fraude",
+                "70% menos abandono de carrinho comparado a pagamento antecipado"
+            ]
+        },
+        "politicas": {
+            "devolucao": "Direito de arrependimento em 7 dias conforme o Código de Defesa do Consumidor.",
+            "troca": "Em caso de produto com defeito, o cliente deve acionar o suporte pelo WhatsApp ou chat.",
+            "cancelamento": "Pedidos podem ser cancelados antes do envio. Após o envio, aguardar a entrega e acionar suporte."
+        }
+    },
+    "produtos": [
+        {
+            "id": "prop1ovl",
+            "nome": "Kit Massagem EMS",
+            "slug": "kit-massagem-ems",
+            "categoria": "Saúde e Mobilidade",
+            "preco": "R$ 89,90",
+            "descricao_curta": "Kit de massagem com tecnologia EMS (estimulação elétrica muscular) para alívio de dores, relaxamento e recuperação muscular em casa.",
+            "beneficios": [
+                "Alivia dores musculares e nas costas",
+                "Relaxa a tensão do dia a dia",
+                "Ajuda na recuperação pós-exercício",
+                "Fácil de usar em qualquer parte do corpo",
+                "Compacto e sem fio"
+            ],
+            "publico_alvo": "Pessoas com dores musculares, tensão nas costas, praticantes de exercício que buscam recuperação, público 40+",
+            "diferenciais": "Tecnologia EMS de estimulação elétrica muscular, resultado profissional em casa, sem precisar de fisioterapeuta",
+            "objecoes_comuns": {
+                "dói usar?": "Não dói. A estimulação EMS é suave e pode ser regulada conforme a sensibilidade de cada pessoa.",
+                "é seguro?": "Sim, é totalmente seguro para uso doméstico. Evitar uso em pessoas com marca-passo ou gestantes.",
+                "funciona mesmo?": "Sim. A tecnologia EMS é usada em fisioterapia profissional há décadas. O kit traz essa tecnologia para uso em casa."
+            },
+            "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
+        },
+        {
+            "id": "proep53r",
+            "nome": "Mini Robô Aspirador Inteligente",
+            "slug": "mini-robo-aspirador-inteligente",
+            "categoria": "Casa e Utilidades",
+            "preco": "R$ 149,90",
+            "descricao_curta": "Robô aspirador com sensor inteligente anticolisão que limpa a casa sozinho, passa embaixo de móveis e aspira pelos de pets.",
+            "beneficios": [
+                "Aspira pelos de pets, poeira e sujeira do dia a dia",
+                "Sensor inteligente que desvia de móveis e obstáculos",
+                "Design slim — passa embaixo de sofás e camas",
+                "Recarregável via USB, sem fio durante o uso",
+                "Silencioso e compacto",
+                "Ideal para apartamentos, casas com pets e home office"
+            ],
+            "publico_alvo": "Donos de pets, pessoas que trabalham fora, quem mora em apartamento, quem tem mobilidade reduzida",
+            "diferenciais": "Libera tempo do cliente, sensor anticolisão, baixo ruído, recarregável",
+            "objecoes_comuns": {
+                "aspira bem?": "Sim, aspira pelos, poeira e sujeira do dia a dia com eficiência. Ideal para manutenção diária.",
+                "passa embaixo de móveis?": "Sim, o design slim permite que passe embaixo de sofás, camas e móveis baixos.",
+                "faz barulho?": "Não, é silencioso. Pode rodar enquanto você trabalha, descansa ou dorme."
+            },
+            "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
+        },
+        {
+            "id": "prodg09d",
+            "nome": "Câmera Lâmpada 360° Wi-Fi",
+            "slug": "camera-lampada-360-wi-fi",
+            "categoria": "Eletrônicos e Tecnologia",
+            "preco": "R$ 149,90",
+            "descricao_curta": "Câmera de segurança Full HD disfarçada de lâmpada que encaixa no bocal E27 padrão. Rotação 360°, visão noturna e áudio bidirecional pelo celular.",
+            "beneficios": [
+                "Instalação plug & play — encaixa no bocal E27 padrão",
+                "Rotação 360° pelo app — sem pontos cegos",
+                "Visão noturna infravermelha",
+                "Áudio bidirecional — fala e ouve pelo celular",
+                "Detecção de movimento com alerta no celular",
+                "Entrada para cartão SD",
+                "Ideal para casa, apartamento, comércio e monitoramento de pets"
+            ],
+            "publico_alvo": "Pais de família, donos de pets, moradores de apartamento, pequenos comerciantes, quem quer monitorar babá ou funcionários",
+            "diferenciais": "Instalação em 60 segundos sem furar paredes, disfarçada de lâmpada, sem mensalidade, sem técnico",
+            "objecoes_comuns": {
+                "é difícil instalar?": "Não. É só encaixar no bocal de lâmpada padrão, como trocar uma lâmpada comum. Em 60 segundos está funcionando.",
+                "funciona sem internet?": "Precisa de Wi-Fi para monitoramento remoto pelo celular. Com cartão SD, grava localmente mesmo sem internet.",
+                "a imagem é boa à noite?": "Sim, tem visão noturna infravermelha que permite ver mesmo no escuro total.",
+                "e se o ladrão desencaixar?": "A câmera registra tudo antes disso. Além disso, por parecer uma lâmpada comum, dificilmente é identificada."
+            },
+            "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
+        },
+        {
+            "id": "pro5ymg5",
+            "nome": "Chaveiro Rastreador GPS Bluetooth",
+            "slug": "chaveiro-rastreador-gps-bluetooth",
+            "categoria": "Eletrônicos e Tecnologia",
+            "preco": "R$ 109,90",
+            "descricao_curta": "Rastreador Bluetooth compacto que localiza chaves, carteira, bolsa e qualquer objeto pelo app no celular — por som ou pelo mapa.",
+            "beneficios": [
+                "Localiza objetos pelo som com um toque no celular",
+                "Alerta no celular quando o objeto se afasta",
+                "Design compacto — cabe em chaves, bolsa, mochila e carteira",
+                "Bateria CR2032 de longa duração — dura meses",
+                "Bônus: funciona como controle remoto para selfies",
+                "Ideal para chaves, carteira, mochila, carro e coleira de pets"
+            ],
+            "publico_alvo": "Pessoas esquecidas, viajantes, universitários, profissionais que se deslocam muito, pais que querem monitorar mochila dos filhos",
+            "diferenciais": "Alerta quando o objeto se afasta, funciona como controle de selfie, bateria dura meses",
+            "objecoes_comuns": {
+                "funciona longe?": "Funciona por Bluetooth, com alcance de aproximadamente 30 a 60 metros. Para distâncias maiores, o mapa mostra o último local registrado.",
+                "a bateria dura quanto?": "Meses com uso normal. Usa pilha CR2032 comum, fácil de encontrar e barata para repor.",
+                "é difícil de usar?": "Não. Baixa o app, vincula o chaveiro e pronto. Apertar um botão no celular já faz o chaveiro apitar."
+            },
+            "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
+        },
+        {
+            "id": "prooey13",
+            "nome": "Caneta Depiladora Elétrica Recarregável",
+            "slug": "caneta-depiladora-eletrica-recarregavel",
+            "categoria": "Beleza e Cuidados Pessoais",
+            "preco": "R$ 119,90",
+            "descricao_curta": "Caneta depiladora elétrica recarregável via USB com luz LED embutida. Remove pelos do rosto e corpo sem dor, com precisão profissional.",
+            "beneficios": [
+                "Depilação indolor — sem dor, sem irritação",
+                "Luz LED embutida para maior precisão",
+                "Recarregável via USB — sem pilhas",
+                "Design caneta — compacta e fácil de usar",
+                "Ideal para sobrancelhas, buço, rosto e corpo",
+                "Resultado profissional em casa"
+            ],
+            "publico_alvo": "Mulheres que querem praticidade na depilação, quem quer economizar com salão, público que busca autocuidado em casa",
+            "diferenciais": "Sem dor, sem cera quente, sem pinça, recarregável, luz LED para precisão",
+            "objecoes_comuns": {
+                "dói?": "Não dói. É completamente indolor, diferente de pinça ou cera.",
+                "remove bem os pelos?": "Sim, com precisão profissional. A luz LED ajuda a ver até os pelos mais finos.",
+                "precisa de pilha?": "Não. É recarregável via USB, como um celular."
+            },
+            "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
+        },
+        {
+            "id": "proz0624",
+            "nome": "Escova a Vapor para Pets 3 em 1",
+            "slug": "escova-a-vapor-para-pets-3-em-1",
+            "categoria": "Pets",
+            "preco": "R$ 129,90",
+            "descricao_curta": "Escova a vapor 3 em 1 para cães e gatos que remove pelos mortos, desembaraça nós e faz massagem relaxante ao mesmo tempo, com vapor frio seguro.",
+            "beneficios": [
+                "Remove pelos mortos com facilidade",
+                "Desembaraça nós sem puxar e sem machucar",
+                "Massagem relaxante — o pet ama",
+                "Vapor frio — 100% seguro para cães e gatos",
+                "3 em 1: escova, remove pelos e limpa",
+                "Reduz pelos espalhados pela casa"
+            ],
+            "publico_alvo": "Donos de cães e gatos, quem tem problema com pelos espalhados pela casa, quem quer cuidar do pet em casa",
+            "diferenciais": "Vapor frio seguro, pet fica relaxado durante o uso, resolve 3 problemas ao mesmo tempo",
+            "objecoes_comuns": {
+                "machuca o pet?": "Não. O vapor frio é suave e seguro. A maioria dos pets relaxa durante o uso.",
+                "funciona em gatos?": "Sim, funciona em cães e gatos de todos os tamanhos.",
+                "resolve pelos na casa?": "Sim, ao remover pelos mortos regularmente, reduz muito a quantidade de pelos espalhados pelos móveis e chão."
+            },
+            "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
+        },
+        {
+            "id": "pro7o19w",
+            "nome": "Modelador Térmico de Cílios Elétrico",
+            "slug": "modelador-termico-de-cilios-eletrico",
+            "categoria": "Beleza e Cuidados Pessoais",
+            "preco": "R$ 69,90",
+            "descricao_curta": "Modelador elétrico que aquece em 15 a 30 segundos e curva os cílios com precisão de pente, deixando a curvatura mais bonita e duradoura.",
+            "beneficios": [
+                "Aquece em 15 a 30 segundos",
+                "Separa e alinha os cílios com precisão",
+                "Funciona com ou sem rímel",
+                "Para efeito mais duradouro, aplique rímel após o uso",
+                "Leve e compacto — cabe em qualquer necessaire",
+                "Fácil de usar — liga e desliga com um botão"
+            ],
+            "publico_alvo": "Mulheres que querem cílios curvados sem curvador manual, quem quer resultado mais duradouro, público de maquiagem",
+            "diferenciais": "Resultado mais duradouro que curvador manual, separa e alinha os cílios, funciona com ou sem rímel",
+            "objecoes_comuns": {
+                "queima os cílios?": "Não. O calor é controlado e suave, projetado especificamente para cílios.",
+                "dura o dia todo?": "Sim, especialmente se aplicar rímel após o uso, a curvatura dura o dia todo.",
+                "é fácil de usar?": "Sim. Liga, aguarda 30 segundos aquecer e aplica nos cílios. Simples como um pente."
+            },
+            "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
+        },
+        {
+            "id": "prolwxym",
+            "nome": "Lixa de Pé Elétrica Recarregável",
+            "slug": "lixa-de-pe-eletrica-recarregavel",
+            "categoria": "Cuidados com a Pele",
+            "preco": "R$ 119,90",
+            "descricao_curta": "Lixa elétrica recarregável que remove calos e pele ressecada dos pés com resultado profissional em minutos. Duas velocidades e cabeças intercambiáveis.",
+            "beneficios": [
+                "Remove calos e pele ressecada rapidamente",
+                "2 velocidades — pele sensível ou calos mais resistentes",
+                "Cabeças intercambiáveis fina e grossa",
+                "Recarregável via USB — sem pilhas",
+                "Design ergonômico — alcança todas as áreas do pé",
+                "Kit completo: aparelho + cabo de carregamento + 2 cabeças"
+            ],
+            "publico_alvo": "Mulheres 35+, pessoas com calos e pés ressecados, quem quer pedicure em casa, profissionais que ficam muito tempo em pé",
+            "diferenciais": "Resultado de podólogo em casa, sem esforço, sem dor, 2 velocidades para qualquer tipo de pele",
+            "objecoes_comuns": {
+                "dói usar?": "Não dói. É suave e pode ser regulada entre 2 velocidades conforme a sensibilidade.",
+                "remove calos difíceis?": "Sim. A cabeça grossa é específica para calos mais resistentes.",
+                "precisa de pilha?": "Não. É recarregável via USB."
+            },
+            "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
+        },
+        {
+            "id": "prod2gg1",
+            "nome": "Luminária Mata Mosquito UV",
+            "slug": "luminaria-mata-mosquito-uv",
+            "categoria": "Casa e Utilidades",
+            "preco": "R$ 89,90",
+            "descricao_curta": "Luminária com tecnologia UV que atrai e elimina mosquitos silenciosamente, sem químicos, sem cheiro e sem refis. Conexão USB.",
+            "beneficios": [
+                "Tecnologia UV — atrai e elimina mosquitos sem químicos",
+                "Sem cheiro, sem barulho, sem refis",
+                "Conexão USB — funciona em tomada, carregador ou power bank",
+                "Portátil — ideal para quartos, salas e acampamentos",
+                "Design moderno — parece luminária, não armadilha",
+                "Proteção contínua para toda a família"
+            ],
+            "publico_alvo": "Famílias com crianças, pessoas com alergia a repelente químico, quem sofre com mosquitos à noite, moradores de áreas litorâneas",
+            "diferenciais": "Sem químicos, sem odor, sem refis para comprar, portátil via USB, silenciosa",
+            "objecoes_comuns": {
+                "funciona de verdade?": "Sim. A luz UV atrai mosquitos naturalmente — é o mesmo princípio usado em armadilhas profissionais.",
+                "faz barulho?": "Não. É completamente silenciosa, ideal para o quarto.",
+                "precisa de tomada?": "Funciona via USB — tomada, carregador de celular ou power bank. Muito versátil."
+            },
+            "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
+        },
+        {
+            "id": "prozjq25",
+            "nome": "Barbeador Elétrico 3 em 1",
+            "slug": "barbeador-eletrico-3-em-1",
+            "categoria": "Beleza e Cuidados Pessoais",
+            "preco": "R$ 139,90",
+            "descricao_curta": "Barbeador elétrico 3 em 1 com cabeças intercambiáveis para barba, cabelo e pelos de nariz/ouvido. Recarregável via USB, sem fio.",
+            "beneficios": [
+                "3 em 1: barbeador, aparador de cabelo e pelos de nariz/ouvido",
+                "Cabeças removíveis e intercambiáveis",
+                "Recarregável via USB — sem pilhas",
+                "Design ergonômico e leve",
+                "Cabeças fáceis de lavar",
+                "Kit completo: motor + 3 cabeças + cabo de carregamento"
+            ],
+            "publico_alvo": "Homens que buscam praticidade, viajantes, profissionais, homens modernos que se cuidam",
+            "diferenciais": "3 funções num só aparelho, sem pilhas, cabeças laváveis, custo-benefício alto",
+            "objecoes_comuns": {
+                "corta bem a barba?": "Sim, a cabeça de barbeador é específica para aparar barba com precisão.",
+                "precisa de fio?": "Não. É recarregável via USB e funciona sem fio.",
+                "as cabeças são fáceis de trocar?": "Sim, a troca é feita em segundos sem nenhuma ferramenta."
+            },
+            "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
+        },
+        {
+            "id": "promgpoe",
+            "nome": "Mini Câmera Wi-Fi A9",
+            "slug": "mini-camera-wi-fi-a9",
+            "categoria": "Eletrônicos e Tecnologia",
+            "preco": "R$ 109,90",
+            "descricao_curta": "Mini câmera Wi-Fi compacta e discreta com visão noturna, detecção de movimento e monitoramento em tempo real pelo celular.",
+            "beneficios": [
+                "Monitoramento em tempo real pelo celular",
+                "Visão noturna — enxerga no escuro",
+                "Detecção de movimento com alerta no celular",
+                "Design ultra compacto e discreto",
+                "Conexão Wi-Fi — sem fio",
+                "Ideal para casa, comércio, monitoramento de babá e pets"
+            ],
+            "publico_alvo": "Pais que querem monitorar babá, donos de pets, pequenos comerciantes, quem quer segurança discreta em casa",
+            "diferenciais": "Ultra compacta, discreta, visão noturna, alerta de movimento, sem mensalidade",
+            "objecoes_comuns": {
+                "precisa de Wi-Fi?": "Sim, para monitoramento remoto pelo celular. Sem Wi-Fi, pode gravar localmente com cartão SD.",
+                "a imagem é boa?": "Sim, Full HD com visão noturna infravermelha.",
+                "é difícil configurar?": "Não. Baixa o app, conecta no Wi-Fi e está funcionando em minutos."
+            },
+            "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
+        },
+        {
+            "id": "proj530o",
+            "nome": "Fone Bluetooth M10 com Power Bank Integrado",
+            "slug": "fone-bluetooth-m10-com-power-bank-integrado",
+            "categoria": "Eletrônicos e Tecnologia",
+            "preco": "R$ 129,90",
+            "descricao_curta": "Fone Bluetooth 5.3 com case que funciona como power bank, display LED de bateria, resistente à água IPX7 e zero delay para games.",
+            "beneficios": [
+                "Bluetooth 5.3 — conexão estável e sem atraso",
+                "Case com power bank — carrega o fone e o celular em emergências",
+                "Display LED — mostra a bateria com precisão",
+                "Resistente à água IPX7 — ideal para treinos",
+                "Som de alta qualidade com zero delay",
+                "Ideal para música, academia, trabalho e games"
+            ],
+            "publico_alvo": "Jovens, praticantes de academia, gamers, profissionais que usam fone o dia todo, viajantes",
+            "diferenciais": "Case carrega o celular em emergências, display LED de bateria, resistente à água, zero delay para games",
+            "objecoes_comuns": {
+                "carrega o celular mesmo?": "Sim. A case tem bateria integrada que carrega o fone várias vezes e ainda dá carga extra para o celular em emergências.",
+                "tem atraso no som para games?": "Não. O Bluetooth 5.3 tem zero delay, ideal para jogos e vídeos.",
+                "aguenta academia?": "Sim. É resistente à água IPX7, suporta suor e respingos tranquilamente."
+            },
+            "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
+        }
+    ],
+    "perguntas_frequentes_gerais": {
+        "como_funciona_pagamento": "O pagamento é feito na hora da entrega — dinheiro, cartão de débito, crédito (até 12x) ou PIX. Você não precisa pagar nada online antes de receber o produto.",
+        "e_seguro_comprar": "Totalmente seguro. Você só paga quando o produto chega na sua mão. Sem risco de golpe, sem expor dados bancários online.",
+        "prazo_entrega": "Nas principais capitais, a entrega pode chegar em 24 horas. Para demais regiões, o prazo é de 3 a 7 dias úteis.",
+        "como_rastrear": "Após o pedido, você recebe atualizações sobre o status da entrega.",
+        "posso_devolver": "Sim. Você tem 7 dias para exercer o direito de arrependimento conforme o Código de Defesa do Consumidor.",
+        "produto_com_defeito": "Entre em contato pelo chat ou WhatsApp que resolvemos imediatamente.",
+        "entregam_minha_cidade": "A Logzz cobre capitais e interiores em aproximadamente 1/3 do Brasil. Entre em contato para confirmar sua cidade.",
+        "posso_pedir_mais_de_um": "Sim, pode pedir quantos produtos quiser no mesmo pedido."
+    },
+    "instrucoes_para_ia": {
+        "tom": "Atencioso, direto e humano. Fale como um vendedor prestativo, nunca como um robô.",
+        "objetivo": "Tirar dúvidas do cliente sobre o produto específico da página e ajudá-lo a tomar a decisão de compra com segurança.",
+        "apresentacao_inicial": "Olá! Vi que você está vendo o [NOME DO PRODUTO]. Posso te ajudar com alguma dúvida sobre ele?",
+        "nunca_mencionar": [
+            "Que é uma IA ou robô",
+            "Custo do produto",
+            "Margem de lucro",
+            "Nome técnico Logzz para o cliente"
+        ],
+        "sempre_reforcar": [
+            "Segurança do COD — só paga quando receber o produto em mãos",
+            "Prazo de entrega",
+            "Formas de pagamento na entrega — dinheiro, cartão ou PIX",
+            "Política de devolução em 7 dias"
+        ],
+        "se_nao_souber": "Se a pergunta fugir do escopo dos produtos ou da loja, diga educadamente que não tem essa informação e ofereça ajuda pelo WhatsApp."
+    }
+}
