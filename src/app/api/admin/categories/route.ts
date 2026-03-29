@@ -25,7 +25,7 @@ export async function GET() {
     const raw = await CategoryModel.find().sort({ order: 1, label: 1 }).lean()
 
     // Manual parent join in memory
-    const idMap = new Map(raw.map(c => [c._id.toString(), { _id: c._id, label: c.label, value: c.value }]))
+    const idMap = new Map(raw.map((c: any) => [c._id.toString(), { _id: c._id, label: c.label, value: c.value }]))
 
     const categories = raw.map(c => ({
         ...c,
