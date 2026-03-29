@@ -33,31 +33,25 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
   useEffect(() => {
     const chatOpenedKey = `chat-opened-${productSlug}`
     const alreadyOpened = sessionStorage.getItem(chatOpenedKey)
-
     if (!alreadyOpened) {
-      const timer = setTimeout(() => {
-        handleOpen()
+      const timer = setTimeout(async () => {
         sessionStorage.setItem(chatOpenedKey, 'true')
+        setIsOpen(true)
+        const initialText = `Olá! 👋 Sou Fly, da Viva Leve. Vi que você está vendo o ${productName}. Posso te ajudar com alguma dúvida? 😊`
+        await sleep(600)
+        setIsTyping(true)
+        await sleep(1500)
+        setIsTyping(false)
+        await runTypewriter(initialText)
       }, 7000)
       return () => clearTimeout(timer)
     }
-  }, [productSlug])
+  }, [productSlug, productName])
 
   const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
-  const handleOpen = async () => {
+  const handleOpen = () => {
     setIsOpen(true)
-    if (messages.length === 0) {
-      const initialText = `Olá! 👋 Sou Fly, da Viva Leve. Vi que você está vendo o ${productName}. Posso te ajudar com alguma dúvida? 😊`
-      
-      // Delays per manual
-      await sleep(600)
-      setIsTyping(true)
-      await sleep(1500)
-      setIsTyping(false)
-      
-      await runTypewriter(initialText)
-    }
   }
 
   const runTypewriter = async (text: string) => {
