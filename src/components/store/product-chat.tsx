@@ -18,6 +18,8 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
+  const [showWppLink, setShowWppLink] = useState(false)
+  const [hasShownWppLink, setHasShownWppLink] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   const scrollToBottom = () => {
@@ -119,6 +121,12 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
       // Efeito Typewriter sofisticado
       await runTypewriter(fullText)
 
+      // Mostrar link de WhatsApp após a primeira resposta real (não o welcome)
+      if (!hasShownWppLink) {
+        setShowWppLink(true)
+        setHasShownWppLink(true)
+      }
+
     } catch (error) {
       console.error('Error sending message:', error)
       setIsTyping(false)
@@ -199,6 +207,15 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
             )}
             <div ref={messagesEndRef} />
           </div>
+
+          {showWppLink && (
+            <div 
+              onClick={() => window.open(`https://wa.me/5521982266075?text=Olá!%20Estava%20vendo%20o%20${encodeURIComponent(productName)}%20e%20gostaria%20de%20tirar%20uma%20dúvida.`, '_blank')}
+              className="text-xs text-viva-muted hover:text-viva-primary text-center py-2 cursor-pointer transition-colors border-t border-gray-50 bg-white"
+            >
+              Prefere continuar no WhatsApp? 💬
+            </div>
+          )}
 
           {/* Input Area */}
           <form onSubmit={handleSendMessage} className="p-4 bg-white border-t border-gray-100 flex gap-2">
