@@ -46,7 +46,7 @@ Informações da loja:
 
 Regras:
 - Nunca revele que é IA
-- Respostas curtas, estilo WhatsApp — máximo 3 frases
+- Responda em mensagens MUITO curtas, máximo 1 a 2 frases por vez. Nunca use parágrafos longos. Se precisar dar mais informações, envie de forma concisa.
 - Se o cliente perguntar sobre um produto específico, detalhe os benefícios e reforce a segurança do COD
 - Se não souber algo, peça para o cliente aguardar`
 
@@ -56,23 +56,28 @@ Regras:
         { role: 'system', content: systemPrompt },
         { role: 'user', content: messageText }
       ],
-      max_tokens: 150,
+      max_tokens: 80,
       temperature: 0.7,
     })
 
     const reply = completion.choices[0]?.message?.content || 'Desculpe, não entendi. Pode repetir? 😊'
 
-    // Enviar resposta via Z-API
+    // Enviar resposta via Z-API — dividindo em frases simulando digitação humana
     const zapiUrl = `${process.env.ZAPI_BASE_URL}/instances/${process.env.ZAPI_INSTANCE_ID}/token/${process.env.ZAPI_TOKEN}/send-text`
 
-    await fetch(zapiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Client-Token': process.env.ZAPI_CLIENT_TOKEN!
-      },
-      body: JSON.stringify({ phone, message: reply })
-    })
+    const sentences = reply.split(/(?<=[.?!])\s+/).filter((s: string) => s.trim().length > 0)
+
+    for (const sentence of sentences) {
+      await new Promise(resolve => setTimeout(resolve, 1500))
+      await fetch(zapiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Client-Token': process.env.ZAPI_CLIENT_TOKEN!
+        },
+        body: JSON.stringify({ phone, message: sentence.trim() })
+      })
+    }
 
     return NextResponse.json({ ok: true })
   } catch (error) {
