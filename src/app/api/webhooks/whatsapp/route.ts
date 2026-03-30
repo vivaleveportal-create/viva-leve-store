@@ -5,9 +5,20 @@ import path from 'path'
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY })
 
+const processedMessages = new Set<string>()
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
+    console.log(JSON.stringify(body))
+
+    const messageId = body.messageId
+    if (messageId && processedMessages.has(messageId)) {
+      return NextResponse.json({ ok: true })
+    }
+    if (messageId) {
+      processedMessages.add(messageId)
+    }
 
     // Z-API envia mensagens recebidas nesse formato
     const phone = body.phone || body.from
