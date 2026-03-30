@@ -27,7 +27,7 @@ export async function GET() {
     // Manual parent join in memory
     const idMap = new Map(raw.map((c: any) => [c._id.toString(), { _id: c._id, label: c.label, value: c.value }]))
 
-    const categories = raw.map(c => ({
+    const categories = raw.map((c: any) => ({
         ...c,
         parent: c.parent ? (idMap.get(c.parent.toString()) ?? null) : null,
     }))
@@ -55,7 +55,7 @@ export async function POST(req: Request) {
         if (parent) {
             const parentCat = await CategoryModel.findById(parent).lean()
             if (!parentCat) return NextResponse.json({ error: 'Categoria pai não encontrada' }, { status: 404 })
-            if (parentCat.parent) return NextResponse.json({ error: 'Máximo 2 níveis permitidos' }, { status: 400 })
+            if ((parentCat as any).parent) return NextResponse.json({ error: 'Máximo 2 níveis permitidos' }, { status: 400 })
         }
 
         const parentId = parent ? new Types.ObjectId(parent) : null
