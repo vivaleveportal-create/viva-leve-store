@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 import { MessageCircle, Send, X, User } from 'lucide-react'
+import { trackEvent } from '@/lib/analytics-client'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -37,6 +38,7 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
       const timer = setTimeout(async () => {
         sessionStorage.setItem(chatOpenedKey, 'true')
         setIsOpen(true)
+        trackEvent('chat_opened', { product_id: productSlug, source: 'chat' })
         const initialText = `Olá! 👋 Sou Fly, da Viva Leve. Vi que você está vendo o ${productName}. Posso te ajudar com alguma dúvida? 😊`
         await sleep(600)
         setIsTyping(true)
@@ -52,6 +54,7 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
 
   const handleOpen = () => {
     setIsOpen(true)
+    trackEvent('chat_opened', { product_id: productSlug, source: 'chat' })
   }
 
   const runTypewriter = async (text: string) => {
@@ -90,6 +93,11 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
     setInput('')
     setMessages((prev) => [...prev, { role: 'user', content: userMessage }])
     setIsTyping(true)
+    trackEvent('chat_message_sent', { 
+      product_id: productSlug, 
+      source: 'chat',
+      payload: { message: userMessage }
+    })
 
     try {
       const response = await fetch('/api/chat', {

@@ -1,5 +1,6 @@
 import { CheckCircle, ArrowRight, Truck } from 'lucide-react'
 import Link from 'next/link'
+import PurchaseAnalytics from './purchase-analytics'
 
 export default function ThankYouPage({
   searchParams,
@@ -8,6 +9,7 @@ export default function ThankYouPage({
 }) {
   return (
     <div className="min-h-[70vh] flex items-center justify-center px-4 py-20 bg-viva-surface">
+      <PurchaseAnalytics orderId={searchParams.orderId} />
       <div className="text-center max-w-lg bg-white p-10 rounded-[2.5rem] shadow-2xl shadow-viva-teal-mid/5 border border-viva-surface">
         <div className="inline-flex items-center justify-center w-24 h-24 bg-viva-accent/10 rounded-full mb-8">
           <CheckCircle className="w-12 h-12 text-viva-accent" />

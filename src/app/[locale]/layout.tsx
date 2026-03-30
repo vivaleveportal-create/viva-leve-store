@@ -3,6 +3,9 @@ import { Inter, Outfit, Fraunces } from 'next/font/google'
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server';
 import '../globals.css'
+import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
+import AnalyticsTracker from '@/components/analytics/AnalyticsTracker'
+import { Suspense } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 const outfit = Outfit({ 
@@ -81,6 +84,10 @@ export default async function RootLayout({
   return (
     <html lang={locale} className="scroll-smooth">
       <body className={`${inter.className} ${outfit.variable} ${fraunces.variable} min-h-screen flex flex-col`}>
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
+        <Suspense fallback={null}>
+          <AnalyticsTracker />
+        </Suspense>
         <NextIntlClientProvider messages={messages}>
           <main className="flex-grow">
             {children}

@@ -2,6 +2,7 @@
 
 import { MessageCircle } from 'lucide-react'
 import { usePathname } from 'next/navigation'
+import { trackEvent } from '@/lib/analytics-client'
 
 export default function WhatsappButton() {
   const pathname = usePathname()
@@ -18,6 +19,7 @@ export default function WhatsappButton() {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackEvent('whatsapp_click')}
       className="fixed bottom-6 left-6 z-40 bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-2xl transition-all hover:scale-110 active:scale-95 group flex items-center gap-2"
       aria-label="Falar conosco no WhatsApp"
     >
