@@ -18,6 +18,8 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
+  const [showWppLink, setShowWppLink] = useState(false)
+  const [hasShownWppLink, setHasShownWppLink] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   const scrollToBottom = () => {
@@ -31,25 +33,52 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
   useEffect(() => {
     const chatOpenedKey = `chat-opened-${productSlug}`
     const alreadyOpened = sessionStorage.getItem(chatOpenedKey)
-
     if (!alreadyOpened) {
-      const timer = setTimeout(() => {
-        handleOpen()
+      const timer = setTimeout(async () => {
         sessionStorage.setItem(chatOpenedKey, 'true')
-      }, 5000)
+        setIsOpen(true)
+        const initialText = `Olá! 👋 Sou Fly, da Viva Leve. Vi que você está vendo o ${productName}. Posso te ajudar com alguma dúvida? 😊`
+        await sleep(600)
+        setIsTyping(true)
+        await sleep(1500)
+        setIsTyping(false)
+        await runTypewriter(initialText)
+      }, 7000)
       return () => clearTimeout(timer)
     }
-  }, [productSlug])
+  }, [productSlug, productName])
+
+  const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
   const handleOpen = () => {
     setIsOpen(true)
-    if (messages.length === 0) {
-      setMessages([
-        {
-          role: 'assistant',
-          content: `Olá! 👋 Sou o Fly, da Viva Leve. Vi que você está vendo o ${productName}. Posso te ajudar com alguma dúvida? 😊`,
-        },
-      ])
+  }
+
+  const runTypewriter = async (text: string) => {
+    setMessages((prev) => [...prev, { role: 'assistant', content: '' }])
+    
+    let currentText = ''
+    const chars = Array.from(text)
+    
+    for (let i = 0; i < chars.length; i++) {
+      const char = chars[i]
+      currentText += char
+      
+      setMessages((prev) => {
+        const copy = [...prev]
+        if (copy.length > 0) {
+          copy[copy.length - 1] = { ...copy[copy.length - 1], content: currentText }
+        }
+        return copy
+      })
+
+      // Interval between characters
+      await sleep(20)
+
+      // Pause after sentences (. ? !)
+      if (['.', '?', '!'].includes(char) && i < chars.length - 1) {
+        await sleep(400)
+      }
     }
   }
 
@@ -76,15 +105,29 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
       })
 
       const data = await response.json()
-      setMessages((prev) => [...prev, { role: 'assistant', content: data.reply }])
+      const fullText = data.reply
+
+      // Espera 1 segundo simulando digitação
+      setIsTyping(true)
+      await sleep(1000)
+      setIsTyping(false)
+
+      // Efeito Typewriter sofisticado
+      await runTypewriter(fullText)
+
+      // Mostrar link de WhatsApp após a primeira resposta real (não o welcome)
+      if (!hasShownWppLink) {
+        setShowWppLink(true)
+        setHasShownWppLink(true)
+      }
+
     } catch (error) {
       console.error('Error sending message:', error)
+      setIsTyping(false)
       setMessages((prev) => [
         ...prev,
         { role: 'assistant', content: 'Desculpe, tive um problema. Poderia tentar novamente?' },
       ])
-    } finally {
-      setIsTyping(false)
     }
   }
 
@@ -158,6 +201,15 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
             )}
             <div ref={messagesEndRef} />
           </div>
+
+          {showWppLink && (
+            <div 
+              onClick={() => window.open(`https://wa.me/5521982266075?text=Olá!%20Estava%20vendo%20o%20${encodeURIComponent(productName)}%20e%20gostaria%20de%20tirar%20uma%20dúvida.`, '_blank')}
+              className="text-xs text-viva-muted hover:text-viva-primary text-center py-2 cursor-pointer transition-colors border-t border-gray-50 bg-white"
+            >
+              Prefere continuar no WhatsApp? 💬
+            </div>
+          )}
 
           {/* Input Area */}
           <form onSubmit={handleSendMessage} className="p-4 bg-white border-t border-gray-100 flex gap-2">

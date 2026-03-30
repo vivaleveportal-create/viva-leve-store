@@ -4,13 +4,14 @@ import { connectMongo } from '@/lib/mongodb'
 import { stripe } from '@/lib/stripe'
 import ProductModel from '@/lib/models/Product'
 import OrderModel from '@/lib/models/Order'
+import { sendWhatsAppMessage } from '@/lib/services/zapi'
 
 export async function POST(req: Request) {
     const { user, response } = await requireUser()
     if (response) return response
 
     try {
-        const { productIds } = await req.json()
+        const { productIds, customerName, phone } = await req.json()
 
         if (!productIds?.length) {
             return NextResponse.json({ error: 'Nenhum produto selecionado' }, { status: 400 })
@@ -39,7 +40,6 @@ export async function POST(req: Request) {
         const locale = Array.from(locales)[0]
         const currency = locale === 'en' ? 'usd' : 'brl'
 
-
         const total = products.reduce((sum, p) => sum + p.price, 0)
 
         const order = await OrderModel.create({
@@ -48,7 +48,22 @@ export async function POST(req: Request) {
             total: Math.round(total * 100),
             currency: currency.toUpperCase(),
             status: 'pending',
+            phone,
+            customerName,
         })
+
+        // Enviar mensagem de confirmação de pedido recebido
+        if (phone && customerName) {
+            const firstName = customerName.split(' ')[0]
+            const message = `Olá ${firstName}! 🌿\n\nRecebemos seu pedido na *Viva Leve Portal*!\n\n📌 *Pedido:* #${order._id.toString().slice(-6).toUpperCase()}\n💰 *Total:* ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(total)}\n\nAssim que o pagamento for confirmado, avisaremos você por aqui. Obrigado por escolher a Viva Leve! ✨`
+            
+            try {
+                await sendWhatsAppMessage(phone, message)
+            } catch (err) {
+                console.error('Erro ao enviar WhatsApp:', err)
+                // Não trava o checkout se o zap falhar
+            }
+        }
 
         const line_items = products.map((product) => {
             const prodName = product.name;

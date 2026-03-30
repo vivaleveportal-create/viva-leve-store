@@ -12,15 +12,26 @@ import { useRouter } from 'next/navigation'
 export default function CartPage() {
   const { items, removeItem, clearCart, total } = useCartStore()
   const [loading, setLoading] = useState(false)
+  const [customerName, setCustomerName] = useState('')
+  const [phone, setPhone] = useState('')
   const router = useRouter()
 
   async function handleCheckout() {
+    if (!customerName.trim() || !phone.trim()) {
+      toast.error('Por favor, preencha seu nome e WhatsApp para continuarmos.')
+      return
+    }
+
     setLoading(true)
     try {
       const res = await fetch('/api/store/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ productIds: items.map((i) => i.id) }),
+        body: JSON.stringify({ 
+          productIds: items.map((i) => i.id),
+          customerName,
+          phone
+        }),
       })
 
       if (res.status === 401) {
@@ -97,7 +108,39 @@ export default function CartPage() {
         ))}
       </div>
 
-      <div className="mt-12 bg-viva-surface border border-gray-100 rounded-3xl p-8 shadow-2xl shadow-viva-teal-mid/5">
+      <div className="mt-12 bg-white border border-gray-100 rounded-3xl p-8 shadow-sm">
+        <h2 className="text-2xl font-black text-viva-text mb-6 font-serif">Informações de Contato</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <label htmlFor="name" className="text-sm font-bold text-viva-text/70 ml-1">
+              Seu Nome Completo
+            </label>
+            <input
+              id="name"
+              type="text"
+              placeholder="Ex: Maria Oliveira"
+              value={customerName}
+              onChange={(e) => setCustomerName(e.target.value)}
+              className="w-full h-14 px-5 rounded-2xl bg-viva-surface border-2 border-transparent focus:border-viva-primary focus:bg-white outline-none transition-all text-viva-text font-medium"
+            />
+          </div>
+          <div className="space-y-2">
+            <label htmlFor="phone" className="text-sm font-bold text-viva-text/70 ml-1">
+              WhatsApp (com DDD)
+            </label>
+            <input
+              id="phone"
+              type="tel"
+              placeholder="Ex: 21 98888-7777"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="w-full h-14 px-5 rounded-2xl bg-viva-surface border-2 border-transparent focus:border-viva-primary focus:bg-white outline-none transition-all text-viva-text font-medium"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-8 bg-viva-surface border border-gray-100 rounded-3xl p-8 shadow-2xl shadow-viva-teal-mid/5">
         <div className="flex justify-between items-center text-2xl font-black text-viva-text mb-10 pb-8 border-b border-gray-200/50">
           <span>Total</span>
           <span className="text-4xl text-viva-primary">{formatPrice(Math.round(total() * 100))}</span>

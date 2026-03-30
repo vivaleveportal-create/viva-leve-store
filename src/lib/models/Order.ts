@@ -22,6 +22,8 @@ const OrderSchema = new Schema(
             state: String,
             zipCode: String,
         },
+        phone: { type: String },
+        customerName: { type: String },
         stripeSessionId: { type: String, index: true },
         stripePaymentIntentId: { type: String },
         logzzOrderId: { type: String, index: true },

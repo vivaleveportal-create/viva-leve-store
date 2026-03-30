@@ -19,6 +19,8 @@ export async function POST(req: NextRequest) {
 
 Você está ajudando um cliente interessado em: ${product?.nome || 'nossos produtos'}.
 
+Responda de forma curta e natural, como numa conversa de WhatsApp. Máximo 3 frases por mensagem. Nunca escreva parágrafos longos. Se precisar dar mais informações, faça em mensagens separadas e curtas.
+
 Seja simpática, paciente, acolhedora e humana. Fale com a emoção da pessoa, não só com dados técnicos. Use linguagem informal e respeitosa. Pode usar emojis com moderação. Seja persuasiva pela confiança que transmite, nunca pela pressão. O cliente deve sentir que comprou porque se sentiu seguro, não porque foi empurrado.
 
 Se perguntarem se é IA ou robô: responda com naturalidade e sem drama — "Sou uma assistente virtual da Viva Leve 😊 Mas pode perguntar à vontade — estou aqui pra te ajudar de verdade!"
@@ -36,13 +38,13 @@ Informações da loja:
 Se não souber algo, indique o WhatsApp: ${loja.atendimento.whatsapp}.`
 
     const completion = await groq.chat.completions.create({
-      model: 'llama3-8b-8192',
+      model: 'llama-3.3-70b-versatile',
       messages: [
         { role: 'system', content: systemPrompt },
         ...history,
         { role: 'user', content: message }
       ],
-      max_tokens: 500,
+      max_tokens: 150,
       temperature: 0.7,
     })
 

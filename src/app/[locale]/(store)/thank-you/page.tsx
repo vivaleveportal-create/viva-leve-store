@@ -39,6 +39,16 @@ export default function ThankYouPage({
           >
             Ver meus pedidos <ArrowRight className="w-6 h-6" />
           </Link>
+          
+          <a
+            href={`https://wa.me/5521982266075?text=Olá!%20Fiz%20o%20pedido%20${searchParams.orderId?.slice(-6).toUpperCase() || ''}%20e%20gostaria%20de%20tirar%20uma%20dúvida.`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-3 bg-white hover:bg-green-50 text-[#25D366] border-2 border-[#25D366] font-black px-8 py-4 rounded-2xl transition-all text-lg hover:scale-[1.02]"
+          >
+            Alguma dúvida sobre seu pedido? <br className="md:hidden" /> Chame no WhatsApp 💬
+          </a>
+
           <Link
             href="/products"
             className="inline-flex items-center justify-center gap-3 text-gray-600 hover:text-gray-900 font-bold px-10 py-4 transition-colors text-lg"

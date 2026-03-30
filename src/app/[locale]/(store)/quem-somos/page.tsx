@@ -10,7 +10,7 @@ export default function AboutPage() {
         
         <div className="prose prose-lg text-viva-muted max-w-none space-y-6 leading-relaxed">
           <p>
-            O <strong>Viva Leve Portal</strong> é uma curadoria especializada em facilitar a vida de quem busca bem-estar, saúde e praticidade no ambiente doméstico.
+            O <strong>Viva Leve Portal</strong> é uma curadoria especializada em produtos de saúde e mobilidade, cuidados com a pele, conforto e sono, casa e utilidades, pets, beleza e cuidados pessoais, e eletrônicos e tecnologia.
           </p>
           <p>
             Nascemos com a missão de que <strong>viver bem não precisa ser complicado</strong>. Por isso, selecionamos apenas produtos que realmente agregam valor ao seu dia a dia, desde tecnologia para relaxamento até utilidades que economizam seu tempo.
