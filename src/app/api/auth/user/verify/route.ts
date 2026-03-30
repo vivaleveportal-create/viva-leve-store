@@ -7,9 +7,11 @@ export async function GET(req: Request) {
     const { searchParams } = new URL(req.url)
     const token = searchParams.get('token')
 
+    const { origin: base } = new URL(req.url)
+
     if (!token) {
         return NextResponse.redirect(
-            `${process.env.NEXT_PUBLIC_STORE_URL}/sign-in?error=invalid-token`
+            `${base}/sign-in?error=invalid-token`
         )
     }
 
@@ -20,7 +22,7 @@ export async function GET(req: Request) {
 
     if (!user) {
         return NextResponse.redirect(
-            `${process.env.NEXT_PUBLIC_STORE_URL}/sign-in?error=invalid-token`
+            `${base}/sign-in?error=invalid-token`
         )
     }
 
@@ -30,7 +32,7 @@ export async function GET(req: Request) {
 
     const jwtToken = generateUserToken(user._id.toString(), user.email)
     const response = NextResponse.redirect(
-        `${process.env.NEXT_PUBLIC_STORE_URL}/?verified=1`
+        `${base}/?verified=1`
     )
     response.cookies.set('user-token', jwtToken, {
         httpOnly: true,

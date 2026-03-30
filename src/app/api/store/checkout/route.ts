@@ -77,7 +77,7 @@ export async function POST(req: Request) {
             };
         })
 
-        const base = process.env.NEXT_PUBLIC_STORE_URL || ''
+        const { origin: base } = new URL(req.url)
 
         const session = await stripe.checkout.sessions.create({
             payment_method_types: currency === 'brl' ? ['card', 'pix'] : ['card'],

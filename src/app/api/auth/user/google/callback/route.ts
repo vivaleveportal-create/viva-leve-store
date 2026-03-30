@@ -21,7 +21,7 @@ export async function GET(req: Request) {
     const state = searchParams.get('state')
     const error = searchParams.get('error')
 
-    const base = process.env.NEXT_PUBLIC_STORE_URL || ''
+    const { origin: base } = new URL(req.url)
 
     if (error) return NextResponse.redirect(`${base}/sign-in?error=google-denied`)
     if (!code || !state) return NextResponse.redirect(`${base}/sign-in?error=missing-params`)

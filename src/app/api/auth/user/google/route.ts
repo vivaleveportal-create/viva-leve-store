@@ -11,7 +11,7 @@ export async function GET(req: Request) {
     }
 
     const state = buildOAuthState(origin)
-    const base = process.env.NEXT_PUBLIC_STORE_URL || ''
+    const { origin: base } = new URL(req.url)
     const redirectUri = `${base}/api/auth/user/google/callback`
 
     const params = new URLSearchParams({

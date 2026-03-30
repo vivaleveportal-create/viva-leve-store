@@ -1,23 +1,27 @@
-import NextAuth from 'next-auth'
-import { authConfig } from '@/lib/auth.config'
 import createMiddleware from 'next-intl/middleware'
 import { routing } from '@/i18n/routing'
-import { NextResponse } from 'next/server'
+import { authConfig } from '@/lib/auth.config'
+import NextAuth from 'next-auth'
+import { NextRequest, NextResponse, NextFetchEvent } from 'next/server'
 
 const intlMiddleware = createMiddleware(routing)
-
 const { auth: nextAuthMiddleware } = NextAuth(authConfig)
 
-export default nextAuthMiddleware((req) => {
-    const isOnAdmin = req.nextUrl.pathname.startsWith('/admin')
-    const isOnApi = req.nextUrl.pathname.startsWith('/api')
+export default function middleware(req: NextRequest, event: NextFetchEvent) {
+    const { pathname } = req.nextUrl
 
-    if (isOnAdmin || isOnApi) {
-        return NextResponse.next()
+    // Skip NextAuth for static files and standard store routes to avoid domain enforcing redirects
+    // We only need it for admin and api/auth
+    const isNextAuthRoute = pathname.startsWith('/api/auth') || pathname.startsWith('/admin')
+
+    if (isNextAuthRoute) {
+        // @ts-ignore - NextAuth middleware types can be restrictive
+        return nextAuthMiddleware(req, event)
     }
 
+    // Standard store routes use intlMiddleware
     return intlMiddleware(req)
-})
+}
 
 export const config = {
     matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
