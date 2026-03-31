@@ -8,7 +8,8 @@ import {
   ShieldCheck, 
   Truck, 
   MessageCircle, 
-  ExternalLink 
+  ExternalLink,
+  ShoppingCart
 } from 'lucide-react'
 import AddToCartButton from './add-to-cart-button'
 import ProductGallery from './product-gallery'
@@ -130,6 +131,17 @@ export default async function ProductPage({
 
             {/* Buy Box */}
             <div className="mb-10 animate-in fade-in slide-in-from-bottom-2 duration-500">
+            {p.coinzz_url ? (
+              <a
+                href={p.coinzz_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full h-14 bg-viva-primary hover:bg-viva-primary-hover text-white font-bold rounded-lg flex items-center justify-center gap-3 transition-all shadow-xl shadow-viva-primary/10 text-lg hover:scale-[1.02] active:scale-95"
+              >
+                <ShoppingCart className="w-6 h-6" />
+                Comprar agora
+              </a>
+            ) : (
               <AddToCartButton
                 product={{
                   id: p._id.toString(),
@@ -139,6 +151,7 @@ export default async function ProductPage({
                   image: p.images?.[0],
                 }}
               />
+            )}
             </div>
 
             {/* Saiba mais (Demo URL) */}

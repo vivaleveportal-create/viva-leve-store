@@ -22,6 +22,7 @@ const ProductSchema = new Schema(
         videoUrl: { type: String },
         deliveryDays: { type: Number, default: 7 },
         demoUrl: { type: String },
+        coinzz_url: { type: String },
     },
     { timestamps: true }
 )
