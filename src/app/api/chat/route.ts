@@ -2,12 +2,37 @@ import { NextRequest, NextResponse } from 'next/server'
 import Groq from 'groq-sdk'
 import fs from 'fs'
 import path from 'path'
+import { connectMongo } from '@/lib/mongodb'
+import ChatHistory from '@/lib/models/ChatHistory'
+import crypto from 'crypto'
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY })
 
 export async function POST(req: NextRequest) {
   try {
-    const { message, productSlug, history = [] } = await req.json()
+    const { message, productSlug } = await req.json()
+
+    // 1. Identificação via Cookie (UUID)
+    let sessionId = req.cookies.get('chat-session-id')?.value
+    if (!sessionId) {
+      sessionId = crypto.randomUUID()
+    }
+
+    await connectMongo()
+
+    // 2. Carregar Histórico Recente (Últimas 10 mensagens)
+    const existingHistory = await ChatHistory.findOne({ 
+      channel: 'website', 
+      identifier: sessionId 
+    })
+
+    const recentMessages = existingHistory?.messages?.slice(-10) || []
+    
+    // Converter para o formato do Groq
+    const groqHistory = recentMessages.map((m: any) => ({
+      role: m.role,
+      content: m.content
+    }))
 
     const knowledgePath = path.join(process.cwd(), 'public/data/products-knowledge.json')
     const knowledge = JSON.parse(fs.readFileSync(knowledgePath, 'utf-8'))
@@ -41,15 +66,45 @@ Se não souber algo, indique o WhatsApp: ${loja.atendimento.whatsapp}.`
       model: 'llama-3.3-70b-versatile',
       messages: [
         { role: 'system', content: systemPrompt },
-        ...history,
+        ...groqHistory,
         { role: 'user', content: message }
       ],
-      max_tokens: 150,
+      max_tokens: 200,
       temperature: 0.7,
     })
 
     const reply = completion.choices[0]?.message?.content || 'Desculpe, não consegui processar sua mensagem.'
-    return NextResponse.json({ reply })
+
+    // 5. Salvar no MongoDB e Renovar TTL (1 dia para Site)
+    const expiryDate = new Date()
+    expiryDate.setDate(expiryDate.getDate() + 1)
+
+    await ChatHistory.findOneAndUpdate(
+      { channel: 'website', identifier: sessionId },
+      { 
+        $push: { 
+          messages: { 
+            $each: [
+              { role: 'user', content: message },
+              { role: 'assistant', content: reply }
+            ] 
+          } 
+        },
+        $set: { expiresAt: expiryDate }
+      },
+      { upsert: true }
+    )
+
+    // 6. Retornar resposta
+    const response = NextResponse.json({ reply, history: recentMessages })
+    response.cookies.set('chat-session-id', sessionId, { 
+      maxAge: 86400, // 1 dia
+      path: '/',
+      httpOnly: false,
+      sameSite: 'lax'
+    })
+    
+    return response
   } catch (error) {
     console.error('Chat error:', error)
     return NextResponse.json({ reply: 'Ocorreu um erro. Tente novamente.' }, { status: 500 })

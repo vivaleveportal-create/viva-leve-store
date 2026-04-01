@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import Groq from 'groq-sdk'
 import fs from 'fs'
 import path from 'path'
+import { connectMongo } from '@/lib/mongodb'
+import ChatHistory from '@/lib/models/ChatHistory'
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY })
 
@@ -29,6 +31,22 @@ export async function POST(req: NextRequest) {
     if (isFromMe || !messageText || !phone) {
       return NextResponse.json({ ok: true })
     }
+
+    await connectMongo()
+
+    // Carregar Histórico Recente (WhatsApp: Últimas 10 mensagens)
+    const existingHistory = await ChatHistory.findOne({ 
+      channel: 'whatsapp', 
+      identifier: phone 
+    })
+
+    const recentMessages = existingHistory?.messages?.slice(-10) || []
+    
+    // Converter para o formato do Groq
+    const groqHistory = recentMessages.map((m: any) => ({
+      role: m.role,
+      content: m.content
+    }))
 
     // Carregar knowledge base
     const knowledgePath = path.join(process.cwd(), 'public/data/products-knowledge.json')
@@ -65,9 +83,10 @@ Regras:
       model: 'llama-3.3-70b-versatile',
       messages: [
         { role: 'system', content: systemPrompt },
+        ...groqHistory,
         { role: 'user', content: messageText }
       ],
-      max_tokens: 80,
+      max_tokens: 150,
       temperature: 0.7,
     })
 
@@ -89,6 +108,26 @@ Regras:
         body: JSON.stringify({ phone, message: sentence.trim() })
       })
     }
+
+    // Salvar no MongoDB e Renovar TTL (7 dias para WhatsApp)
+    const expiryDate = new Date()
+    expiryDate.setDate(expiryDate.getDate() + 7)
+
+    await ChatHistory.findOneAndUpdate(
+      { channel: 'whatsapp', identifier: phone },
+      { 
+        $push: { 
+          messages: { 
+            $each: [
+              { role: 'user', content: messageText },
+              { role: 'assistant', content: reply }
+            ] 
+          } 
+        },
+        $set: { expiresAt: expiryDate }
+      },
+      { upsert: true }
+    )
 
     return NextResponse.json({ ok: true })
   } catch (error) {
