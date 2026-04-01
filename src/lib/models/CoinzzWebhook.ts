@@ -13,11 +13,13 @@ const CoinzzWebhookSchema = new Schema(
         customerPhone: { type: String },
         customerEmail: { type: String },
         totalAmount: { type: Number },
+        paymentMethod: { type: String },
         status: { type: String },
         
         // Metadata do sistema
         processed: { type: Boolean, default: false },
         whatsappSent: { type: Boolean, default: false },
+        emailSent: { type: Boolean, default: false },
         error: { type: String }
     },
     { timestamps: true }

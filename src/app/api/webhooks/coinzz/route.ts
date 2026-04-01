@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { connectMongo } from '@/lib/mongodb'
 import CoinzzWebhook from '@/lib/models/CoinzzWebhook'
 import { sendWhatsAppMessage } from '@/lib/services/zapi'
+import { sendInternalSaleNotificationEmail } from '@/lib/email'
 
 export async function POST(req: NextRequest) {
   try {
@@ -15,7 +16,13 @@ export async function POST(req: NextRequest) {
     const orderId = payload?.order_id || payload?.id || payload?.transaction_id || 'N/A'
     const productName = payload?.product_name || payload?.items?.[0]?.name || payload?.product?.name || 'Produto não identificado'
     const totalAmount = payload?.total_amount || payload?.amount || payload?.price || 0
+    const paymentMethod = payload?.payment_method || payload?.payment?.method || payload?.payment_type || 'N/A'
     const status = payload?.status || payload?.order_status || 'unknown'
+
+    const formattedValue = new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(totalAmount)
     
     const customer = payload?.customer || payload?.buyer || payload?.client || {}
     const customerName = customer?.name || payload?.customer_name || payload?.buyer_name || 'Cliente'
@@ -32,31 +39,56 @@ export async function POST(req: NextRequest) {
       customerPhone,
       customerEmail,
       totalAmount,
+      paymentMethod,
       status
     })
 
-    // 3. Notificação via WhatsApp via Z-API (se o telefone existir)
+    // 3. Notificações Simultâneas (Email e WhatsApp)
     let whatsappSent = false
-    if (customerPhone) {
-      const message = `🚀 *Nova Venda Coinzz!*\n\n` +
-                      `👤 *Cliente:* ${customerName}\n` +
-                      `📦 *Produto:* ${productName}\n` +
-                      `💰 *Valor:* R$ ${totalAmount}\n` +
-                      `📊 *Status:* ${status}\n` +
-                      `🆔 *Pedido:* ${orderId}\n\n` +
-                      `Confira o painel para mais detalhes.`
-      
-      const targetPhone = '+5521982266075' // Número solicitado: +55 21 98226-6075
-      const zapiResult = await sendWhatsAppMessage(targetPhone, message)
-      
-      if (zapiResult) {
+    let emailSent = false
+
+    // WhatsApp para o número solicitado
+    const targetWhatsApp = '5521988714006'
+    const whatsappMessage = `🚀 *Nova Venda Viva Leve!*\n\n` +
+                          `👤 *Cliente:* ${customerName}\n` +
+                          `📦 *Produto:* ${productName}\n` +
+                          `💰 *Valor:* ${formattedValue}\n` +
+                          `💳 *Pagamento:* ${paymentMethod}\n` +
+                          `📊 *Status:* ${status}\n` +
+                          `🆔 *Pedido:* ${orderId}\n\n` +
+                          `Confira o painel para mais detalhes.`
+
+    // Email para o endereço solicitado
+    const emailData = {
+      productName,
+      formattedValue,
+      customerName,
+      paymentMethod,
+      status,
+      orderId
+    }
+
+    try {
+      // Executamos ambos, permitindo que falhem independentemente
+      const [whatsappResult, emailResult] = await Promise.allSettled([
+        sendWhatsAppMessage(targetWhatsApp, whatsappMessage),
+        sendInternalSaleNotificationEmail(emailData)
+      ])
+
+      if (whatsappResult.status === 'fulfilled' && whatsappResult.value) {
         whatsappSent = true
       }
+      if (emailResult.status === 'fulfilled') {
+        emailSent = true
+      }
+    } catch (notifyError) {
+      console.error('⚠️ Notification Error:', notifyError)
     }
 
     // Atualiza status local
     webhookDoc.processed = true
     webhookDoc.whatsappSent = whatsappSent
+    webhookDoc.emailSent = emailSent
     await webhookDoc.save()
 
     // 4. Retornar 200 para a Coinzz
