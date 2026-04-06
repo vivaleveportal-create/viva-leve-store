@@ -32,15 +32,17 @@ export const trackEvent = async (type: AnalyticsEventType, options: InternalTrac
   
   // 1. GA4 tracking (requires window.gtag)
   if (typeof window.gtag === 'function') {
+    if (type === 'page_view') {
+      window.gtag('config', process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!, {
+        page_path: window.location.pathname,
+      });
+    }
+
     window.gtag('event', type, {
       session_id: sessionId,
       product_id: options.product_id,
       ...options.payload
     })
-  } else if (type === 'page_view' && typeof window.gtag === 'function') {
-      window.gtag('config', process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!, {
-          page_path: window.location.pathname,
-      });
   }
 
   // 2. Internal Observability tracking
@@ -63,5 +65,7 @@ export const trackEvent = async (type: AnalyticsEventType, options: InternalTrac
 
 // Global declaration for gtag
 declare global {
-  function gtag(...args: any[]): void;
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
 }
