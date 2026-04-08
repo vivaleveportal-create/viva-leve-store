@@ -408,6 +408,37 @@
                 "visual": "Aparência de 'saído do barbeiro' todos os dias, sem depender de agenda.",
                 "financeiro": "Matemática simples: o aparelho se paga em menos de 6 meses comparado ao gasto com lâminas e idas extras ao barbeiro."
             },
+            "fluxo_vendas_whatsapp": {
+                "etapa_1_saudacao": [
+                    "Olá, tudo bem? 👋 Vi que você tem interesse no nosso Barbeador 3 em 1 — posso te ajudar?",
+                    "Com quem eu falo? Gosto de chamar pelo nome 😊",
+                    "Vou te explicar rapidinho o que faz esse barbeador ser diferente dos outros. É bem direto ao ponto!"
+                ],
+                "etapa_2_apresentacao": [
+                    "O que mais incomoda quem usa lâmina é a irritação, aquelas bolinhas vermelhas no pescoço e a pele ardendo no dia seguinte. Isso acontece porque a lâmina toca diretamente na sua pele 😬",
+                    "Esse barbeador funciona diferente — tem uma Malha de Proteção Titanium Shave. O pelo entra pelos microfuros da tela e é cortado por baixo, sem a lâmina jamais tocar a sua pele. Resultado: pele lisa, zero irritação, zero foliculite ✅",
+                    "E ainda vem com 3 cabeças intercambiáveis: barba, acabamento de cabelo e pelos de nariz/ouvido. Tudo em um só aparelho, sem fio, recarregável via USB 💪"
+                ],
+                "etapa_3_objecao_principal": [
+                    "Sei que muita gente já usou barbeador elétrico barato e ficou decepcionado — ele não cortava, só puxava o pelo. O problema nesses casos é sempre a potência e o tipo de tela. Esse aqui tem motor de alta rotação com sistema modular que concentra o torque em cada função específica — não engasga nem em barba grossa 💪"
+                ],
+                "etapa_4_oferta": [
+                    "E o melhor: risco ZERO 🔒 Você não paga nada agora. Nós entregamos e você paga só na hora que receber — dinheiro, PIX, cartão de débito ou crédito em até 12x na maquininha.",
+                    "Me passa seu CEP para eu confirmar se os entregadores já estão na sua região 📦"
+                ],
+                "etapa_5_confirmacao": [
+                    "Endereço confirmado 📍 Vou agendar sua entrega. Se surgir qualquer imprevisto e não puder receber, me avisa antes para não deslocar o entregador à toa, combinado? 🤝",
+                    "Tenho certeza que você vai sentir a diferença na primeira barba. Qualquer dúvida, estou aqui 💬"
+                ],
+                "objecoes_especificas": {
+                    "a bateria dura quanto?": "Aproximadamente 60 minutos de autonomia — suficiente para uma barba completa sem interrupção 😊",
+                    "funciona em barba grossa?": "Sim! O sistema modular concentra o torque do motor na função específica — não engasga nem em fios mais grossos.",
+                    "onde compro peças de reposição?": "As cabeças de reposição são encontradas facilmente. E com uso normal, duram bastante antes de precisar trocar.",
+                    "quanto tempo pra carregar?": "O tempo de carregamento é rápido via USB — pode carregar no carregador do celular mesmo.",
+                    "é melhor que lâmina?": "Para quem sofre com irritação e foliculite, com certeza. A lâmina toca diretamente na pele causando microcortes. Esse barbeador corta sem tocar na derme — pele lisa sem sofrimento 😊",
+                    "vale mais que lâmina descartável?": "Muito mais! O aparelho equivale a 4 ou 5 pacotes de lâminas premium. Em 6 meses já se pagou e você não gasta mais nada."
+                }
+            },
             "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
         },
         {
