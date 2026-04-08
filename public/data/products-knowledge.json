@@ -268,6 +268,45 @@
                 "resolve pelos espalhados na casa?": "Sim. Ao remover os pelos mortos regularmente, reduz muito a quantidade de pelos nos móveis, sofá e chão.",
                 "o vapor é quente?": "Não. É vapor frio — sem risco de queimadura para o pet ou para você."
             },
+            "especificacoes_tecnicas": {
+                "funcoes": "3 em 1: escova, remove pelos mortos e massagem",
+                "tipo_vapor": "Vapor frio — 100% seguro para pets",
+                "compatibilidade": "Cães e gatos de todos os tamanhos e raças",
+                "bateria": "Recarregável via USB",
+                "garantia": "12 meses"
+            },
+            "fluxo_vendas_whatsapp": {
+                "etapa_1_saudacao": [
+                    "Olá, tudo bem? 👋 Vi que você tem interesse na nossa Escova a Vapor para Pets — posso te ajudar?",
+                    "Qual seu nome? Gosto de chamar pelo nome 😊",
+                    "Vou te mostrar rapidinho como ela funciona e por que os pets simplesmente amam!"
+                ],
+                "etapa_2_apresentacao": [
+                    "Sabe aquele problema de pelo de pet espalhado por toda a casa, no sofá, na cama, no tapete? Essa escova resolve isso de um jeito que seu pet vai adorar 🐾",
+                    "Ela é 3 em 1: remove os pelos mortos, desembaraça nós e ainda faz massagem relaxante ao mesmo tempo — com vapor frio 100% seguro para cães e gatos de qualquer raça e tamanho ✅",
+                    "A maioria dos pets fica tão relaxada durante o uso que não quer que pare! Além de deixar o pelo bonito e brilhante, reduz muito a quantidade de pelos espalhados pela casa 😍"
+                ],
+                "etapa_3_oferta": [
+                    "E o melhor: risco ZERO 🔒 Você não paga nada agora. Nós entregamos e você paga só na hora que receber — dinheiro, PIX, cartão de débito ou crédito em até 12x na maquininha.",
+                    "Me passa seu CEP para eu confirmar se os entregadores já estão na sua região 📦"
+                ],
+                "etapa_4_confirmacao": [
+                    "Endereço confirmado 📍 Vou agendar sua entrega. Se surgir qualquer imprevisto e não puder receber, me avisa antes para não deslocar o entregador à toa, combinado? 🤝",
+                    "Tenho certeza que seu pet vai amar! Qualquer dúvida, estou aqui 💬"
+                ],
+                "etapa_5_pos_venda": [
+                    "Assim que receber, me manda uma foto do seu pet sendo escovado — adoro ver! E qualquer dúvida sobre o uso é só chamar 😊"
+                ],
+                "objecoes_especificas": {
+                    "machuca o pet?": "Não! O vapor frio é completamente suave e seguro. A maioria dos pets relaxa durante o uso — muitos adoram a sensação 😊",
+                    "funciona em gatos?": "Sim, funciona em cães e gatos de todos os tamanhos e raças!",
+                    "o vapor é quente?": "Não, é vapor frio — zero risco de queimadura para o pet ou para você.",
+                    "resolve pelos na casa?": "Sim! Ao remover os pelos mortos regularmente, reduz muito a quantidade de pelos no sofá, chão e móveis.",
+                    "meu pet tem medo de barulho?": "A escova é bem silenciosa. Mas se seu pet for muito sensível, recomendo apresentar aos poucos — começa sem ligar o vapor para ele se acostumar com o objeto.",
+                    "precisa de reposição?": "Não precisa de refil nem peças de reposição — é só recarregar via USB e usar normalmente.",
+                    "funciona em pelo longo?": "Sim! É especialmente boa para raças de pelo longo porque desembaraça os nós sem puxar e sem machucar."
+                }
+            },
             "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
         },
         {
