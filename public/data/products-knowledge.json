@@ -243,6 +243,44 @@
                 "a bateria dura quanto?": "Meses com uso normal. Usa pilha CR2032 comum, fácil de encontrar e barata para repor.",
                 "é difícil de usar?": "Não. Baixa o app, vincula o chaveiro e pronto. Apertar um botão no celular já faz o chaveiro apitar."
             },
+            "especificacoes_tecnicas": {
+                "tecnologia": "Bluetooth BLE — baixo consumo",
+                "alcance": "Aproximadamente 50 metros",
+                "bateria": "Pilha CR2032 — duração de meses",
+                "funcoes": "Bip sonoro, localização reversa do celular, alerta de distância",
+                "compatibilidade": "Android e iPhone",
+                "mensalidade": "Nenhuma",
+                "garantia": "12 meses"
+            },
+            "fluxo_vendas_whatsapp": {
+                "etapa_1_saudacao": [
+                    "Olá, tudo bem? 👋 Vi que você tem interesse no nosso Chaveiro Rastreador — posso te ajudar?",
+                    "Como posso te chamar? 😊",
+                    "Vou te explicar rapidinho como ele funciona e como vai acabar com o estresse de procurar objetos perdidos!"
+                ],
+                "etapa_2_apresentacao": [
+                    "Sabe aquela sensação horrível de estar com pressa pra sair e não achar a chave do carro ou a carteira? Esse rastreador foi feito para acabar com esse estresse 🧠",
+                    "Ele faz 3 coisas incríveis:\n1️⃣ Bip de localização — perdeu dentro de casa? Aperta um botão no celular e o chaveiro 'grita' até você achar 🔊\n2️⃣ Localização reversa — não acha o celular? Aperta o botão no chaveiro e o celular toca, mesmo no silencioso! 📱\n3️⃣ Alerta de esquecimento — te avisa se você se afastar demais do objeto. Ótimo para não esquecer a mochila no restaurante 🔒",
+                    "É a tecnologia da Apple AirTag com custo-benefício que cabe no bolso e funciona em qualquer celular! Muitos clientes usam também na coleira dos pets ou dentro da mala de viagem 🐾"
+                ],
+                "etapa_3_oferta": [
+                    "E o melhor: risco ZERO 🔒 Você não paga nada agora. Nós entregamos e você paga só na hora que receber — dinheiro, PIX, cartão de débito ou crédito em até 12x na maquininha.",
+                    "Me passa seu CEP para eu confirmar se os entregadores já estão na sua região 📦"
+                ],
+                "etapa_4_confirmacao": [
+                    "Endereço confirmado 📍 Vou agendar sua entrega. Se surgir qualquer imprevisto e não puder receber, me avisa antes para não deslocar o entregador à toa, combinado? 🤝",
+                    "Tenho certeza que vai te poupar muita dor de cabeça! Qualquer dúvida, estou aqui 💬"
+                ],
+                "objecoes_especificas": {
+                    "qual o alcance?": "Funciona por Bluetooth com alcance de aproximadamente 50 metros. Para distâncias maiores, o mapa mostra o último local registrado 😊",
+                    "a bateria dura quanto?": "Meses com uso normal! Usa pilha CR2032 comum, fácil de encontrar e barata para repor.",
+                    "é difícil de usar?": "Não! Baixa o app, vincula o chaveiro e pronto. Apertar um botão no celular já faz o chaveiro apitar.",
+                    "funciona em qualquer celular?": "Sim, funciona em qualquer smartphone Android ou iPhone 😊",
+                    "funciona como GPS de satélite?": "Ele usa Bluetooth — perfeito para localizar dentro de casa ou em locais próximos. Para distâncias maiores, mostra o último local registrado quando outro celular passou perto.",
+                    "pode usar na coleira do pet?": "Sim! Muitos clientes usam na coleira dos pets para ter uma camada extra de segurança 🐾",
+                    "tem mensalidade?": "Não! É compra única, sem nenhuma cobrança mensal 😊"
+                }
+            },
             "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
         },
         {
