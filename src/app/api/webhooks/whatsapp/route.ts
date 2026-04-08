@@ -4,6 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import { connectMongo } from '@/lib/mongodb'
 import ChatHistory from '@/lib/models/ChatHistory'
+import Lead from '@/lib/models/Lead'
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY })
 
@@ -91,6 +92,11 @@ Regras:
 - Use as informações do campo fluxo_vendas_whatsapp do produto para guiar a conversa de forma natural, sem copiar as mensagens literalmente — adapte ao contexto da conversa.
 - Quando o cliente encerrar a conversa com agradecimento, emoji de despedida ou qualquer sinal de encerramento, responda com no máximo 1 mensagem simpática de despedida e PARE. Não continue engajando, não faça perguntas, não sugira outros produtos.
 
+Captura de leads — importante:
+- Sempre pergunte o nome do cliente no início da conversa de forma natural.
+- Quando o cliente demonstrar interesse em comprar, pergunte o CEP para verificar a entrega.
+- Faça isso de forma natural, sem parecer um formulário.
+
 Regras de Comportamento e Segurança:
 - Se o cliente usar palavrões, xingamentos ou linguagem agressiva: responda com calma e educação, sem rebater. Exemplo: "Entendo que você pode estar frustrado 😊 Estou aqui pra te ajudar da melhor forma possível. Me conta o que aconteceu?"
 - Se o cliente insistir em xingamentos após a resposta gentil: encerre educadamente. Exemplo: "Infelizmente não consigo continuar o atendimento dessa forma. Se quiser ajuda com nossos produtos, é só chamar! 😊"
@@ -149,9 +155,54 @@ Regras de Comportamento e Segurança:
       { upsert: true }
     )
 
+    // Após salvar o histórico, extrair e salvar lead
+    await extractAndSaveLead(phone, messageText, reply, recentMessages)
+
     return NextResponse.json({ ok: true })
   } catch (error) {
     console.error('WhatsApp webhook error:', error)
     return NextResponse.json({ error: 'Erro interno' }, { status: 500 })
+  }
+}
+
+async function extractAndSaveLead(phone: string, userMessage: string, botReply: string, history: any[]) {
+  try {
+    const leadData: any = { telefone: phone, updatedAt: new Date() }
+
+    // Detectar CEP (8 dígitos numéricos)
+    const cepMatch = userMessage.replace(/\D/g, '').match(/^\d{8}$/)
+    if (cepMatch) {
+      leadData.cep = cepMatch[0]
+    }
+
+    // Detectar nome (quando bot perguntou "com quem falo" ou "qual seu nome")
+    const lastBotMessage = history.filter((m: any) => m.role === 'assistant').slice(-1)[0]?.content || ''
+    const askingName = lastBotMessage.toLowerCase().includes('com quem') || lastBotMessage.toLowerCase().includes('seu nome') || lastBotMessage.toLowerCase().includes('como você se chama')
+    if (askingName && userMessage.length < 40 && !userMessage.includes('http')) {
+      leadData.nome = userMessage.trim()
+    }
+
+    // Detectar produto de interesse pelas mensagens
+    const fullContext = history.map((m: any) => m.content).join(' ').toLowerCase()
+    if (fullContext.includes('robô') || fullContext.includes('robo') || fullContext.includes('aspirador')) leadData.produto_interesse = 'Mini Robô Aspirador'
+    else if (fullContext.includes('massagem') || fullContext.includes('ems')) leadData.produto_interesse = 'Kit Massagem EMS'
+    else if (fullContext.includes('mosquito') || fullContext.includes('luminária')) leadData.produto_interesse = 'Luminária Mata Mosquito'
+    else if (fullContext.includes('escova') || fullContext.includes('pet') || fullContext.includes('cachorro') || fullContext.includes('gato')) leadData.produto_interesse = 'Escova a Vapor para Pets'
+    else if (fullContext.includes('barbeador') || fullContext.includes('barba')) leadData.produto_interesse = 'Barbeador Elétrico 3 em 1'
+    else if (fullContext.includes('câmera') || fullContext.includes('camera')) leadData.produto_interesse = 'Câmera Lâmpada 360°'
+    else if (fullContext.includes('depiladora') || fullContext.includes('depilação')) leadData.produto_interesse = 'Caneta Depiladora Elétrica'
+    else if (fullContext.includes('lixa') || fullContext.includes('pé') || fullContext.includes('calo')) leadData.produto_interesse = 'Lixa de Pé Elétrica'
+    else if (fullContext.includes('fone') || fullContext.includes('bluetooth') || fullContext.includes('m10')) leadData.produto_interesse = 'Fone Bluetooth M10'
+    else if (fullContext.includes('chaveiro') || fullContext.includes('rastreador')) leadData.produto_interesse = 'Chaveiro Rastreador GPS'
+    else if (fullContext.includes('cílios') || fullContext.includes('cilios') || fullContext.includes('modelador')) leadData.produto_interesse = 'Modelador Térmico de Cílios'
+    else if (fullContext.includes('mini câmera') || fullContext.includes('a9')) leadData.produto_interesse = 'Mini Câmera Wi-Fi A9'
+
+    await Lead.findOneAndUpdate(
+      { telefone: phone },
+      { $set: leadData },
+      { upsert: true }
+    )
+  } catch (error) {
+    console.error('Erro ao salvar lead:', error)
   }
 }
