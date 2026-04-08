@@ -283,6 +283,42 @@
                 "gancho": "Ficou com alguma dúvida ou posso te mostrar as condições especiais de hoje?",
                 "fechamento": "Você só paga quando o produto chegar na sua mão — sem risco nenhum. E qualquer dúvida no uso, é só me chamar aqui!"
             },
+            "especificacoes_tecnicas": {
+                "mecanismo": "Micro-Aparação Circular — 12.000 vibrações por minuto",
+                "iluminacao": "LED integrado",
+                "recarga": "Via USB",
+                "uso_ideal": "Sobrancelhas, buço, rosto e corpo",
+                "garantia": "12 meses"
+            },
+            "fluxo_vendas_whatsapp": {
+                "etapa_1_saudacao": [
+                    "Oi! Que bom que você entrou em contato!",
+                    "Para eu te dar um atendimento especial, qual é o seu nome? 😊",
+                    "Vou te explicar rapidinho como essa Caneta Depiladora funciona e os benefícios dela. Logo depois já te passo os valores e como funciona a entrega!"
+                ],
+                "etapa_2_apresentacao": [
+                    "Muitas clientes me procuram cansadas de sofrer com a dor da pinça ou com medo da cera deixar a pálpebra flácida com o tempo. Essa caneta foi feita justamente para resolver isso 🌸",
+                    "O segredo é a Micro-Aparação Circular de Precisão. Diferente da pinça que puxa o nervo e dói, ou da cera que puxa o colágeno da pele, essa caneta vibra 12.000 vezes por minuto e corta o pelo suavemente na superfície — sem encravar e sem agredir sua pele ✅",
+                    "É super leve e tem luz LED integrada — ajuda a enxergar até aqueles pelinhos fininhos que a gente não vê no espelho. Resultado de salão feito por você em segundos, sem dor e sem sair de casa 💡"
+                ],
+                "etapa_3_oferta": [
+                    "E o melhor: risco ZERO 🔒 Você não paga nada agora. Nós entregamos e você paga só na hora que receber — dinheiro, PIX, cartão de débito ou crédito em até 12x na maquininha.",
+                    "Me passa seu CEP para eu confirmar se os entregadores já estão na sua região 📦"
+                ],
+                "etapa_4_confirmacao": [
+                    "Endereço confirmado 📍 Vou agendar sua entrega. Se surgir qualquer imprevisto e não puder receber, me avisa antes para não deslocar o entregador à toa, combinado? 🤝",
+                    "Tenho certeza que você vai amar ter sobrancelhas perfeitas sem sofrimento. Qualquer dúvida, estou aqui 💬"
+                ],
+                "objecoes_especificas": {
+                    "dói?": "Não dói nada! É completamente indolor — diferente da pinça que puxa o nervo, essa caneta apenas corta o pelo na superfície sem nenhum contato com a pele 😊",
+                    "pode causar flacidez na pálpebra?": "Não! Ao contrário da cera que puxa o colágeno da pálpebra, essa caneta corta o pelo sem nenhuma tração na pele — preservando o colágeno.",
+                    "o pelo cresce mais grosso?": "Não, esse é um mito! O pelo cortado na superfície volta exatamente igual — não muda a espessura nem a textura.",
+                    "tenho mão tremida, consigo usar?": "Sim! O formato ergonômico em caneta dá estabilidade total, e a luz LED foca exatamente no pelo 😊",
+                    "pode cortar a pele?": "Não! A ponteira cônica foi projetada para que apenas o pelo entre na zona de corte, protegendo completamente a pele.",
+                    "remove bem os pelos?": "Sim, com precisão! A luz LED ajuda a enxergar até os pelos mais finos e transparentes que normalmente não vemos no espelho.",
+                    "precisa de pilha?": "Não, é recarregável via USB — como um celular 😊"
+                }
+            },
             "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
         },
         {
