@@ -702,6 +702,13 @@
                 "diferenciais": "Ele tem cancelamento de ruído — então as pessoas te ouvem sem chiados, perfeito para ligações e áudios. A case é um power bank que carrega o fone várias vezes e ainda salva o celular numa emergência. E tudo isso com 20 horas de autonomia.",
                 "fechamento": "Você não precisa pagar nada agora — só paga quando o entregador chegar na sua mão. Qualquer dúvida, é só chamar!"
             },
+            "fluxo_vendas_whatsapp": {
+                "etapa_1_saudacao": [
+                    "Olá, tudo bem? 👋 Vi que você tem interesse no nosso Fone Bluetooth M10 — posso te ajudar?",
+                    "Com quem tenho o prazer? 😊",
+                    "Vou te explicar rapidinho por que ele tem o melhor custo-benefício do momento!"
+                ]
+            },
             "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
         }
     ],
