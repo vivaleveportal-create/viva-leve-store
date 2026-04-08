@@ -449,6 +449,48 @@
                 "estetica": "A liberdade de usar qualquer sandália, andar descalça e se sentir bonita — sem depender de salão.",
                 "praticidade": "Resultado de podólogo em 10 minutos, no conforto de casa, enquanto assiste TV."
             },
+            "especificacoes_tecnicas": {
+                "rotacoes": "2.000 RPM",
+                "pedras": "2 cabeças — quartzo fino e quartzo grosso",
+                "recarga": "USB — bivolt",
+                "seguranca": "Dispositivo de parada automática por pressão excessiva",
+                "resistencia": "À prova d'água",
+                "tempo_uso": "Menos de 10 minutos por sessão",
+                "garantia": "12 meses"
+            },
+            "fluxo_vendas_whatsapp": {
+                "etapa_1_saudacao": [
+                    "Olá, tudo bem? 👋 Vi que você tem interesse na nossa Lixa de Pé Elétrica — posso te ajudar?",
+                    "Qual seu nome? Gosto de chamar pelo nome 😊",
+                    "Vou te explicar rapidinho como ela vai deixar seus pés lisinhos e macios em menos de 10 minutos!"
+                ],
+                "etapa_2_apresentacao": [
+                    "Ao invés de ficar sofrendo com desconforto, dores ou calos nos pés, você usa a Lixa Elétrica e acaba com pele morta, pele seca e calcanhar rachado — sem precisar sair de casa e sem gastar dinheiro com salão 🦶✨",
+                    "O segredo é o mecanismo inteligente com 2.000 rotações por minuto — 10x mais eficiente que uma lixa comum. E tem dispositivo de segurança: se você aplicar muita força, a pedra para de rodar automaticamente. Zero risco de machucar a pele ✅",
+                    "Vem com 2 pedras: quartzo fino para pés menos ressecados e quartzo grosso para calos mais resistentes. É recarregável via USB, leve e à prova d'água 💧"
+                ],
+                "etapa_3_oferta": [
+                    "E o melhor: risco ZERO 🔒 Você não paga nada agora. Nós entregamos e você paga só na hora que receber — dinheiro, PIX, cartão de débito ou crédito em até 12x na maquininha.",
+                    "Me passa seu CEP para eu confirmar se os entregadores já estão na sua região 📦"
+                ],
+                "etapa_4_confirmacao": [
+                    "Endereço confirmado 📍 Vou agendar sua entrega. Se surgir qualquer imprevisto e não puder receber, me avisa antes para não deslocar o entregador à toa, combinado? 🤝",
+                    "Tenho certeza que você vai amar o resultado! Qualquer dúvida, estou aqui 💬"
+                ],
+                "etapa_5_pos_venda": [
+                    "Assim que receber, me conta o resultado! E qualquer dúvida sobre o uso, é só chamar 😊"
+                ],
+                "objecoes_especificas": {
+                    "dói usar?": "Não dói! O mecanismo é suave e pode ser regulada entre 2 velocidades. E se pressionar demais, ele para automaticamente para proteger sua pele 😊",
+                    "remove calos difíceis?": "Sim! A cabeça grossa é específica para calos mais resistentes e o motor tem torque suficiente para peles endurecidas.",
+                    "vai machucar se lixar demais?": "Não! O dispositivo de segurança reduz a força automaticamente se a pressão for excessiva — protege a pele saudável.",
+                    "voa pó de pele pela casa?": "O pó fica concentrado na área de contato. Recomendo usar em banheiro ou sobre uma toalha para facilitar a limpeza.",
+                    "precisa de pilha?": "Não, é recarregável via USB — como um celular 😊",
+                    "as pedras têm reposição?": "Sim, as pedras de reposição são encontradas facilmente.",
+                    "é à prova d'água?": "Sim! Pode usar no banho ou com os pés molhados sem problema.",
+                    "quanto tempo de bateria?": "A bateria tem boa durabilidade para várias sessões antes de precisar recarregar."
+                }
+            },
             "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
         },
         {
