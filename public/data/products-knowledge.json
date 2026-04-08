@@ -177,6 +177,47 @@
                 "familia": "Veja o que seu pet ou seus filhos estão fazendo agora, de onde você estiver — e ainda pode falar com eles pelo áudio.",
                 "conveniencia": "Tão fácil quanto trocar uma lâmpada. Sem obra, sem técnico, sem mensalidade."
             },
+            "especificacoes_tecnicas": {
+                "instalacao": "Plug & Play no bocal E27 padrão",
+                "rotacao": "360° Pan/Tilt via app",
+                "resolucao": "Full HD",
+                "visao_noturna": "Infravermelha",
+                "audio": "Bidirecional — fala e ouve pelo celular",
+                "armazenamento": "Entrada para cartão SD",
+                "mensalidade": "Nenhuma",
+                "tempo_instalacao": "Menos de 60 segundos",
+                "garantia": "12 meses"
+            },
+            "fluxo_vendas_whatsapp": {
+                "etapa_1_saudacao": [
+                    "Olá, tudo bem? 👋 Vi que você tem interesse na nossa Câmera Lâmpada 360° — posso te ajudar?",
+                    "Qual seu nome? Gosto de chamar pelo nome 😊",
+                    "Vou te explicar rapidinho como ela funciona e o que ela resolve na sua casa. É bem direto ao ponto!"
+                ],
+                "etapa_2_apresentacao": [
+                    "Essa câmera é o fim daquela dor de cabeça de ter que furar parede, passar fio ou contratar eletricista. Ela funciona exatamente como uma lâmpada comum — é só rosquear no bocal que você já tem no teto e pronto 🛠️",
+                    "Você controla tudo pelo celular. Ela gira 360°, então você vê o ambiente inteiro sem pontos cegos. Tem microfone e alto-falante — você ouve e fala com quem está no ambiente. Ótimo para monitorar pets e crianças 🏠✅",
+                    "Se alguém se movimentar, ela te manda alerta na hora pelo celular. E tem visão noturna infravermelha — enxerga claramente mesmo no escuro total 🔒"
+                ],
+                "etapa_3_oferta": [
+                    "E o melhor: risco ZERO 🔒 Você não paga nada agora. Nós entregamos e você paga só na hora que receber — dinheiro, PIX, cartão de débito ou crédito em até 12x na maquininha.",
+                    "Me passa seu CEP para eu confirmar se os entregadores já estão na sua região 📦"
+                ],
+                "etapa_4_confirmacao": [
+                    "Endereço confirmado 📍 Vou agendar sua entrega. Se surgir qualquer imprevisto e não puder receber, me avisa antes para não deslocar o entregador à toa, combinado? 🤝",
+                    "Tenho certeza que você vai adorar a tranquilidade de monitorar sua casa pelo celular. Qualquer dúvida, estou aqui 💬"
+                ],
+                "objecoes_especificas": {
+                    "e se o ladrão desroscar?": "Por parecer uma lâmpada comum, dificilmente é identificada como câmera. E ela registra tudo antes disso — o histórico fica salvo no cartão SD 😊",
+                    "a imagem é boa à noite?": "Sim! Visão noturna infravermelha — imagem clara mesmo no escuro total.",
+                    "vai sobrecarregar meu wifi?": "Não. O consumo é baixo e estável, similar a qualquer câmera IP doméstica.",
+                    "o app é difícil?": "Não! É simples e intuitivo — você instala, pareia e já está monitorando em minutos.",
+                    "e se acabar a luz?": "Sem energia no bocal a câmera fica offline. Com cartão SD ela retoma a gravação assim que a energia volta.",
+                    "tem mensalidade?": "Não! É compra única, sem nenhuma cobrança mensal 😊",
+                    "é difícil instalar?": "Facilíssimo! É só encaixar no bocal como trocar uma lâmpada. Em menos de 60 segundos está funcionando — sem furar paredes, sem eletricista.",
+                    "funciona sem internet?": "Precisa de Wi-Fi para monitoramento remoto. Com cartão SD inserido, grava localmente mesmo sem internet."
+                }
+            },
             "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
         },
         {
