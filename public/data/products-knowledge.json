@@ -449,6 +449,40 @@
                 "é fácil de usar?": "Sim. Liga, aguarda 30 segundos aquecer e aplica nos cílios — simples como usar um pente.",
                 "funciona com extensão de cílios?": "Não é recomendado para extensões. É ideal para cílios naturais."
             },
+            "especificacoes_tecnicas": {
+                "tempo_aquecimento": "15 a 30 segundos",
+                "uso": "Cílios naturais — com ou sem rímel",
+                "recarga": "Via USB",
+                "garantia": "12 meses"
+            },
+            "fluxo_vendas_whatsapp": {
+                "etapa_1_saudacao": [
+                    "Olá, tudo bem? 👋 Vi que você tem interesse no nosso Modelador Térmico de Cílios — posso te ajudar?",
+                    "Me conta, com quem estou falando? 😊",
+                    "Vou te mostrar rapidinho como ele vai transformar seus cílios em segundos!"
+                ],
+                "etapa_2_apresentacao": [
+                    "Sabe aquela frustração de usar o curvador manual e os cílios voltarem para o lugar em poucas horas? O Modelador Térmico resolve isso — o calor fixo a curvatura por muito mais tempo 😍",
+                    "Ele aquece em apenas 15 a 30 segundos, separa e alinha os cílios individualmente com precisão, e a curvatura dura o dia todo — especialmente se aplicar rímel depois. Funciona com ou sem rímel ✅",
+                    "É leve como um lápis, cabe em qualquer necessaire e tem um botão só. Zero complicação 💄"
+                ],
+                "etapa_3_oferta": [
+                    "E o melhor: risco ZERO 🔒 Você não paga nada agora. Nós entregamos e você paga só na hora que receber — dinheiro, PIX, cartão de débito ou crédito em até 12x na maquininha.",
+                    "Me passa seu CEP para eu confirmar se os entregadores já estão na sua região 📦"
+                ],
+                "etapa_4_confirmacao": [
+                    "Endereço confirmado 📍 Vou agendar sua entrega. Se surgir qualquer imprevisto e não puder receber, me avisa antes para não deslocar o entregador à toa, combinado? 🤝",
+                    "Tenho certeza que você vai amar o resultado! Qualquer dúvida, estou aqui 💬"
+                ],
+                "objecoes_especificas": {
+                    "queima os cílios?": "Não! O calor é controlado e suave, projetado especificamente para cílios — sem risco de queimar ou danificar 😊",
+                    "dura o dia todo?": "Sim, especialmente se aplicar rímel após o uso. A curvatura fica firme o dia todo.",
+                    "é fácil de usar?": "Sim! Liga, aguarda 30 segundos aquecer e aplica nos cílios — simples como usar um pente.",
+                    "funciona com extensão de cílios?": "Não é recomendado para extensões. É ideal para cílios naturais.",
+                    "quanto tempo aquece?": "De 15 a 30 segundos — rapidíssimo! 😊",
+                    "precisa de pilha?": "Não, é recarregável via USB."
+                }
+            },
             "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
         },
         {
@@ -701,6 +735,46 @@
                 "familia": "Veja o que acontece na sua casa quando você vira as costas — babás, cuidadores, filhos e pets monitorados com discrição total.",
                 "patrimonio": "Câmera invisível que ninguém percebe — ideal para quem tem circulação de prestadores de serviço em casa.",
                 "idosos": "Paz de espírito para quem tem pais idosos morando sozinhos — monitore com discrição sem tirar a autonomia deles."
+            },
+            "especificacoes_tecnicas": {
+                "tamanho": "4cm — ultra compacto",
+                "resolucao": "Full HD 1080p",
+                "visao_noturna": "Infravermelha",
+                "campo_visao": "150° grande-angular",
+                "conectividade": "Wi-Fi",
+                "armazenamento": "Cartão SD",
+                "audio": "Bidirecional",
+                "mensalidade": "Nenhuma",
+                "garantia": "12 meses"
+            },
+            "fluxo_vendas_whatsapp": {
+                "etapa_1_saudacao": [
+                    "Olá, tudo bem? 👋 Vi que você tem interesse na nossa Mini Câmera Wi-Fi A9 — posso te ajudar?",
+                    "Pra eu salvar seu contato, qual é o seu nome? 😊",
+                    "Vou te explicar rapidinho como ela funciona e como vai te dar tranquilidade total sobre o que acontece na sua casa!"
+                ],
+                "etapa_2_apresentacao": [
+                    "O grande diferencial dessa câmera é o tamanho — apenas 4cm. Ela se encaixa em qualquer canto discretamente, em estantes, ao lado de objetos decorativos, em qualquer lugar. Ninguém percebe que está sendo monitorado — o que garante ver o comportamento real 🔍",
+                    "Você monitora em tempo real pelo celular de qualquer lugar. Tem visão noturna infravermelha, detecção de movimento com alerta imediato no celular, áudio bidirecional — você vê, ouve e fala com quem está no ambiente. Lente grande-angular de 150° sem pontos cegos ✅",
+                    "Sem mensalidade, sem contrato. Grava no cartão SD localmente mesmo sem internet. Instalação em minutos — baixa o app, conecta no Wi-Fi e pronto 📱"
+                ],
+                "etapa_3_oferta": [
+                    "E o melhor: risco ZERO 🔒 Você não paga nada agora. Nós entregamos e você paga só na hora que receber — dinheiro, PIX, cartão de débito ou crédito em até 12x na maquininha.",
+                    "Me passa seu CEP para eu confirmar se os entregadores já estão na sua região 📦"
+                ],
+                "etapa_4_confirmacao": [
+                    "Endereço confirmado 📍 Vou agendar sua entrega. Se surgir qualquer imprevisto e não puder receber, me avisa antes para não deslocar o entregador à toa, combinado? 🤝",
+                    "Tenho certeza que vai te dar muita tranquilidade! Qualquer dúvida, estou aqui 💬"
+                ],
+                "objecoes_especificas": {
+                    "a imagem é boa?": "Sim, Full HD 1080p com visão noturna infravermelha — imagem nítida mesmo no escuro total 😊",
+                    "é difícil configurar?": "Não! Baixa o app, conecta no Wi-Fi e está funcionando em minutos.",
+                    "funciona sem internet?": "Precisa de Wi-Fi para monitoramento remoto. Com cartão SD inserido, grava localmente mesmo sem internet.",
+                    "a bateria dura quanto?": "Quando ligada na tomada funciona continuamente. Com bateria interna, a autonomia varia conforme o uso.",
+                    "tem mensalidade?": "Não! É compra única, sem nenhuma cobrança mensal 😊",
+                    "é legal filmar sem avisar?": "Para monitoramento dentro da própria residência ou estabelecimento comercial é um direito do proprietário. Em caso de dúvida específica, consulte um advogado.",
+                    "é difícil esconder?": "Com apenas 4cm cabe em praticamente qualquer canto discreto — estantes, ao lado de eletrônicos, objetos decorativos."
+                }
             },
             "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
         },
