@@ -103,6 +103,42 @@
                 "passa embaixo de móveis?": "Sim, o design slim permite que passe embaixo de sofás, camas e móveis baixos.",
                 "faz barulho?": "Não, é silencioso. Pode rodar enquanto você trabalha, descansa ou dorme."
             },
+            "especificacoes_tecnicas": {
+                "altura": "aproximadamente 6-7 cm",
+                "dimensoes": "29cm x 29cm",
+                "reservatorio": "310 ml",
+                "autonomia_bateria": "90 minutos",
+                "garantia": "12 meses",
+                "superficies_ideais": "piso liso, porcelanato, cerâmica, madeira, tapete fino"
+            },
+            "fluxo_vendas_whatsapp": {
+                "etapa_1_saudacao": [
+                    "Olá, tudo bem? 👋 Vi que você tem interesse no nosso Mini Robô Aspirador — posso te ajudar com alguma dúvida?",
+                    "Com quem eu falo? Gosto de chamar pelo nome para o atendimento ficar mais pessoal 😊",
+                    "Vou te explicar rapidinho como esse ajudante funciona, sem enrolação. Logo em seguida já te passo os valores e como funciona a entrega, beleza?"
+                ],
+                "etapa_2_apresentacao": [
+                    "O que o pessoal mais gosta nele é que ele é o famoso ajudante invisível 🏠 Tem um perfil bem fininho — entra debaixo da cama, do sofá e dos armários. Sabe aquele esforço de se abaixar ou arrastar móvel pesado? Ele resolve isso sozinho.",
+                    "Funciona com escovas rotativas que puxam farelos, poeira e pelos de pets. É só apertar um botão — sem aplicativo, sem complicação. Mantém a casa limpa enquanto você descansa ou faz outra coisa ✅"
+                ],
+                "etapa_3_oferta": [
+                    "E o melhor: seu risco é ZERO 🔒 Você não paga nada agora. Nós entregamos e você paga só na hora que receber — dinheiro, PIX, cartão de débito ou crédito em até 12x na maquininha.",
+                    "Me passa seu CEP para eu confirmar se os entregadores já estão na sua região 📦"
+                ],
+                "etapa_4_confirmacao": [
+                    "Endereço confirmado 📍 Vou agendar sua entrega. Se surgir qualquer imprevisto e não puder receber, me avisa antes para não deslocar o entregador à toa, combinado? 🤝",
+                    "Tenho certeza que você vai amar a praticidade! Qualquer dúvida, estou aqui 💬"
+                ],
+                "objecoes_especificas": {
+                    "substitui aspirador normal?": "Ele não substitui um aspirador potente para faxina pesada — mas é perfeito para a manutenção diária. Mantém o chão limpo entre as faxinas sem você precisar fazer nada 😊",
+                    "funciona em tapete?": "Ele funciona melhor em pisos lisos como madeira, porcelanato e cerâmica. Em tapetes finos passa bem, mas tapetes felpudos não são o forte dele.",
+                    "fica perdido?": "Ele navega de forma aleatória — não mapeia a casa como os robôs caros, mas cobre bem o ambiente no tempo de bateria. Para manutenção diária funciona muito bem!",
+                    "quanto tempo de bateria?": "Aproximadamente 90 minutos de autonomia — suficiente para um apartamento ou os cômodos principais da casa.",
+                    "qual a altura?": "Ele tem aproximadamente 6 a 7 cm de altura — slim o suficiente para passar embaixo de sofás e camas com facilidade 😊",
+                    "qual o tamanho?": "Dimensões de 29cm x 29cm, leve e compacto para guardar em qualquer lugar.",
+                    "tem garantia?": "Sim, 12 meses de garantia!"
+                }
+            },
             "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
         },
         {

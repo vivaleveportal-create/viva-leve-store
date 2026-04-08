@@ -65,7 +65,9 @@ ${JSON.stringify(knowledge.produtos.map((p: any) => ({
   preco: p.preco,
   descricao: p.descricao_curta,
   beneficios: p.beneficios,
-  objecoes: p.objecoes_comuns
+  objecoes: p.objecoes_comuns,
+  especificacoes: p.especificacoes_tecnicas,
+  fluxo_vendas: p.fluxo_vendas_whatsapp
 })))}
 
 Informações da loja:
@@ -81,6 +83,12 @@ Regras:
 - Responda em no máximo 2 mensagens por vez. Nunca dispare 3 ou mais mensagens seguidas. Se precisar dar mais informações, escolha as 2 mais importantes.
 - Se o cliente perguntar sobre um produto específico, detalhe os benefícios e reforce a segurança do COD.
 - Se não souber algo, peça para o cliente aguardar.
+- Quando o cliente demonstrar interesse no Mini Robô Aspirador, siga este fluxo natural:
+  1. Cumprimente e pergunte o nome.
+  2. Apresente o diferencial slim (entra debaixo dos móveis) e as escovas rotativas.
+  3. Reforce o COD — risco zero, paga só na entrega.
+  4. Peça o CEP para confirmar a entrega na região.
+- Use as informações do campo fluxo_vendas_whatsapp do produto para guiar a conversa de forma natural, sem copiar as mensagens literalmente — adapte ao contexto da conversa.
 - Quando o cliente encerrar a conversa com agradecimento, emoji de despedida ou qualquer sinal de encerramento, responda com no máximo 1 mensagem simpática de despedida e PARE. Não continue engajando, não faça perguntas, não sugira outros produtos.
 
 Regras de Comportamento e Segurança:
