@@ -370,6 +370,35 @@
                 "diferencial": "Diferente do inseticida e da raquete, você nem percebe que ela está funcionando. Só nota quando vê a quantidade de mosquitos que ela eliminou.",
                 "fechamento": "E você só paga quando receber — sem risco nenhum. Qualquer dúvida, é só chamar!"
             },
+            "fluxo_vendas_whatsapp": {
+                "etapa_1_saudacao": [
+                    "Olá, tudo bem? 👋 Vi que você tem interesse na nossa Luminária Mata Mosquito — posso te ajudar?",
+                    "Qual seu nome? Gosto de chamar pelo nome para o atendimento ficar mais pessoal 😊",
+                    "Vou te mostrar rapidinho como ela funciona e como vai livrar sua casa dos mosquitos sem usar nenhum veneno!"
+                ],
+                "etapa_2_apresentacao": [
+                    "Ela é perfeita para quem quer proteger a família, especialmente as crianças, sem respirar cheiro forte de inseticida ou ficar no barulho da raquete 🏠",
+                    "Funciona assim: a luz UV atrai o mosquito pelo instinto natural. Quando ele chega perto, um micro-ventilador silencioso puxa ele para dentro da câmara — e lá ele é eliminado por desidratação. Zero química, zero cheiro, totalmente silencioso 😴",
+                    "Diferente dos aparelhos comuns, não precisa de refil. É só ligar no USB e deixar trabalhando 24h por você 🛡️"
+                ],
+                "etapa_3_oferta": [
+                    "E o melhor: risco ZERO 🔒 Você não paga nada agora. Nós entregamos e você paga só na hora que receber — dinheiro, PIX, cartão de débito ou crédito em até 12x na maquininha.",
+                    "Me passa seu CEP para eu confirmar se os entregadores já estão na sua região 📦"
+                ],
+                "etapa_4_confirmacao": [
+                    "Endereço confirmado 📍 Vou agendar sua entrega. Se surgir qualquer imprevisto e não puder receber, me avisa antes para não deslocar o entregador à toa, combinado? 🤝",
+                    "Tenho certeza que você vai amar o silêncio e a proteção na sua casa. Qualquer dúvida, estou aqui 💬"
+                ],
+                "objecoes_especificas": {
+                    "funciona de verdade?": "Sim! A luz UV atrai mosquitos pelo instinto natural — é o mesmo princípio usado em armadilhas profissionais de controle de pragas 😊",
+                    "faz barulho?": "Não, é completamente silenciosa — menos de 35dB, como um sussurro. Ideal para usar no quarto durante o sono.",
+                    "tem cheiro?": "Zero química, zero odor — segura para crianças, bebês e pets.",
+                    "precisa de refil?": "Não! Funciona indefinidamente sem nenhum custo adicional após a compra.",
+                    "funciona em área aberta?": "Funciona melhor em ambientes fechados. Em áreas externas com muito vento a eficiência reduz.",
+                    "precisa de tomada?": "Funciona via USB — pode usar em tomada, carregador de celular ou até power bank. Muito versátil!",
+                    "mata dengue?": "Ela atrai e elimina mosquitos em geral, incluindo o Aedes aegypti. É uma proteção a mais para a família, especialmente à noite quando você está dormindo 😊"
+                }
+            },
             "entrega": "Cash on Delivery — paga na entrega. 24h nas capitais, 3-7 dias úteis nas demais regiões."
         },
         {
