@@ -16,6 +16,7 @@ import ProductGallery from './product-gallery'
 import YouTubeEmbed from '@/components/store/youtube-embed'
 import ProductChat from '@/components/store/product-chat'
 import ProductAnalytics from './product-analytics'
+import ProductTestimonials from '@/components/store/product-testimonials'
 
 async function getProduct(slug: string, locale: string) {
   await connectMongo()
@@ -205,6 +206,39 @@ export default async function ProductPage({
             </div>
           </div>
         )}
+
+        {/* Testimonials Section */}
+        <ProductTestimonials slug={slug} />
+
+        {/* Bottom Buy Button CTA */}
+        <div className="mt-16 flex justify-center pb-12">
+          <div className="w-full max-w-xl px-4">
+            {p.coinzz_url ? (
+              <a
+                href={p.coinzz_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full h-16 bg-viva-primary hover:bg-viva-primary-hover text-white font-bold rounded-2xl flex items-center justify-center gap-4 transition-all shadow-2xl shadow-viva-primary/20 text-xl hover:scale-[1.02] active:scale-95 group"
+              >
+                <ShoppingCart className="w-7 h-7 group-hover:animate-bounce" />
+                Quero comprar agora!
+              </a>
+            ) : (
+              <AddToCartButton
+                product={{
+                  id: p._id.toString(),
+                  name: pName,
+                  price: p.price,
+                  slug: slug,
+                  image: p.images?.[0],
+                }}
+              />
+            )}
+            <p className="text-center text-gray-400 text-sm mt-4 font-medium italic">
+              🔒 Pagamento seguro via Logzz • Receba em casa e pague na entrega
+            </p>
+          </div>
+        </div>
       </div>
       <ProductAnalytics 
         productId={p._id.toString()} 
