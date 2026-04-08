@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { connectMongo } from '@/lib/mongodb'
 import ChatHistory from '@/lib/models/ChatHistory'
+import { auth } from '@/lib/auth'
 
 export async function GET(req: NextRequest) {
   try {
-    const authHeader = req.headers.get('authorization')
-    const password = process.env.ADMIN_PASSWORD
+    const session = await auth()
 
-    if (!password || authHeader !== `Bearer ${password}`) {
+    if (!session) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
