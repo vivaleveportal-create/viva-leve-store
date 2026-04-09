@@ -13,13 +13,32 @@ declare global {
 
 export default function ObrigadoPage() {
   useEffect(() => {
-    // Dispara a conversão do Google Ads no lado do cliente
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'conversion', {
-        send_to: 'AW-18064014602/cdySCMa32JUcEIr6y6VD',
-        value: 1.0,
-        currency: 'BRL'
-      })
+    // Função para disparar a conversão
+    const fireConversion = () => {
+      if (typeof window !== 'undefined' && window.gtag) {
+        // Garantir que o ID da conta está configurado
+        window.gtag('config', 'AW-18064014602')
+        
+        // Dispara o evento de conversão específico
+        window.gtag('event', 'conversion', {
+          send_to: 'AW-18064014602/cdySCMa32JUcEIr6y6VD',
+          value: 1.0,
+          currency: 'BRL'
+        })
+        console.log('Google Ads Conversion Fired!')
+      }
+    }
+
+    // Tentar disparar imediatamente
+    fireConversion()
+
+    // Fallback: tentar novamente em 1 e 2 segundos caso o script demore a carregar
+    const timer1 = setTimeout(fireConversion, 1000)
+    const timer2 = setTimeout(fireConversion, 2000)
+
+    return () => {
+      clearTimeout(timer1)
+      clearTimeout(timer2)
     }
   }, [])
 

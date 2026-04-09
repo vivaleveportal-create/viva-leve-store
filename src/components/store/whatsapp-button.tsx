@@ -12,7 +12,7 @@ export default function WhatsappButton() {
 
   if (isProductPage) return null
 
-  const whatsappUrl = 'https://wa.me/5521982266075?text=Olá! Gostaria de tirar uma dúvida sobre a loja.'
+  const whatsappUrl = 'https://wa.me/5521982266075'
 
   return (
     <a

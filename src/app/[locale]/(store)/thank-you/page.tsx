@@ -43,7 +43,7 @@ export default function ThankYouPage({
           </Link>
           
           <a
-            href={`https://wa.me/5521982266075?text=Olá!%20Fiz%20o%20pedido%20${searchParams.orderId?.slice(-6).toUpperCase() || ''}%20e%20gostaria%20de%20tirar%20uma%20dúvida.`}
+            href="https://wa.me/5521982266075"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-3 bg-white hover:bg-green-50 text-[#25D366] border-2 border-[#25D366] font-black px-8 py-4 rounded-2xl transition-all text-lg hover:scale-[1.02]"

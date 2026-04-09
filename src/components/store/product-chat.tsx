@@ -212,7 +212,7 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
 
           {showWppLink && (
             <div 
-              onClick={() => window.open(`https://wa.me/5521982266075?text=Olá!%20Estava%20vendo%20o%20${encodeURIComponent(productName)}%20e%20gostaria%20de%20tirar%20uma%20dúvida.`, '_blank')}
+            onClick={() => window.open(`https://wa.me/5521982266075`, '_blank')}
               className="text-xs text-viva-muted hover:text-viva-primary text-center py-2 cursor-pointer transition-colors border-t border-gray-50 bg-white"
             >
               Prefere continuar no WhatsApp? 💬

@@ -87,7 +87,7 @@ export default async function RootLayout({
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
         )}
-        {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_GOOGLE_ADS_ID && (
+        {process.env.NEXT_PUBLIC_GOOGLE_ADS_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ADS_ID} />
         )}
         <Suspense fallback={null}>
