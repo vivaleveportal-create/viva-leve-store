@@ -15,17 +15,31 @@ export default function ObrigadoPage() {
   useEffect(() => {
     // Função para disparar a conversão
     const fireConversion = () => {
-      if (typeof window !== 'undefined' && window.gtag) {
-        // Garantir que o ID da conta está configurado
-        window.gtag('config', 'AW-18064014602')
+      if (typeof window !== 'undefined') {
+        const gtag = (window as any).gtag
         
-        // Dispara o evento de conversão específico
-        window.gtag('event', 'conversion', {
-          send_to: 'AW-18064014602/cdySCMa32JUcEIr6y6VD',
-          value: 1.0,
-          currency: 'BRL'
-        })
-        console.log('Google Ads Conversion Fired!')
+        if (typeof gtag === 'function') {
+          // Garantir que o ID da conta está configurado
+          gtag('config', 'AW-18064014602')
+          
+          // Dispara o evento de conversão específico
+          gtag('event', 'conversion', {
+            send_to: 'AW-18064014602/cdySCMa32JUcEIr6y6VD',
+            value: 1.0,
+            currency: 'BRL'
+          })
+          console.log('Google Ads Conversion Fired!')
+        } else {
+          // Fallback para dataLayer caso o gtag ainda não seja uma função
+          (window as any).dataLayer = (window as any).dataLayer || [];
+          (window as any).dataLayer.push(['config', 'AW-18064014602']);
+          (window as any).dataLayer.push(['event', 'conversion', {
+            send_to: 'AW-18064014602/cdySCMa32JUcEIr6y6VD',
+            value: 1.0,
+            currency: 'BRL'
+          }]);
+          console.log('Google Ads Conversion queued via dataLayer.')
+        }
       }
     }
 
