@@ -88,7 +88,16 @@ export default async function RootLayout({
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
         )}
         {process.env.NEXT_PUBLIC_GOOGLE_ADS_ID && (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ADS_ID} />
+          /* Carrega o script global do Google Ads manualmente para evitar conflitos com o componente do Next */
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID}`}></script>
+            <script dangerouslySetInnerHTML={{ __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){window.dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID}');
+            `}} />
+          </>
         )}
         <Suspense fallback={null}>
           <AnalyticsTracker />
