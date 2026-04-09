@@ -193,3 +193,42 @@ export async function sendInternalSaleNotificationEmail(
     `,
     })
 }
+
+export async function sendEscalationNotificationEmail(
+    data: {
+        channel: string
+        product: string
+        question: string
+        phone?: string
+        timestamp: string
+    }
+): Promise<void> {
+    const to = 'toticavalcanti@hotmail.com'
+    const STORE = process.env.NEXT_PUBLIC_STORE_NAME ?? 'Viva Leve Portal'
+    const FROM = process.env.EMAIL_FROM ?? 'noreply@vivaleveportal.com.br'
+
+    await createTransporter().sendMail({
+        from: `${STORE} <${FROM}>`,
+        to,
+        subject: `⚠️ Cliente Aguardando Resposta — ${STORE}`,
+        html: `
+      <div style="font-family:sans-serif;max-width:600px;margin:0 auto;border:1px solid #fee2e2;border-radius:12px;overflow:hidden">
+        <div style="background-color:#ef4444;color:white;padding:20px;text-align:center">
+          <h2 style="margin:0">⚠️ Cliente Aguardando Resposta</h2>
+        </div>
+        <div style="padding:30px;background-color:#ffffff">
+          <table style="width:100%;border-collapse:collapse">
+            <tr><td style="padding:10px 0;color:#6b7280;width:120px">Canal:</td><td style="font-weight:600">${data.channel}</td></tr>
+            <tr><td style="padding:10px 0;color:#6b7280">Produto:</td><td style="font-weight:600">${data.product}</td></tr>
+            <tr><td style="padding:10px 0;color:#6b7280">Dúvida:</td><td style="font-weight:600;color:#ef4444">${data.question}</td></tr>
+            <tr><td style="padding:10px 0;color:#6b7280">Contato:</td><td style="font-weight:600">${data.phone || 'Não informado'}</td></tr>
+            <tr><td style="padding:10px 0;color:#6b7280">Horário:</td><td style="font-weight:600">${data.timestamp}</td></tr>
+          </table>
+          <div style="margin-top:20px;padding-top:20px;border-top:1px solid #f3f4f6">
+            <p style="font-size:14px;color:#6b7280">A Fly não soube responder esta dúvida técnica. Por favor, assuma o atendimento.</p>
+          </div>
+        </div>
+      </div>
+    `,
+    })
+}

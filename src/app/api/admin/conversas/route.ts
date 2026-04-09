@@ -11,10 +11,26 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
+    const { searchParams } = new URL(req.url)
+    const channel = searchParams.get('channel')
+    const date = searchParams.get('date')
+
     await connectMongo()
 
-    // Buscar todas as conversas, ordenar por data de atualização (mais recente primeiro)
-    const conversations = await ChatHistory.find({})
+    let query: any = {}
+    if (channel && channel !== 'all') {
+      query.channel = channel
+    }
+    
+    if (date) {
+      const start = new Date(date)
+      start.setHours(0, 0, 0, 0)
+      const end = new Date(date)
+      end.setHours(23, 59, 59, 999)
+      query.updatedAt = { $gte: start, $lte: end }
+    }
+
+    const conversations = await ChatHistory.find(query)
       .sort({ updatedAt: -1 })
       .lean()
 

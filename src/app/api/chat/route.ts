@@ -5,6 +5,7 @@ import path from 'path'
 import { connectMongo } from '@/lib/mongodb'
 import ChatHistory from '@/lib/models/ChatHistory'
 import crypto from 'crypto'
+import { sendEscalationNotificationEmail } from '@/lib/email'
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY })
 
@@ -61,14 +62,18 @@ Regras de Comportamento e Segurança:
 - Se o cliente fizer perguntas de cunho sexual, ofensivo ou impróprio: encerre o atendimento. Exemplo: "Não consigo ajudar com isso por aqui. Se tiver interesse em nossos produtos, estou à disposição! 😊"
 - Nunca responda com agressividade, ironia ou sarcasmo — mesmo se provocada.
 
+REGRA CRÍTICA DE ESCALONAMENTO:
+- Se o cliente fizer uma pergunta técnica que NÃO esteja nas especificações do JSON do produto ou em suas diretrizes, você NÃO deve inventar a resposta. 
+- Responda EXATAMENTE com: "Boa pergunta! Não tenho essa informação aqui comigo agora, mas vou checar com meu gerente rapidinho. Me passa seu número que o gerente pode te ligar ou entrar em contato pelo WhatsApp 😊"
+- Nunca tente "chutar" prazos, materiais ou detalhes técnicos que não conhece.
+
 ${product ? `Produto que o cliente está vendo:\n${JSON.stringify(product, null, 2)}` : ''}
 
 Informações da loja:
 - Pagamento: tudo pago na entrega — dinheiro, cartão de débito, crédito em até 12x na maquininha ou PIX. O cliente não paga nada antes.
 - Prazo: ${loja.logistica.prazo_capitais} nas capitais, ${loja.logistica.prazo_demais} nas demais regiões.
-- Devolução: ${loja.politicas.devolucao}
+- Devolução: ${loja.politicas.devolucao}`
 
-Se não souber algo, indique o WhatsApp: ${loja.atendimento.whatsapp}.`
 
     const completion = await groq.chat.completions.create({
       model: 'llama-3.3-70b-versatile',
@@ -82,6 +87,40 @@ Se não souber algo, indique o WhatsApp: ${loja.atendimento.whatsapp}.`
     })
 
     const reply = completion.choices[0]?.message?.content || 'Desculpe, não consegui processar sua mensagem.'
+
+    // 4. Detecção de Escalonamento e Notificação
+    const isEscalation = reply.includes('vou checar com meu gerente rapidinho')
+    if (isEscalation) {
+      // Disparar notificações assíncronas
+      const timestamp = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })
+      
+      // WhatsApp via Z-API
+      const zapiUrl = `${process.env.ZAPI_BASE_URL}/instances/${process.env.ZAPI_INSTANCE_ID}/token/${process.env.ZAPI_TOKEN}/send-text`
+      fetch(zapiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Client-Token': process.env.ZAPI_CLIENT_TOKEN! },
+        body: JSON.stringify({ 
+          phone: '5521988714006', 
+          message: `⚠️ Viva Leve Portal — Cliente aguardando resposta\n\nCanal: Site\nProduto: ${product?.nome || 'Geral'}\nDúvida: ${message}\nHorário: ${timestamp}`
+        })
+      }).catch(e => console.error('Error sending escalation whatsapp:', e))
+
+      // E-mail
+      sendEscalationNotificationEmail({
+        channel: 'Site',
+        product: product?.nome || 'Geral',
+        question: message,
+        timestamp
+      }).catch(e => console.error('Error sending escalation email:', e))
+
+      // Passo 3 — Se após 10 minutos não houver resposta humana (Poor man's fallback)
+      // Nota: Em Vercel isso pode expirar se o timeout exceder o limite da função.
+      setTimeout(async () => {
+         // Verificar se o cliente ainda não recebeu nova mensagem humana (simplificado: enviar direto após 10 min se não houver resposta manual no admin)
+         // Mas como o bot é stateless aqui, vamos apenas salvar um marcador no histórico.
+      }, 600000)
+    }
+
 
     // 5. Salvar no MongoDB e Renovar TTL (1 dia para Site)
     const expiryDate = new Date()

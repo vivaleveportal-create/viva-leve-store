@@ -5,6 +5,7 @@ import path from 'path'
 import { connectMongo } from '@/lib/mongodb'
 import ChatHistory from '@/lib/models/ChatHistory'
 import Lead from '@/lib/models/Lead'
+import { sendEscalationNotificationEmail } from '@/lib/email'
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY })
 
@@ -110,7 +111,12 @@ Variação de linguagem — importante:
 - Use variações naturais como: "Com quem tenho o prazer? 😊", "Como posso te chamar?", "Pra eu salvar seu contato, qual é o seu nome?", "Me conta, com quem estou falando? 😊", "Qual é o seu nome?"
 - O mesmo vale para outras frases repetitivas — sempre varie o vocabulário para soar natural e humano
 - Evite frases que pareçam roteiro ou script de atendimento automático
-- Adapte o tom conforme o produto: mais descontraído para produtos jovens (fone, fone bluetooth m10, mini câmera a9), mais acolhedor para produtos de saúde e bem-estar (massagem, lixa de pé, caneta depiladora) e mais sério/técnico para produtos de segurança (câmera lâmpada, chaveiro rastreador)`
+- Adapte o tom conforme o produto: mais descontraído para produtos jovens (fone, fone bluetooth m10, mini câmera a9), mais acolhedor para produtos de saúde e bem-estar (massagem, lixa de pé, caneta depiladora) e mais sério/técnico para produtos de segurança (câmera lâmpada, chaveiro rastreador)
+
+REGRA CRÍTICA DE ESCALONAMENTO:
+- Se o cliente fizer uma pergunta técnica que NÃO esteja nas especificações do JSON do produto ou em suas diretrizes, você NÃO deve inventar a resposta. 
+- Responda EXATAMENTE com: "Boa pergunta! Não tenho essa informação aqui comigo agora, mas vou checar com meu gerente rapidinho. Pode aguardar um momento? 😊"
+- Nunca tente "chutar" prazos, materiais ou detalhes técnicos que não conhece.`
 
     const completion = await groq.chat.completions.create({
       model: 'llama-3.3-70b-versatile',
@@ -124,6 +130,37 @@ Variação de linguagem — importante:
     })
 
     const reply = completion.choices[0]?.message?.content || 'Desculpe, não entendi. Pode repetir? 😊'
+
+    // Detecção de Escalonamento e Notificação
+    const isEscalation = reply.includes('vou checar com meu gerente rapidinho')
+    if (isEscalation) {
+      const timestamp = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })
+      const zapiUrlNotification = `${process.env.ZAPI_BASE_URL}/instances/${process.env.ZAPI_INSTANCE_ID}/token/${process.env.ZAPI_TOKEN}/send-text`
+      
+      // WhatsApp p/ Gerente
+      fetch(zapiUrlNotification, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Client-Token': process.env.ZAPI_CLIENT_TOKEN! },
+        body: JSON.stringify({ 
+          phone: '5521988714006', 
+          message: `⚠️ Viva Leve Portal — Cliente aguardando resposta\n\nCanal: WhatsApp\nProduto: Lead via WhatsApp\nDúvida: ${messageText}\nHorário: ${timestamp}`
+        })
+      }).catch(e => console.error('Error escalation whatsapp:', e))
+
+      // E-mail p/ Gerente
+      sendEscalationNotificationEmail({
+        channel: 'WhatsApp',
+        product: 'Atendimento WhatsApp',
+        question: messageText,
+        phone,
+        timestamp
+      }).catch(e => console.error('Error escalation email:', e))
+
+      // Fallback 10 min (simulado)
+      setTimeout(() => {
+         // console.log('Enviando fallback de 10 min...')
+      }, 600000)
+    }
 
     // Enviar resposta via Z-API — dividindo em frases simulando digitação humana
     const zapiUrl = `${process.env.ZAPI_BASE_URL}/instances/${process.env.ZAPI_INSTANCE_ID}/token/${process.env.ZAPI_TOKEN}/send-text`

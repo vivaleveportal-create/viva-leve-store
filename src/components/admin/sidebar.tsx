@@ -6,6 +6,7 @@ import { useSession } from 'next-auth/react'
 import {
   LayoutDashboard, Package, Tags, ShoppingCart,
   Users, FolderOpen, Settings, LogOut, UsersRound,
+  MessageSquare, UserPlus
 } from 'lucide-react'
 import { signOut } from 'next-auth/react'
 import { cn } from '@/lib/utils'
@@ -14,6 +15,8 @@ type AdminRole = 'support' | 'admin' | 'super_admin'
 
 const ALL_LINKS = [
   { href: '/admin',            label: 'Dashboard',     icon: LayoutDashboard, minRole: 'support'     as AdminRole },
+  { href: '/admin/conversas',  label: 'Conversas',     icon: MessageSquare,   minRole: 'support'     as AdminRole },
+  { href: '/admin/leads',      label: 'Leads',         icon: UserPlus,        minRole: 'support'     as AdminRole },
   { href: '/admin/products',   label: 'Produtos',      icon: Package,         minRole: 'admin'       as AdminRole },
   { href: '/admin/categories', label: 'Categorias',    icon: Tags,            minRole: 'admin'       as AdminRole },
   { href: '/admin/orders',     label: 'Pedidos',       icon: ShoppingCart,    minRole: 'support'     as AdminRole },
