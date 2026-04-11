@@ -1,4 +1,5 @@
 'use client'
+// Force redeploy to update Vercel build
 
 import { MessageCircle } from 'lucide-react'
 import { usePathname } from 'next/navigation'
