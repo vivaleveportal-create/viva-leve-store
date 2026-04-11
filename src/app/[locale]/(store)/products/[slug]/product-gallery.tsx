@@ -47,7 +47,7 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
     <div className="space-y-4 lg:space-y-6">
       {/* Main Image Viewer */}
       <div 
-        className="group relative aspect-[4/5] sm:aspect-square bg-gradient-to-br from-white via-gray-50/80 to-gray-200/30 rounded-[2rem] overflow-hidden border border-white shadow-[0_20px_50px_-20px_rgba(0,0,0,0.12)] ring-1 ring-black/5 flex items-center justify-center transition-all duration-500"
+        className="group relative aspect-[5/4] sm:aspect-square bg-gradient-to-br from-white via-gray-50/80 to-gray-200/30 rounded-[2rem] overflow-hidden border border-white shadow-[0_20px_50px_-20px_rgba(0,0,0,0.12)] ring-1 ring-black/5 flex items-center justify-center transition-all duration-500"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -60,7 +60,7 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
             className={cn(
-              "object-contain p-4 sm:p-8 drop-shadow-[0_20px_30px_rgba(0,0,0,0.1)] transition-opacity duration-500 ease-in-out absolute inset-0",
+              "object-contain p-2 sm:p-8 drop-shadow-[0_20px_30px_rgba(0,0,0,0.1)] transition-opacity duration-500 ease-in-out absolute inset-0",
               activeIndex === idx ? "opacity-100 z-10" : "opacity-0 z-0"
             )}
             priority={idx === 0}
