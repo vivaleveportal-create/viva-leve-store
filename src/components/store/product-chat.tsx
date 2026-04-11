@@ -51,10 +51,20 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
 
     // Se for a primeira vez abrindo e não tiver mensagens, envia saudação
     if (messages.length === 0) {
-      const initialText = `Olá! 👋 Sou Fly, da Viva Leve. Vi que você está vendo o ${productName}. Posso te ajudar com alguma dúvida? 😊`
-      await sleep(600)
-      setIsTyping(true)
+      const greetings = [
+        `Olá! Sou a Fly, da Viva Leve. Vi que você está de olho no ${productName}. Tem alguma dúvida?`,
+        `Oi! Tudo bem? Sou a Fly. Se precisar de alguma informação sobre o ${productName}, é só me chamar.`,
+        `Olá! Vi que está interessado no ${productName}. Sou a Fly e estou aqui se precisar de ajuda.`,
+        `Oi! 👋 Sou a Fly. Posso te ajudar com alguma dúvida sobre o ${productName}?`,
+        `Olá! Sou a Fly, da equipe aqui da Viva Leve. Alguma dúvida sobre o ${productName}?`,
+        `Oi! Tudo certinho? Sou a Fly. Se quiser saber mais sobre o ${productName}, estou por aqui.`
+      ]
+      
+      const initialText = greetings[Math.floor(Math.random() * greetings.length)]
+      
       await sleep(1000)
+      setIsTyping(true)
+      await sleep(1500)
       setIsTyping(false)
       await runTypewriter(initialText)
     }
@@ -78,12 +88,12 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
         return copy
       })
 
-      // Interval between characters
-      await sleep(20)
+      // Human-like typing delay: random between 30ms and 70ms
+      await sleep(Math.floor(Math.random() * 40) + 30)
 
-      // Pause after sentences (. ? !)
-      if (['.', '?', '!'].includes(char) && i < chars.length - 1) {
-        await sleep(400)
+      // Longer pause after punctuation
+      if (['.', '?', '!', ','].includes(char) && i < chars.length - 1) {
+        await sleep(Math.floor(Math.random() * 200) + 500)
       }
     }
   }
