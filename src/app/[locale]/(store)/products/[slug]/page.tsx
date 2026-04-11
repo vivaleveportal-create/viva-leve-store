@@ -97,8 +97,19 @@ export default async function ProductPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       
-      <div className="max-w-6xl mx-auto px-4 py-12 md:py-20 lg:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+      <div className="max-w-6xl mx-auto px-4 py-6 md:py-20 lg:py-24">
+        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-16">
+          {/* Mobile Title: Visible only on mobile, placed above gallery */}
+          <div className="lg:hidden mb-2">
+            {catName && (
+              <span className="text-viva-accent text-xs font-bold uppercase tracking-wider mb-2 inline-block">
+                {catName}
+              </span>
+            )}
+            <h1 className="text-3xl font-bold text-viva-text tracking-tight leading-tight font-display">
+              {pName}
+            </h1>
+          </div>
           {/* Column Left: Gallery */}
           <div className="lg:col-span-7">
             <ProductGallery images={p.images} productName={pName} />
@@ -106,7 +117,7 @@ export default async function ProductPage({
 
           {/* Column Right: Info */}
           <div className="lg:col-span-5 flex flex-col">
-            <div className="mb-6">
+            <div className="hidden lg:block mb-6">
               {catName && (
                 <span className="bg-viva-accent text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-sm uppercase tracking-wider inline-block font-display">
                   {catName}
@@ -114,24 +125,18 @@ export default async function ProductPage({
               )}
             </div>
 
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-viva-text mb-6 tracking-tight leading-tight font-display">
+            <h1 className="hidden lg:block text-3xl md:text-4xl lg:text-5xl font-bold text-viva-text mb-6 tracking-tight leading-tight font-display">
               {pName}
             </h1>
 
-            <div className="mb-8 p-6 bg-white border border-gray-100 shadow-sm rounded-2xl flex items-baseline gap-3">
-              <span className="text-4xl md:text-5xl font-black text-viva-accent-warm">
+            <div className="mb-4 lg:mb-8 p-5 lg:p-6 bg-white border border-gray-100 shadow-sm rounded-2xl flex items-baseline gap-3">
+              <span className="text-3xl lg:text-5xl font-black text-viva-accent-warm">
                 {formatPrice(Math.round(p.price * 100), p.currency || 'BRL')}
               </span>
             </div>
 
-            {/* Delivery Alert */}
-            <div className="flex items-center gap-3 text-viva-blue font-bold text-lg mb-8 p-4 bg-viva-blue/10 rounded-xl">
-              <Truck className="w-6 h-6" />
-              <span>Entrega em {deliveryText} via Logzz</span>
-            </div>
-
-            {/* Buy Box */}
-            <div className="mb-10 animate-in fade-in slide-in-from-bottom-2 duration-500">
+            {/* Buy Box - Priority placement on mobile */}
+            <div className="mb-6 lg:mb-10 animate-in fade-in slide-in-from-bottom-2 duration-500">
             {p.coinzz_url ? (
               <a
                 href={p.coinzz_url}
@@ -155,14 +160,20 @@ export default async function ProductPage({
             )}
             </div>
 
+            {/* Delivery Alert */}
+            <div className="flex items-center gap-3 text-viva-blue font-bold text-base lg:text-lg mb-6 lg:mb-8 p-3 lg:p-4 bg-viva-blue/10 rounded-xl">
+              <Truck className="w-5 h-5 lg:w-6 lg:h-6" />
+              <span>Entrega em {deliveryText} via Logzz</span>
+            </div>
+
             {/* Saiba mais (Demo URL) */}
             {(p.demoUrl || p.logzzProductUrl) && (
-              <div className="mb-10">
+              <div className="mb-8 lg:mb-10">
                 <a 
                   href={p.demoUrl || p.logzzProductUrl} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 border-2 border-viva-accent text-viva-accent py-4 rounded-lg font-bold hover:bg-viva-accent hover:text-white transition-all text-lg"
+                  className="w-full flex items-center justify-center gap-2 border-2 border-viva-accent text-viva-accent py-3 lg:py-4 rounded-lg font-bold hover:bg-viva-accent hover:text-white transition-all text-base lg:text-lg"
                 >
                   Saiba mais <ExternalLink className="w-5 h-5" />
                 </a>
@@ -170,17 +181,17 @@ export default async function ProductPage({
             )}
 
             {/* Trust Badges */}
-            <div className="space-y-6 pt-8 border-t border-gray-100">
-              <div className="flex items-center gap-4 text-viva-text font-medium text-lg leading-relaxed">
-                <ShieldCheck className="w-6 h-6 text-viva-blue shrink-0" />
+            <div className="space-y-4 lg:space-y-6 pt-6 lg:pt-8 border-t border-gray-100">
+              <div className="flex items-center gap-3 lg:gap-4 text-viva-text font-medium text-base lg:text-lg leading-relaxed">
+                <ShieldCheck className="w-5 h-5 lg:w-6 lg:h-6 text-viva-blue shrink-0" />
                 Pague na entrega — dinheiro, cartão ou PIX
               </div>
-              <div className="flex items-center gap-4 text-viva-text font-medium text-lg leading-relaxed">
-                <Truck className="w-6 h-6 text-viva-blue shrink-0" />
+              <div className="flex items-center gap-3 lg:gap-4 text-viva-text font-medium text-base lg:text-lg leading-relaxed">
+                <Truck className="w-5 h-5 lg:w-6 lg:h-6 text-viva-blue shrink-0" />
                 Entrega nacional garantida pela Logzz
               </div>
-              <div className="flex items-center gap-4 text-viva-text font-medium text-lg leading-relaxed">
-                <MessageCircle className="w-6 h-6 text-viva-blue shrink-0" />
+              <div className="flex items-center gap-3 lg:gap-4 text-viva-text font-medium text-base lg:text-lg leading-relaxed">
+                <MessageCircle className="w-5 h-5 lg:w-6 lg:h-6 text-viva-blue shrink-0" />
                 Suporte humano via WhatsApp
               </div>
             </div>
@@ -189,8 +200,8 @@ export default async function ProductPage({
 
         {/* Video Embed Section */}
         {p.videoUrl && (
-          <div className="mt-24 pt-20 border-t border-gray-100 flex flex-col items-center">
-            <h2 className="text-2xl font-bold mb-12 text-center text-viva-text font-display">Veja este produto em ação</h2>
+          <div className="mt-12 lg:mt-24 pt-10 lg:pt-20 border-t border-gray-100 flex flex-col items-center">
+            <h2 className="text-xl lg:text-2xl font-bold mb-8 lg:mb-12 text-center text-viva-text font-display">Veja este produto em ação</h2>
             <div className="w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl">
               <YouTubeEmbed url={p.videoUrl} title={pName} />
             </div>
@@ -199,9 +210,9 @@ export default async function ProductPage({
 
         {/* Description Section */}
         {p.description && (
-          <div className="mt-24 pt-20 border-t border-gray-100 max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-10 text-viva-text font-display">Sobre este produto</h2>
-            <div className="prose prose-lg prose-teal max-w-none text-gray-700 leading-relaxed antialiased whitespace-pre-wrap">
+          <div className="mt-12 lg:mt-24 pt-10 lg:pt-20 border-t border-gray-100 max-w-4xl mx-auto">
+            <h2 className="text-2xl lg:text-3xl font-bold mb-6 lg:mb-10 text-viva-text font-display">Sobre este produto</h2>
+            <div className="prose prose-base lg:prose-lg prose-teal max-w-none text-gray-700 leading-relaxed antialiased whitespace-pre-wrap">
               {p.description}
             </div>
           </div>
