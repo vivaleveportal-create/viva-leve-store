@@ -23,6 +23,8 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
   const [hasShownWppLink, setHasShownWppLink] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
+  const [showNotification, setShowNotification] = useState(false)
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -32,29 +34,30 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
   }, [messages, isTyping])
 
   useEffect(() => {
-    const chatOpenedKey = `chat-opened-${productSlug}`
-    const alreadyOpened = sessionStorage.getItem(chatOpenedKey)
-    if (!alreadyOpened) {
-      const timer = setTimeout(async () => {
-        sessionStorage.setItem(chatOpenedKey, 'true')
-        setIsOpen(true)
-        trackEvent('chat_opened', { product_id: productSlug, source: 'chat' })
-        const initialText = `Olá! 👋 Sou Fly, da Viva Leve. Vi que você está vendo o ${productName}. Posso te ajudar com alguma dúvida? 😊`
-        await sleep(600)
-        setIsTyping(true)
-        await sleep(1500)
-        setIsTyping(false)
-        await runTypewriter(initialText)
-      }, 7000)
-      return () => clearTimeout(timer)
-    }
-  }, [productSlug, productName])
+    const timer = setTimeout(() => {
+      if (!isOpen) {
+        setShowNotification(true)
+      }
+    }, 45000)
+    return () => clearTimeout(timer)
+  }, [isOpen])
 
   const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
-  const handleOpen = () => {
+  const handleOpen = async () => {
     setIsOpen(true)
+    setShowNotification(false)
     trackEvent('chat_opened', { product_id: productSlug, source: 'chat' })
+
+    // Se for a primeira vez abrindo e não tiver mensagens, envia saudação
+    if (messages.length === 0) {
+      const initialText = `Olá! 👋 Sou Fly, da Viva Leve. Vi que você está vendo o ${productName}. Posso te ajudar com alguma dúvida? 😊`
+      await sleep(600)
+      setIsTyping(true)
+      await sleep(1000)
+      setIsTyping(false)
+      await runTypewriter(initialText)
+    }
   }
 
   const runTypewriter = async (text: string) => {
@@ -147,6 +150,17 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
 
   return (
     <>
+      {/* Notification Bubble */}
+      {showNotification && !isOpen && (
+        <div 
+          onClick={handleOpen}
+          className="fixed bottom-24 right-6 bg-white px-4 py-2 rounded-2xl shadow-xl border border-viva-primary/10 flex items-center gap-2 cursor-pointer z-50 animate-in fade-in slide-in-from-bottom-4 duration-500"
+        >
+          <span className="text-sm font-medium text-gray-700">Posso te ajudar?</span>
+          <div className="w-2 h-2 bg-viva-primary rounded-full animate-pulse" />
+        </div>
+      )}
+
       {/* Floating Button */}
       {!isOpen && (
         <button
@@ -160,7 +174,7 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-6 right-4 sm:bottom-24 sm:right-4 w-[calc(100%-2rem)] sm:w-80 md:w-96 h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col z-[100] transition-all overflow-hidden animate-in slide-in-from-bottom-5">
+        <div className="fixed bottom-6 right-4 sm:bottom-24 sm:right-4 w-[calc(100%-2rem)] sm:w-80 md:w-96 h-[50vh] sm:h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col z-[100] transition-all overflow-hidden animate-in slide-in-from-bottom-5">
           {/* Header */}
           <div className="bg-viva-primary p-4 flex items-center justify-between text-white">
             <div className="flex items-center gap-3">
