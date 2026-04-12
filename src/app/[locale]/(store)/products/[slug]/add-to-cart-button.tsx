@@ -44,7 +44,7 @@ export default function AddToCartButton({ product }: { product: Product }) {
     <button
       id="add-to-cart-btn"
       onClick={handleAdd}
-      className="w-full h-14 bg-viva-primary hover:bg-viva-primary-hover text-white font-bold rounded-lg flex items-center justify-center gap-3 transition-all shadow-xl shadow-viva-primary/10 text-lg hover:scale-[1.02] active:scale-95"
+      className="w-full h-14 bg-viva-primary hover:bg-viva-primary-hover text-white font-bold rounded-lg flex items-center justify-center gap-3 transition-[transform,background-color] shadow-xl shadow-viva-primary/10 text-lg hover:scale-[1.02] active:scale-95 duration-300"
     >
       <ShoppingCart className="w-6 h-6" />
       Adicionar ao carrinho

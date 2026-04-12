@@ -47,7 +47,7 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
     <div className="space-y-1 lg:space-y-6">
       {/* Main Image Viewer */}
       <div 
-        className="group relative aspect-[5/4] sm:aspect-square bg-gradient-to-br from-white via-gray-50/80 to-gray-200/30 rounded-[2rem] overflow-hidden border border-white shadow-[0_20px_50px_-20px_rgba(0,0,0,0.12)] ring-1 ring-black/5 flex items-center justify-center transition-all duration-500"
+        className="group relative aspect-[5/4] sm:aspect-square bg-gradient-to-br from-white via-gray-50/80 to-gray-200/30 rounded-[2rem] overflow-hidden border border-white shadow-[0_20px_50px_-20px_rgba(0,0,0,0.12)] ring-1 ring-black/5 flex items-center justify-center transition-[background-color] duration-500"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -72,14 +72,14 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
           <>
             <button
               onClick={handlePrev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/90 backdrop-blur-md border border-gray-100 flex items-center justify-center text-gray-800 opacity-0 group-hover:opacity-100 transition-all shadow-lg hover:bg-white hover:scale-110 active:scale-95 sm:flex hidden z-20"
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/90 backdrop-blur-md border border-gray-100 flex items-center justify-center text-gray-800 opacity-0 group-hover:opacity-100 transition-[opacity,transform,background-color] shadow-lg hover:bg-white hover:scale-110 active:scale-95 sm:flex hidden z-20"
               aria-label="Previous image"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
             <button
               onClick={handleNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/90 backdrop-blur-md border border-gray-100 flex items-center justify-center text-gray-800 opacity-0 group-hover:opacity-100 transition-all shadow-lg hover:bg-white hover:scale-110 active:scale-95 sm:flex hidden z-20"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/90 backdrop-blur-md border border-gray-100 flex items-center justify-center text-gray-800 opacity-0 group-hover:opacity-100 transition-[opacity,transform,background-color] shadow-lg hover:bg-white hover:scale-110 active:scale-95 sm:flex hidden z-20"
               aria-label="Next image"
             >
               <ChevronRight className="w-6 h-6" />
@@ -109,7 +109,7 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
               key={idx}
               onClick={() => setActiveIndex(idx)}
               className={cn(
-                "relative aspect-square w-20 sm:w-28 rounded-2xl overflow-hidden flex-shrink-0 bg-white border transition-all duration-300 snap-start",
+                "relative aspect-square w-20 sm:w-28 rounded-2xl overflow-hidden flex-shrink-0 bg-white border transition-[border-color,box-shadow,transform] duration-300 snap-start",
                 activeIndex === idx
                   ? "border-viva-primary ring-4 ring-viva-primary/10 shadow-lg"
                   : "border-transparent hover:border-viva-teal-light/30"

@@ -13,10 +13,13 @@ import {
 } from 'lucide-react'
 import AddToCartButton from './add-to-cart-button'
 import ProductGallery from './product-gallery'
-import YouTubeEmbed from '@/components/store/youtube-embed'
 import ProductChat from '@/components/store/product-chat'
 import ProductAnalytics from './product-analytics'
-import ProductTestimonials from '@/components/store/product-testimonials'
+import PurchaseLink from './purchase-link'
+import dynamic from 'next/dynamic'
+
+const YouTubeEmbed = dynamic(() => import('@/components/store/youtube-embed'))
+const ProductTestimonials = dynamic(() => import('@/components/store/product-testimonials'))
 
 async function getProduct(slug: string, locale: string) {
   await connectMongo()
@@ -138,15 +141,14 @@ export default async function ProductPage({
             {/* Buy Box - Priority placement on mobile */}
             <div className="mb-6 lg:mb-10 animate-in fade-in slide-in-from-bottom-2 duration-500">
             {p.coinzz_url ? (
-              <a
+              <PurchaseLink
                 href={p.coinzz_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full h-14 bg-viva-primary hover:bg-viva-primary-hover text-white font-bold rounded-lg flex items-center justify-center gap-3 transition-all shadow-xl shadow-viva-primary/10 text-lg hover:scale-[1.02] active:scale-95"
+                slug={slug}
+                className="w-full h-14 bg-viva-primary hover:bg-viva-primary-hover text-white font-bold rounded-lg flex items-center justify-center gap-3 transition-[transform,background-color] shadow-xl shadow-viva-primary/10 text-lg hover:scale-[1.02] active:scale-95 duration-300"
               >
                 <ShoppingCart className="w-6 h-6" />
                 Comprar agora
-              </a>
+              </PurchaseLink>
             ) : (
               <AddToCartButton
                 product={{
@@ -173,7 +175,7 @@ export default async function ProductPage({
                   href={p.demoUrl || p.logzzProductUrl} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 border-2 border-viva-accent text-viva-accent py-3 lg:py-4 rounded-lg font-bold hover:bg-viva-accent hover:text-white transition-all text-base lg:text-lg"
+                  className="w-full flex items-center justify-center gap-2 border-2 border-viva-accent text-viva-accent py-3 lg:py-4 rounded-lg font-bold hover:bg-viva-accent hover:text-white transition-[transform,background-color] text-base lg:text-lg hover:scale-[1.01] duration-300"
                 >
                   Saiba mais <ExternalLink className="w-5 h-5" />
                 </a>
@@ -225,15 +227,14 @@ export default async function ProductPage({
         <div className="mt-16 flex justify-center pb-12">
           <div className="w-full max-w-xl px-4">
             {p.coinzz_url ? (
-              <a
+              <PurchaseLink
                 href={p.coinzz_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full h-16 bg-viva-primary hover:bg-viva-primary-hover text-white font-bold rounded-2xl flex items-center justify-center gap-4 transition-all shadow-2xl shadow-viva-primary/20 text-xl hover:scale-[1.02] active:scale-95 group"
+                slug={slug}
+                className="w-full h-16 bg-viva-primary hover:bg-viva-primary-hover text-white font-bold rounded-2xl flex items-center justify-center gap-4 transition-[transform,background-color] shadow-2xl shadow-viva-primary/20 text-xl hover:scale-[1.02] active:scale-95 group duration-300"
               >
                 <ShoppingCart className="w-7 h-7 group-hover:animate-bounce" />
                 Quero comprar agora!
-              </a>
+              </PurchaseLink>
             ) : (
               <AddToCartButton
                 product={{
