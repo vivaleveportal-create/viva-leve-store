@@ -7,6 +7,7 @@ export type AnalyticsEventType =
   | 'chat_message_sent'
   | 'whatsapp_click'
   | 'purchase_completed'
+  | 'purchase_click'
 
 interface InternalTrackOptions {
   product_id?: string
