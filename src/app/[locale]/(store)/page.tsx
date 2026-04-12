@@ -89,11 +89,12 @@ export default async function StoreHomePage({
               className="object-cover opacity-60" 
               alt="Viva Leve Portal" 
               priority 
+              sizes="(max-width: 768px) 100vw, 1200px"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0a1f1e] via-[#0a1f1e]/60 to-transparent" />
             
             <div className="relative z-10 w-full max-w-6xl mx-auto px-4 py-20">
-              <div className="max-w-2xl animate-in fade-in slide-in-from-left-8 duration-1000">
+              <div className="max-w-2xl">
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-semibold text-white leading-tight mb-4">
                   Porque viver bem não precisa ser complicado.
                 </h1>

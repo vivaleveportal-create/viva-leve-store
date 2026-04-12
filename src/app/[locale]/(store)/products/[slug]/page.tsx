@@ -97,16 +97,16 @@ export default async function ProductPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       
-      <div className="max-w-6xl mx-auto px-4 pt-1 pb-6 md:py-20 lg:py-24">
-        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-2 lg:gap-16">
+      <div className="max-w-6xl mx-auto px-4 pt-0 pb-6 md:pt-1 md:py-20 lg:py-24">
+        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-0 lg:gap-16">
           {/* Mobile Title: Visible only on mobile, placed above gallery */}
           <div className="lg:hidden mb-0">
             {catName && (
-              <span className="text-viva-accent text-xs font-bold uppercase tracking-wider mb-2 inline-block">
+              <span className="text-viva-accent text-[10px] font-bold uppercase tracking-wider mb-0.5 inline-block">
                 {catName}
               </span>
             )}
-            <h1 className="text-3xl font-bold text-viva-text tracking-tight leading-tight font-display">
+            <h1 className="text-2xl font-bold text-viva-text tracking-tight leading-tight font-display mb-0.5">
               {pName}
             </h1>
           </div>

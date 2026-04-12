@@ -44,7 +44,7 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
   }
 
   return (
-    <div className="space-y-4 lg:space-y-6">
+    <div className="space-y-1 lg:space-y-6">
       {/* Main Image Viewer */}
       <div 
         className="group relative aspect-[5/4] sm:aspect-square bg-gradient-to-br from-white via-gray-50/80 to-gray-200/30 rounded-[2rem] overflow-hidden border border-white shadow-[0_20px_50px_-20px_rgba(0,0,0,0.12)] ring-1 ring-black/5 flex items-center justify-center transition-all duration-500"

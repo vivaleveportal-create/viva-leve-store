@@ -4,20 +4,15 @@ import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server';
 import '../globals.css'
 import { GoogleAnalytics } from '@next/third-parties/google'
+import Script from 'next/script'
 import AnalyticsTracker from '@/components/analytics/AnalyticsTracker'
 import { Suspense } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
-const outfit = Outfit({ 
-  subsets: ['latin'], 
-  weight: ['600', '700', '800'], 
-  variable: '--font-display-alt',
-  display: 'swap'
-})
 
 const fraunces = Fraunces({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '600', '700'],
   variable: '--font-fraunces',
   display: 'swap'
 })
@@ -83,22 +78,23 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className="scroll-smooth">
-      <body className={`${inter.className} ${outfit.variable} ${fraunces.variable} min-h-screen flex flex-col`}>
+      <body className={`${inter.className} ${fraunces.variable} min-h-screen flex flex-col`}>
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
         )}
-        {process.env.NEXT_PUBLIC_GOOGLE_ADS_ID && (
-          /* Carrega o script global do Google Ads manualmente para evitar conflitos com o componente do Next */
-          <>
-            <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID}`}></script>
-            <script dangerouslySetInnerHTML={{ __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){window.dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID}');
-            `}} />
-          </>
-        )}
+        <Script
+          id="google-ads"
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID}`}
+        />
+        <Script id="google-ads-config" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID}');
+          `}
+        </Script>
         <Suspense fallback={null}>
           <AnalyticsTracker />
         </Suspense>

@@ -23,7 +23,6 @@ export default async function StoreFooter() {
                 width={300} 
                 height={120} 
                 className="md:h-[120px] h-[80px] w-auto object-contain object-center -mt-4 transition-all"
-                priority
               />
             </div>
             <p className="text-sm leading-relaxed max-w-xs opacity-70 -mt-6">

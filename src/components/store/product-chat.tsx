@@ -164,7 +164,7 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
       {showNotification && !isOpen && (
         <div 
           onClick={handleOpen}
-          className="fixed bottom-20 right-4 sm:bottom-24 sm:right-6 bg-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-2xl shadow-xl border border-viva-primary/10 flex items-center gap-2 cursor-pointer z-[60] animate-in fade-in slide-in-from-bottom-4 duration-500"
+          className="fixed bottom-20 left-4 right-auto sm:bottom-24 sm:right-6 sm:left-auto bg-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-2xl shadow-xl border border-viva-primary/10 flex items-center gap-2 cursor-pointer z-[60] animate-in fade-in slide-in-from-bottom-4 duration-500"
         >
           <span className="text-xs sm:text-sm font-medium text-gray-700">Posso te ajudar?</span>
           <div className="w-2 h-2 bg-viva-primary rounded-full animate-pulse" />
@@ -175,7 +175,7 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
       {!isOpen && (
         <button
           onClick={handleOpen}
-          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 bg-viva-primary text-white rounded-full w-12 h-12 sm:w-14 sm:h-14 shadow-xl flex items-center justify-center z-[60] hover:scale-105 transition-transform"
+          className="fixed bottom-4 left-4 right-auto sm:bottom-6 sm:right-6 sm:left-auto bg-viva-primary text-white rounded-full w-12 h-12 sm:w-14 sm:h-14 shadow-xl flex items-center justify-center z-[60] hover:scale-105 transition-transform"
         >
           <MessageCircle size={24} className="sm:hidden" />
           <MessageCircle size={28} className="hidden sm:block" />
@@ -185,7 +185,7 @@ export default function ProductChat({ productSlug, productName }: ProductChatPro
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-4 sm:bottom-24 w-[calc(100%-2rem)] sm:w-80 md:w-96 h-[50vh] sm:h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col z-[100] transition-all overflow-hidden animate-in slide-in-from-bottom-5">
+        <div className="fixed bottom-4 left-4 right-4 sm:bottom-24 sm:right-4 sm:left-auto w-[calc(100%-2rem)] sm:w-80 md:w-96 h-[50vh] sm:h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col z-[100] transition-all overflow-hidden animate-in slide-in-from-bottom-5">
           {/* Header */}
           <div className="bg-viva-primary p-4 flex items-center justify-between text-white">
             <div className="flex items-center gap-3">
