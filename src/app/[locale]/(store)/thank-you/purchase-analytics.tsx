@@ -5,6 +5,13 @@ import { trackEvent } from '@/lib/analytics-client'
 
 export default function PurchaseAnalytics({ orderId }: { orderId?: string }) {
   useEffect(() => {
+    // 1. Garantir que temos um orderId antes de disparar
+    if (!orderId) return
+
+    // 2. Prevenir disparos duplicados na mesma sessão (refresh)
+    const storageKey = `tracked_order_${orderId}`
+    if (sessionStorage.getItem(storageKey)) return
+
     trackEvent('purchase_completed', {
       payload: {
         order_id: orderId
@@ -31,6 +38,9 @@ export default function PurchaseAnalytics({ orderId }: { orderId?: string }) {
         }]);
       }
     }
+
+    // Marcar como rastreado
+    sessionStorage.setItem(storageKey, 'true')
   }, [orderId])
 
   return null
