@@ -17,7 +17,7 @@ interface ChatWindowProps {
   isTyping: boolean
   showWppLink: boolean
   handleSendMessage: (e: React.FormEvent) => void
-  messagesEndRef: React.RefObject<HTMLDivElement | null>
+  messagesEndRef: React.RefObject<HTMLDivElement>
   FlyAvatar: () => React.JSX.Element
 }
 
