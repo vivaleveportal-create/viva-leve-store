@@ -1,23 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server'
-import Groq from 'groq-sdk'
 import fs from 'fs'
 import path from 'path'
 import { connectMongo } from '@/lib/mongodb'
 import ChatHistory from '@/lib/models/ChatHistory'
 import crypto from 'crypto'
 import { sendEscalationNotificationEmail } from '@/lib/email'
-
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY })
-
-// Modelo definido exclusivamente via env (sem valor padrao no codigo).
-const GROQ_MODEL = process.env.GROQ_MODEL
-// Modelos gpt-oss sao de raciocinio e aceitam reasoning_effort; outros nao.
-const IS_REASONING_MODEL = GROQ_MODEL?.startsWith('openai/gpt-oss') ?? false
+import { createChatCompletion, getModelChain } from '@/lib/groq'
 
 export async function POST(req: NextRequest) {
   try {
-    if (!GROQ_MODEL) {
-      console.error('[chat] GROQ_MODEL nao configurada nas variaveis de ambiente')
+    if (getModelChain().length === 0) {
+      console.error('[chat] Nenhum modelo configurado: defina GROQ_MODEL')
       return NextResponse.json(
         { error: 'Configuracao ausente: GROQ_MODEL' },
         { status: 500 }
@@ -88,16 +81,14 @@ Informações da loja:
 - Devolução: ${loja.politicas.devolucao}`
 
 
-    const completion = await groq.chat.completions.create({
-      model: GROQ_MODEL,
+    const completion = await createChatCompletion({
       messages: [
         { role: 'system', content: systemPrompt },
         ...groqHistory,
         { role: 'user', content: message }
       ],
-      max_completion_tokens: 800,
-      temperature: 0.7,
-      ...(IS_REASONING_MODEL ? { reasoning_effort: 'low' as const } : {}),
+      maxCompletionTokens: 800,
+      logLabel: 'chat',
     })
 
     const reply = completion.choices[0]?.message?.content || 'Desculpe, não consegui processar sua mensagem.'
