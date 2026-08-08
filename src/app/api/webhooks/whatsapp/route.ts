@@ -9,15 +9,22 @@ import { sendEscalationNotificationEmail } from '@/lib/email'
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY })
 
-// Modelo definido via env para facilitar a troca quando for descontinuado.
-const GROQ_MODEL = process.env.GROQ_MODEL || 'openai/gpt-oss-20b'
+// Modelo definido exclusivamente via env (sem valor padrao no codigo).
+const GROQ_MODEL = process.env.GROQ_MODEL
 // Modelos gpt-oss sao de raciocinio e aceitam reasoning_effort; outros nao.
-const IS_REASONING_MODEL = GROQ_MODEL.startsWith('openai/gpt-oss')
+const IS_REASONING_MODEL = GROQ_MODEL?.startsWith('openai/gpt-oss') ?? false
 
 const processedMessages = new Set<string>()
 
 export async function POST(req: NextRequest) {
   try {
+    if (!GROQ_MODEL) {
+      // Retorna 200 de proposito: erro de config nao se resolve com retry,
+      // e um 500 faria a Z-API reenviar o webhook em loop.
+      console.error('[whatsapp] GROQ_MODEL nao configurada nas variaveis de ambiente')
+      return NextResponse.json({ ok: true })
+    }
+
     const body = await req.json()
     console.log(JSON.stringify(body))
 
