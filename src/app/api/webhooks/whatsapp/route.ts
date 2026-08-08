@@ -9,6 +9,11 @@ import { sendEscalationNotificationEmail } from '@/lib/email'
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY })
 
+// Modelo definido via env para facilitar a troca quando for descontinuado.
+const GROQ_MODEL = process.env.GROQ_MODEL || 'openai/gpt-oss-20b'
+// Modelos gpt-oss sao de raciocinio e aceitam reasoning_effort; outros nao.
+const IS_REASONING_MODEL = GROQ_MODEL.startsWith('openai/gpt-oss')
+
 const processedMessages = new Set<string>()
 
 export async function POST(req: NextRequest) {
@@ -96,14 +101,15 @@ export async function POST(req: NextRequest) {
     - Evite frases que pareçam roteiro ou script pronto.`
 
     const completion = await groq.chat.completions.create({
-      model: 'llama-3.3-70b-versatile',
+      model: GROQ_MODEL,
       messages: [
         { role: 'system', content: systemPrompt },
         ...groqHistory,
         { role: 'user', content: messageText }
       ],
-      max_tokens: 150,
+      max_completion_tokens: 700,
       temperature: 0.7,
+      ...(IS_REASONING_MODEL ? { reasoning_effort: 'low' as const } : {}),
     })
 
     const reply = completion.choices[0]?.message?.content || 'Desculpe, não entendi. Pode repetir? 😊'
