@@ -1,27 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server'
-import Groq from 'groq-sdk'
 import fs from 'fs'
 import path from 'path'
 import { connectMongo } from '@/lib/mongodb'
 import ChatHistory from '@/lib/models/ChatHistory'
 import Lead from '@/lib/models/Lead'
 import { sendEscalationNotificationEmail } from '@/lib/email'
-
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY })
-
-// Modelo definido exclusivamente via env (sem valor padrao no codigo).
-const GROQ_MODEL = process.env.GROQ_MODEL
-// Modelos gpt-oss sao de raciocinio e aceitam reasoning_effort; outros nao.
-const IS_REASONING_MODEL = GROQ_MODEL?.startsWith('openai/gpt-oss') ?? false
+import { createChatCompletion, getModelChain } from '@/lib/groq'
 
 const processedMessages = new Set<string>()
 
 export async function POST(req: NextRequest) {
   try {
-    if (!GROQ_MODEL) {
+    if (getModelChain().length === 0) {
       // Retorna 200 de proposito: erro de config nao se resolve com retry,
       // e um 500 faria a Z-API reenviar o webhook em loop.
-      console.error('[whatsapp] GROQ_MODEL nao configurada nas variaveis de ambiente')
+      console.error('[whatsapp] Nenhum modelo configurado: defina GROQ_MODEL')
       return NextResponse.json({ ok: true })
     }
 
@@ -107,16 +100,14 @@ export async function POST(req: NextRequest) {
     - Mude a forma de pedir o nome: "Como posso te chamar?", "Qual seu nome?", "Com quem falo?", etc.
     - Evite frases que pareçam roteiro ou script pronto.`
 
-    const completion = await groq.chat.completions.create({
-      model: GROQ_MODEL,
+    const completion = await createChatCompletion({
       messages: [
         { role: 'system', content: systemPrompt },
         ...groqHistory,
         { role: 'user', content: messageText }
       ],
-      max_completion_tokens: 700,
-      temperature: 0.7,
-      ...(IS_REASONING_MODEL ? { reasoning_effort: 'low' as const } : {}),
+      maxCompletionTokens: 700,
+      logLabel: 'whatsapp',
     })
 
     const reply = completion.choices[0]?.message?.content || 'Desculpe, não entendi. Pode repetir? 😊'
